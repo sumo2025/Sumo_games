@@ -7711,17 +7711,6 @@
     "category": "Thể thao & Sức khỏe"
   },
   {
-    "id": 724,
-    "question": "Môn thể thao nào có vận động viên mang mũ và găng tay bảo hộ?",
-    "answers": [
-      "Bóng đá",
-      "Bóng chày",
-      "Quyền Anh (Boxing)"
-    ],
-    "correct": 2,
-    "category": "Thể thao & Sức khỏe"
-  },
-  {
     "id": 725,
     "question": "Tại sao cần rửa tay trước khi ăn?",
     "answers": [
