@@ -980,7 +980,7 @@ function showQuestion() {
   if (gameState.currentIdx >= gameState.totalQ) { endGame(); return; }
   const q = gameState.selectedQ[gameState.currentIdx]; gameState.answered = false; gameState.timeLeft = 20;
   document.getElementById('qNumber').textContent = `Câu ${gameState.currentIdx + 1}`; document.getElementById('qCategory').textContent = q.category; document.getElementById('qText').textContent = q.question;
-  const pct = Math.round((gameState.currentIdx / gameState.totalQ) * 100); document.getElementById('progressText').textContent = `Câu ${gameState.currentIdx + 1} / ${gameState.totalQ}`; document.getElementById('progressFill').style.width = pct + '%';
+  const pct = Math.round((gameState.currentIdx / gameState.totalQ) * 100); document.getElementById('progressText').textContent = `Câu ${gameState.currentIdx + 1} / ${gameState.totalQ}`; document.getElementById('progressPct').textContent = pct + '%'; document.getElementById('progressFill').style.width = pct + '%';
   
   const grid = document.getElementById('answersGrid'); grid.innerHTML = '';
   let ansArray = q.answers.map((ans, i) => ({ text: ans, isCorrect: i === q.correct })).sort(() => 0.5 - Math.random());
