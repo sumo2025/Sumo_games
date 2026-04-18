@@ -2441,17 +2441,7 @@
     "correct": 2,
     "category": "Đố mẹo & Chơi chữ"
   },
-  {
-    "id": 224,
-    "question": "Trong 'Thần đồng đất Việt', nhân vật nào là người có sức khỏe 'vô địch'?",
-    "answers": [
-      "Trạng Tí",
-      "Mẹo",
-      "Dần Béo"
-    ],
-    "correct": 2,
-    "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
-  },
+  
   {
     "id": 225,
     "question": "Để xóa một ký tự vừa gõ sai trên máy tính, em dùng phím nào?",
@@ -3443,17 +3433,6 @@
     "category": "Đố mẹo & Chơi chữ"
   },
   {
-    "id": 315,
-    "question": "Trong 'Thần đồng đất Việt', nhân vật nào luôn đi cùng và hỗ trợ Trạng Tí trong các cuộc thi tài?",
-    "answers": [
-      "Sửu, Dần, Mẹo",
-      "Tèo, Tý, Hùng",
-      "An, Bình, Cường"
-    ],
-    "correct": 0,
-    "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
-  },
-  {
     "id": 316,
     "question": "Cổng kết nối phổ biến nhất hiện nay trên máy tính để cắm chuột, bàn phím hay USB là gì?",
     "answers": [
@@ -4343,17 +4322,6 @@
     ],
     "correct": 2,
     "category": "Địa lý và Toán thường thức"
-  },
-  {
-    "id": 397,
-    "question": "Trong 'Thần đồng đất Việt', nhân vật nào là con của ông xã Trịnh?",
-    "answers": [
-      "Trạng Tí",
-      "Dần Béo",
-      "Mẹo"
-    ],
-    "correct": 2,
-    "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
   },
   {
     "id": 398,
@@ -12120,17 +12088,6 @@
       "Nhà Trần / Triều đại phong kiến Việt Nam"
     ],
     "correct": 0,
-    "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
-  },
-  {
-    "id": 1105,
-    "question": "Trạng Tí thường dùng tài năng gì để giải quyết vấn đề?",
-    "answers": [
-      "Phép thuật",
-      "Sức mạnh cơ bắp",
-      "Trí tuệ và sự thông minh"
-    ],
-    "correct": 2,
     "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
   },
   {
