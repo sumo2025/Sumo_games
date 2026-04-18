@@ -268,7 +268,7 @@
     "id": 26,
     "question": "Bộ môn nghệ thuật nào sử dụng các động tác cơ thể uyển chuyển theo nhịp nhạc?",
     "answers": [
-      "Nhảy múa (Khiêu vũ)",
+      "Khiêu vũ",
       "Vẽ tranh",
       "Đọc thơ"
     ],
@@ -2350,6 +2350,7 @@
     "correct": 2,
     "category": "Địa lý và Toán thường thức"
   },
+    
   {
     "id": 225,
     "question": "Để xóa một ký tự vừa gõ sai trên máy tính, em dùng phím nào?",
@@ -4337,6 +4338,7 @@
     "correct": 0,
     "category": "Giải trí & Nghệ thuật"
   },
+  
   {
     "id": 414,
     "question": "Trong môn cầu lông, quả cầu lông thường được làm từ lông của con vật nào?",
@@ -6103,17 +6105,7 @@
     "correct": 0,
     "category": "Thể thao & Sức khỏe"
   },
-  {
-    "id": 580,
-    "question": "Cái gì có mặt mà không có mũi, có răng mà không có mồm?",
-    "answers": [
-      "Cái cưa",
-      "Cái đồng hồ",
-      "Cái lược"
-    ],
-    "correct": 2,
-    "category": "Đố mẹo & Chơi chữ"
-  },
+  
   {
     "id": 581,
     "question": "Trong 'Mười vạn câu hỏi vì sao', tại sao cá lại không bị chết đuối dưới nước?",
@@ -6301,17 +6293,7 @@
     "correct": 1,
     "category": "Địa lý và Toán thường thức"
   },
-  {
-    "id": 598,
-    "question": "Cái gì có mặt nhưng không có đầu, có hai tay nhưng không có chân, làm việc không ngừng nghỉ?",
-    "answers": [
-      "Cái quạt điện",
-      "Cái đồng hồ",
-      "Cái xe đạp"
-    ],
-    "correct": 1,
-    "category": "Đố mẹo & Chơi chữ"
-  },
+ 
   {
     "id": 599,
     "question": "Loài cây nào được trồng rất nhiều ở các vùng đồi núi Việt Nam để lấy mủ làm lốp xe?",
@@ -6488,17 +6470,7 @@
     "correct": 0,
     "category": "Địa lý và Toán thường thức"
   },
-  {
-    "id": 615,
-    "question": "Cái gì có cánh mà không biết bay, có bụng mà không biết đói, giúp ta mát mẻ?",
-    "answers": [
-      "Con chim",
-      "Cái quạt trần",
-      "Cái máy bay"
-    ],
-    "correct": 1,
-    "category": "Đố mẹo & Chơi chữ"
-  },
+ 
   {
     "id": 616,
     "question": "Trong Doraemon, món bảo bối 'Gương nhân bản' có tác dụng gì?",
@@ -6543,17 +6515,7 @@
     "correct": 1,
     "category": "Lịch sử và Địa lý thế giới"
   },
-  {
-    "id": 620,
-    "question": "Cái gì không mượn mà trả?",
-    "answers": [
-      "Tiền bạc",
-      "Lời chào",
-      "Đồ vật"
-    ],
-    "correct": 1,
-    "category": "Đố mẹo & Chơi chữ"
-  },
+  
   {
     "id": 621,
     "question": "Khi đi lễ chùa hoặc nhà thờ, em nên mặc trang phục như thế nào?",
@@ -7203,6 +7165,7 @@
     "correct": 1,
     "category": "Văn hóa & Ẩm thực Việt Nam"
   },
+  
   {
     "id": 681,
     "question": "Anime là từ chỉ loại phim hoạt hình của nước nào?",
@@ -7346,28 +7309,7 @@
     "correct": 1,
     "category": "Giải trí & Nghệ thuật"
   },
-  {
-    "id": 694,
-    "question": "Con gì có 4 chân nhưng không phải là bàn?",
-    "answers": [
-      "Con bướm",
-      "Con chó",
-      "Con rắn"
-    ],
-    "correct": 1,
-    "category": "Đố mẹo & Chơi chữ"
-  },
-  {
-    "id": 695,
-    "question": "Con gì đi nhiều nhất mà không mỏi chân?",
-    "answers": [
-      "Ngựa",
-      "Kim đồng hồ",
-      "Thỏ"
-    ],
-    "correct": 1,
-    "category": "Đố mẹo & Chơi chữ"
-  },
+    
   {
     "id": 696,
     "question": "Cái gì có mũ nhưng không có đầu?",
@@ -7379,17 +7321,7 @@
     "correct": 1,
     "category": "Đố mẹo & Chơi chữ"
   },
-  {
-    "id": 698,
-    "question": "Cái gì có lưỡi nhưng không nói được?",
-    "answers": [
-      "Con vẹt",
-      "Chiếc giày",
-      "Cái kéo"
-    ],
-    "correct": 1,
-    "category": "Đố mẹo & Chơi chữ"
-  },
+    
   {
     "id": 699,
     "question": "Tại sao cây xanh quan trọng với môi trường?",
@@ -7663,6 +7595,17 @@
       "Chỉ giúp ngủ ngon"
     ],
     "correct": 1,
+    "category": "Thể thao & Sức khỏe"
+  },
+  {
+    "id": 724,
+    "question": "Môn thể thao nào có vận động viên mang mũ và găng tay bảo hộ?",
+    "answers": [
+      "Bóng đá",
+      "Bóng chày",
+      "Quyền Anh (Boxing)"
+    ],
+    "correct": 2,
     "category": "Thể thao & Sức khỏe"
   },
   {
