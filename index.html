@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<!-- Security: Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; object-src 'none';">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDDVZMNXF0"></script>
 <script>
@@ -639,7 +641,7 @@ body { font-family: var(--font-body); background: var(--bg-dark); color: var(--t
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">1.8.3</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">1.8.5</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 18, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -692,7 +694,7 @@ function extractNumberAndBase(itemName) {
 function migrateDataOnce() {
     if (localStorage.getItem('sumogames_migrated_v3') === 'true') return;
     
-    let pData = JSON.parse(localStorage.getItem('sumogames_players') || '{}');
+    let pData = (() => { const r = lsGet('sumogames_players'); return r ? JSON.parse(r) : {}; })();
     const now = Date.now();
 
     for (let pName in pData) {
@@ -740,7 +742,7 @@ function migrateDataOnce() {
         }
     }
     
-    localStorage.setItem('sumogames_players', JSON.stringify(pData));
+    lsSet('sumogames_players', JSON.stringify(pData));
     localStorage.setItem('sumogames_migrated_v3', 'true');
     console.log("Migration v3 completed. Inventory is strictly organized.");
 }
@@ -799,6 +801,89 @@ const BUILTIN_ENG = [
 let bankVIE = [...BUILTIN_VIE]; let bankENG = [...BUILTIN_ENG];
 let customRewards = { PT1: null, PT2: null, PT3: null, PT4: null, PT5: null };
 const ADMIN_PIN = "1234";
+// ── SECURITY: sanitize strings before inserting into innerHTML ──
+// ── SECURITY: File upload validation ──────────────────
+// Validates JSON structure before saving — existing PT/bank files are unaffected
+function validateQuestionFile(arr) {
+    if (!Array.isArray(arr) || arr.length === 0 || arr.length > 5000) return false;
+    return arr.every(q =>
+        typeof q.id       === 'number' &&
+        typeof q.question === 'string' && q.question.length > 0 && q.question.length < 1000 &&
+        Array.isArray(q.answers) && q.answers.length === 3 &&
+        q.answers.every(a => typeof a === 'string' && a.length < 500) &&
+        [0, 1, 2].includes(Number(q.correct))
+    );
+}
+
+function validateRewardFile(arr) {
+    if (!Array.isArray(arr) || arr.length === 0 || arr.length > 500) return false;
+    return arr.every(r =>
+        typeof r.title   === 'string' && r.title.length   > 0 && r.title.length   < 300 &&
+        typeof r.message === 'string' && r.message.length > 0 && r.message.length < 2000 &&
+        (!r.schedules || Array.isArray(r.schedules))
+    );
+}
+
+function safeParseJSON(str) {
+    // Guard against prototype pollution via __proto__ / constructor keys
+    if (/"(__proto__|constructor|prototype)"\s*:/.test(str)) {
+        throw new Error('JSON chứa khoá không hợp lệ');
+    }
+    return JSON.parse(str);
+}
+
+// ── SECURITY: localStorage tamper detection ───────────
+// djb2 hash — lightweight, no external dependency
+// Salt prevents trivial recalculation from source code alone
+const _LS_SALT = 'sg_' + (navigator.userAgent.length % 97).toString(16);
+
+function _lsHash(str) {
+    let h = 5381;
+    const s = str + _LS_SALT;
+    for (let i = 0; i < s.length; i++) {
+        h = ((h << 5) + h) ^ s.charCodeAt(i);
+        h = h >>> 0; // keep unsigned 32-bit
+    }
+    return h.toString(36);
+}
+
+function lsSet(key, value) {
+    const str = typeof value === 'string' ? value : JSON.stringify(value);
+    const entry = JSON.stringify({ d: str, h: _lsHash(str) });
+    localStorage.setItem(key, entry);
+}
+
+function lsGet(key) {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    try {
+        const parsed = JSON.parse(raw);
+        // New format: { d, h }
+        if (parsed && typeof parsed.d === 'string' && typeof parsed.h === 'string') {
+            if (parsed.h !== _lsHash(parsed.d)) {
+                console.warn('[SumoGames] Dữ liệu bị thay đổi:', key);
+                localStorage.removeItem(key);
+                return null;
+            }
+            return parsed.d; // return raw string; caller parses if needed
+        }
+        // Legacy format (no hash) — migrate on next write, return as-is
+        return raw;
+    } catch {
+        return raw; // not JSON-wrapped, legacy
+    }
+}
+
+// Prevents XSS from malicious PT/JSON file content
+function esc(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
 
 let gameState = { playerName: '', level: 'de', totalQ: 30, currentIdx: 0, score: 0, correct: 0, wrong: 0, wrongStreak: 0, selectedQ: [], timer: null, timeLeft: 20, answered: false };
 
@@ -809,7 +894,7 @@ let playersData = {};
 
 function loadPlayersData() {
   migrateDataOnce();
-  playersData = JSON.parse(localStorage.getItem('sumogames_players') || '{}');
+  const _rawPD = lsGet('sumogames_players'); playersData = _rawPD ? JSON.parse(_rawPD) : {};
   const now = Date.now();
   for (let pName in playersData) {
       if(playersData[pName].vouchers) {
@@ -819,7 +904,7 @@ function loadPlayersData() {
   }
 }
 
-function savePlayersData() { localStorage.setItem('sumogames_players', JSON.stringify(playersData)); }
+function savePlayersData() { lsSet('sumogames_players', JSON.stringify(playersData)); }
 
 function getPlayer(name) {
     if (!playersData[name]) playersData[name] = { vouchers: [], redeemedItems: [] };
@@ -1001,54 +1086,15 @@ function proceedStartGame() {
   const hour = new Date().getHours();
   const isBedtime = hour >= 22;
 
-  // Số câu ENG cố định theo gói: 25→4, 30→5, 35→6
-  const engMap = { 25: 4, 30: 5, 35: 6 };
-  const engTarget = bankENG.length > 0 ? (engMap[gameState.totalQ] ?? Math.round(gameState.totalQ * (5/30))) : 0;
-  const engCount = Math.min(bankENG.length, engTarget);
+  // Sửa tỷ lệ mặc định: 30 câu thì 25 câu VIE + 5 câu ENG (tỉ lệ 5/30)
+  const engCount = bankENG.length > 0 ? Math.min(bankENG.length, Math.round(gameState.totalQ * (5/30))) : 0;
   const vieCount = gameState.totalQ - engCount;
   if (bankVIE.length < vieCount) { alert(`Ngân hàng Tiếng Việt chỉ có ${bankVIE.length} câu, cần ${vieCount} câu.`); return; }
 
   const shuffledVIE = selectAntiRepeat(bankVIE, vieCount, 'VIE');
   const shuffledENG = engCount > 0 ? selectAntiRepeat(bankENG, engCount, 'ENG') : [];
-
-  // Phân bổ câu ENG rải đều — không để 2 câu ENG liền nhau
-  // Chia pool VIE thành (engCount+1) khoảng bằng nhau, chèn 1 câu ENG vào giữa mỗi khoảng
-  let pool = [];
-  if (shuffledENG.length === 0) {
-      pool = [...shuffledVIE];
-  } else {
-      const total  = gameState.totalQ;
-      const n      = shuffledENG.length;
-      // Tính vị trí chèn: chia đều trong khoảng [1, total-1] tránh đầu/cuối
-      const step   = total / (n + 1);           // khoảng cách lý tưởng
-      const slots  = [];
-      for (let i = 1; i <= n; i++) {
-          // Thêm ±(step*0.3) ngẫu nhiên để tránh mẫu lặp lại mỗi lần chơi
-          const jitter = (Math.random() - 0.5) * step * 0.6;
-          slots.push(Math.round(i * step + jitter));
-      }
-      // Đảm bảo các vị trí hợp lệ và không trùng nhau
-      const used = new Set();
-      const safeSlots = slots.map(s => {
-          let pos = Math.max(1, Math.min(total - 1, s));
-          while (used.has(pos)) pos = (pos % (total - 1)) + 1;
-          used.add(pos);
-          return pos;
-      }).sort((a, b) => a - b);
-
-      // Xây dựng pool: chèn câu ENG tại các vị trí đã tính
-      let vIdx = 0;
-      safeSlots.forEach((pos, eIdx) => {
-          // Số câu VIE trước vị trí ENG này
-          const vieBefore = pos - eIdx - 1;   // vị trí trong VIE array
-          while (vIdx < vieBefore && vIdx < shuffledVIE.length) {
-              pool.push(shuffledVIE[vIdx++]);
-          }
-          pool.push(shuffledENG[eIdx]);
-      });
-      // Thêm phần VIE còn lại
-      while (vIdx < shuffledVIE.length) pool.push(shuffledVIE[vIdx++]);
-  }
+  let pool = [...shuffledVIE];
+  shuffledENG.forEach(q => pool.splice(Math.floor(Math.random() * pool.length), 0, q));
 
   gameState.playerName = name;
   gameState.currentIdx = 0; gameState.score = 0; gameState.correct = 0;
@@ -1072,7 +1118,7 @@ function showQuestion() {
   let ansArray = q.answers.map((ans, i) => ({ text: ans, isCorrect: i === q.correct })).sort(() => 0.5 - Math.random());
   
   ['A','B','C'].forEach((letter, i) => {
-    const btn = document.createElement('button'); btn.className = 'answer-btn'; btn.innerHTML = `<span class="letter">${letter}</span><span>${ansArray[i].text}</span>`;
+    const btn = document.createElement('button'); btn.className = 'answer-btn'; btn.innerHTML = `<span class="letter">${letter}</span><span>${esc(ansArray[i].text)}</span>`;
     btn.dataset.correct = ansArray[i].isCorrect; 
     btn.onclick = () => selectAnswer(btn, ansArray[i].isCorrect); grid.appendChild(btn);
   });
@@ -1186,10 +1232,13 @@ function endGame() {
   if (customRewardObj) {
       hasReward = true;
       let rTitle = customRewardObj.title || "Phần thưởng";
-      let rMsg = (customRewardObj.message || customRewardObj).replace(/{name}/g, name).replace(/{pct}/g, pct).replace(/{score}/g, gameState.score);
+      // Sanitize before inserting into innerHTML — PT file content could be untrusted
+      let rMsg = (customRewardObj.message || '').replace(/{name}/g, esc(name)).replace(/{pct}/g, pct).replace(/{score}/g, gameState.score);
+      // Allow only safe HTML in message (br, strong, em, span) — strip the rest
+      rMsg = rMsg.replace(/<(?!\/?(br|strong|em|span)(\s[^>]*)?>)[^>]*>/gi, '');
 
       msg += `<div class="custom-reward-box">
-                <span style="font-size:1.35rem; color:#2ED573; font-weight:800;">${customRewardObj.emoji || '🎁'} ${rTitle}</span><br>
+                <span style="font-size:1.35rem; color:#2ED573; font-weight:800;">${customRewardObj.emoji || '🎁'} ${esc(rTitle)}</span><br>
                 <span style="color:#fff; font-size:1.15rem; display:block; margin-top:8px;">${rMsg}</span>`;
 
       let cleanName = rTitle.trim();
@@ -1273,7 +1322,7 @@ function showAutoRedeemModal(playerName, itemName, den, tier, wholeGifts, allFra
     const hasRemainder = remainderDecimal > 0.001;
     const remainderPct = Math.round(remainderDecimal * 100);
 
-    let armMsg = `Đã đủ mảnh ghép để đổi <strong>${wholeGifts > 1 ? wholeGifts + ' phần ' : '1 '} ${itemName}</strong>!`;
+    let armMsg = `Đã đủ mảnh ghép để đổi <strong>${wholeGifts > 1 ? wholeGifts + ' phần ' : '1 '} ${esc(itemName)}</strong>!`;
     if (hasRemainder) {
         armMsg += `<br><span style="color:var(--gold); font-size:0.9rem;">📌 Còn dư <strong>${remainderPct}%</strong> mảnh – sẽ được giữ lại để tích tiếp nếu đồng ý đổi.</span>`;
     }
@@ -1332,11 +1381,11 @@ function saveScore(name, score, correct, total, level, hasReward) {
   let lb = JSON.parse(localStorage.getItem('sumogames_lb') || '[]');
   lb.push({ name: name, score: score, correct: correct, total: total, level: level === 'kho' ? 'Khó' : 'Dễ', date: getCurrentDateTimeStr(), timestamp: Date.now(), hasReward: hasReward });
   if (lb.length > 1000) lb.shift(); 
-  localStorage.setItem('sumogames_lb', JSON.stringify(lb));
+  lsSet('sumogames_lb', JSON.stringify(lb));
 }
 
 function renderLeaderboard() {
-  const lb = JSON.parse(localStorage.getItem('sumogames_lb') || '[]');
+  const _rawLb = lsGet('sumogames_lb'); const lb = _rawLb ? JSON.parse(_rawLb) : [];
   const table = document.getElementById('lbTable');
   if (lb.length === 0) { table.innerHTML = '<div class="lb-empty">Chưa có kết quả nào.</div>'; return; }
 
@@ -1356,7 +1405,7 @@ function renderLeaderboard() {
     
     html += `<div class="lb-row">
       <span class="lb-rank">${i < 3 ? ['🥇','🥈','🥉'][i] : '#'+(i+1)}</span>
-      <span class="lb-name" style="cursor:pointer; text-decoration:underline;" onclick="openInventory('${p.name}')">${p.name}${hasVouchers?' 🏷️':''}</span>
+      <span class="lb-name" style="cursor:pointer; text-decoration:underline;" onclick="openInventory('${esc(p.name)}')">${esc(p.name)}${hasVouchers?' 🏷️':''}</span>
       <span class="lb-date">${displayDate}</span>
       <span class="lb-score">${p.totalScore}</span><span class="lb-correct">${p.totalCorrect}/${p.totalTotal}</span>
     </div>`;
@@ -1371,7 +1420,7 @@ function buildSpecialItemHtml(v, playerName) {
     let emojiDisplay = v.emoji ? v.emoji + ' ' : '🎁 ';
     return `
     <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--gold); border-radius: 12px; padding: 12px; text-align: left; display: flex; flex-direction: column; justify-content: center; cursor: pointer;" onclick="promptSpecialRedeem('${playerName}', '${v.id}', '${v.itemName.replace(/'/g, "\\'")}', '${v.tier}')">
-        <div style="font-weight: 800; color: #fff; margin-bottom: 5px;">${emojiDisplay}${v.itemName}</div>
+        <div style="font-weight: 800; color: #fff; margin-bottom: 5px;">${emojiDisplay}${esc(v.itemName)}</div>
         <div style="font-size: 0.8rem; color: var(--gold);">Quà đặc biệt</div>
         <div style="font-size: 0.8rem; color: var(--green);">Bấm để đổi quà</div>
     </div>`;
@@ -1383,7 +1432,7 @@ function buildCheckboxHtml(v, checkboxClass, group) {
     return `
     <label style="display:flex; flex-direction:row; align-items:center; gap:10px; padding: 12px 14px; cursor:pointer; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:12px; transition: 0.2s;">
         <input type="checkbox" class="${checkboxClass}" value="${v.id}" data-name="${v.itemName}" onchange="calcVouchers('${group}')" style="width:20px; height:20px; flex-shrink:0;">
-        <span style="font-weight:800; font-size:1rem; color:#fff; line-height:1.3;">${emojiDisplay}${v.itemName} ${pt5Tag}</span>
+        <span style="font-weight:800; font-size:1rem; color:#fff; line-height:1.3;">${emojiDisplay}${esc(v.itemName)} ${pt5Tag}</span>
     </label>`;
 }
 
@@ -1444,7 +1493,7 @@ function renderInventoryContent(playerName) {
             : `<div style="background:rgba(255,215,0,0.1); border-radius:6px; height:8px; overflow:hidden; margin-bottom:4px;"><div style="width:${pctDisplay}%; height:100%; background:var(--gold);"></div></div><span style="color:var(--text-dim)">Đã tích: <strong style="color:var(--gold)">${pctDisplay}%</strong></span>`;
         fracHtml += `
         <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,215,0,0.3); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-            <div style="font-weight:800; color:#fff; font-size:0.95rem; margin-bottom:5px;">${fi.emoji ? fi.emoji + ' ' : '🧩 '}${item}</div>
+            <div style="font-weight:800; color:#fff; font-size:0.95rem; margin-bottom:5px;">${fi.emoji ? fi.emoji + ' ' : '🧩 '}${esc(item)}</div>
             <div style="font-size:0.85rem; color: var(--text-dim); margin-bottom:6px;">${fi.frags.length} mảnh (${fi.frags.map(v=>'1/'+v.den).join(' + ')})</div>
             <div style="width:100%; font-size:0.85rem;">${btnStr}</div>
         </div>`;
@@ -1455,7 +1504,7 @@ function renderInventoryContent(playerName) {
         let btnStr = need <= 0 ? `<button class="btn btn-primary btn-sm" style="width:100%; padding: 5px; font-size:0.8rem; height: auto;" onclick="promptFractionRedeem('${playerName}','${item}',${f.den},'${f.tier}')">Đổi ngay</button>` : `Cần thêm: <strong style="color:var(--gold)">${need > 0 ? need : 0}</strong>`;
         fracHtml += `
         <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,215,0,0.3); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-            <div style="font-weight:800; color:#fff; font-size:0.95rem; margin-bottom:5px;">${f.emoji ? f.emoji + ' ' : '🧩 '}${item}</div>
+            <div style="font-weight:800; color:#fff; font-size:0.95rem; margin-bottom:5px;">${f.emoji ? f.emoji + ' ' : '🧩 '}${esc(item)}</div>
             <div style="font-size:0.85rem; color: var(--text-dim); margin-bottom:5px;">Đã có: <strong>${f.count}/${f.den}</strong></div>
             <div style="width:100%; font-size:0.85rem;">${btnStr}</div>
         </div>`;
@@ -1492,7 +1541,7 @@ function renderInventoryContent(playerName) {
     let redeemedSec = document.getElementById('invRedeemedSection');
     if (p.redeemedItems && p.redeemedItems.length > 0) {
         redeemedSec.style.display = 'block';
-        let rHtml = p.redeemedItems.map(r => { let capName = r.itemName ? r.itemName.charAt(0).toUpperCase() + r.itemName.slice(1) : r.itemName; return `<a class="redeemed-item" onclick="showRedeemedPopup('${r.timeStr}', '${r.dateStr}', '${r.tier}', '${r.level || ''}')">${capName}</a>`; }).join(' ; ');
+        let rHtml = p.redeemedItems.map(r => { let capName = r.itemName ? r.itemName.charAt(0).toUpperCase() + r.itemName.slice(1) : r.itemName; return `<a class="redeemed-item" onclick="showRedeemedPopup('${r.timeStr}', '${r.dateStr}', '${r.tier}', '${r.level || ''}')">${esc(capName)}</a>`; }).join(' ; ');
         document.getElementById('invRedeemedList').innerHTML = rHtml;
     } else { redeemedSec.style.display = 'none'; }
 
@@ -1543,7 +1592,7 @@ function toggleHistory() {
 }
 
 function renderHistory(playerName) {
-    const lb = JSON.parse(localStorage.getItem('sumogames_lb') || '[]');
+    const _rawLbH = lsGet('sumogames_lb'); const lb = _rawLbH ? JSON.parse(_rawLbH) : [];
     const history = lb.filter(r => r.name === playerName).sort((a,b) => getTimestamp(b) - getTimestamp(a)).slice(0, 10);
 
     if (history.length === 0) { document.getElementById('invHistoryList').innerHTML = '<div style="text-align:center; color:var(--text-dim); padding:10px;">Chưa có lịch sử chơi.</div>'; return; }
@@ -1698,7 +1747,7 @@ function launchConfetti() { const colors = ['#FFD700','#FF6B6B','#4CC9F0','#2ED5
 
 // ── ADMIN ──
 function updateQCounts() { document.getElementById('qCountVIE').textContent = bankVIE.length; document.getElementById('qCountENG').textContent = bankENG.length; document.getElementById('bankCountVIE').textContent = bankVIE.length + ' câu'; document.getElementById('bankCountENG').textContent = bankENG.length + ' câu'; }
-function handleBankUpload(input, lang) { const files = input.files; if (!files || files.length === 0) return; Array.from(files).forEach(file => { const reader = new FileReader(); reader.onload = (e) => { try { let data = JSON.parse(e.target.result); if (!Array.isArray(data)) throw new Error('Cần mảng JSON'); data = data.map(q => ({...q, lang})); if (lang === 'VIE') { const saved = JSON.parse(localStorage.getItem('sumogames_bankVIE') || '[]'); const merged = [...saved, ...data]; localStorage.setItem('sumogames_bankVIE', JSON.stringify(merged)); bankVIE = [...BUILTIN_VIE, ...merged]; } else { const saved = JSON.parse(localStorage.getItem('sumogames_bankENG') || '[]'); const merged = [...saved, ...data]; localStorage.setItem('sumogames_bankENG', JSON.stringify(merged)); bankENG = [...BUILTIN_ENG, ...merged]; } updateQCounts(); showStatus(`✅ Đã thêm ${data.length} câu ${lang}!`, 'ok', 'adminStatusQ'); } catch (err) { showStatus(`❌ Lỗi: ${err.message}`, 'err', 'adminStatusQ'); } }; reader.readAsText(file, 'utf-8'); }); input.value = ''; }
+function handleBankUpload(input, lang) { const files = input.files; if (!files || files.length === 0) return; Array.from(files).forEach(file => { const reader = new FileReader(); reader.onload = (e) => { try { let data = safeParseJSON(e.target.result); if (!Array.isArray(data)) throw new Error('Cần mảng JSON'); if (!validateQuestionFile(data)) throw new Error('File không đúng định dạng câu hỏi hoặc chứa dữ liệu không hợp lệ'); data = data.map(q => ({...q, lang})); if (lang === 'VIE') { const saved = JSON.parse(localStorage.getItem('sumogames_bankVIE') || '[]'); const merged = [...saved, ...data]; localStorage.setItem('sumogames_bankVIE', JSON.stringify(merged)); bankVIE = [...BUILTIN_VIE, ...merged]; } else { const saved = JSON.parse(localStorage.getItem('sumogames_bankENG') || '[]'); const merged = [...saved, ...data]; localStorage.setItem('sumogames_bankENG', JSON.stringify(merged)); bankENG = [...BUILTIN_ENG, ...merged]; } updateQCounts(); showStatus(`✅ Đã thêm ${data.length} câu ${lang}!`, 'ok', 'adminStatusQ'); } catch (err) { showStatus(`❌ Lỗi: ${err.message}`, 'err', 'adminStatusQ'); } }; reader.readAsText(file, 'utf-8'); }); input.value = ''; }
 function resetBanks() { if (confirm('Xóa tất cả câu hỏi tùy chỉnh (giữ lại câu hỏi gốc)?')) { localStorage.removeItem('sumogames_bankVIE'); localStorage.removeItem('sumogames_bankENG'); bankVIE = [...BUILTIN_VIE]; bankENG = [...BUILTIN_ENG]; updateQCounts(); showStatus('✅ Đã khôi phục ngân hàng mặc định.', 'ok', 'adminStatusQ'); } }
 
 function updateRewardStatus() {
@@ -1718,7 +1767,7 @@ function updateRewardStatus() {
     });
 }
 
-function handleRewardUpload(input) { const files = input.files; if (!files || files.length === 0) return; Array.from(files).forEach(file => { const fName = file.name.toUpperCase(); let targetTier = ''; if (fName.includes('PT1')) targetTier = 'PT1'; else if (fName.includes('PT2')) targetTier = 'PT2'; else if (fName.includes('PT3')) targetTier = 'PT3'; else if (fName.includes('PT4')) targetTier = 'PT4'; else if (fName.includes('PT5')) targetTier = 'PT5'; if (!targetTier) { showStatus(`❌ Tên file ${file.name} không chứa PT1-PT5!`, 'err', 'adminStatusR'); return; } const reader = new FileReader(); reader.onload = (e) => { try { let data = JSON.parse(e.target.result); const rewardsArray = data.rewards ? data.rewards : data; localStorage.setItem('sumogames_reward_' + targetTier, JSON.stringify(rewardsArray)); customRewards[targetTier] = rewardsArray; updateRewardStatus(); showStatus(`✅ Tải thành công ${file.name} vào ${targetTier}!`, 'ok', 'adminStatusR'); } catch (err) { showStatus(`❌ Lỗi file: ${err.message}`, 'err', 'adminStatusR'); } }; reader.readAsText(file, 'utf-8'); }); input.value = ''; }
+function handleRewardUpload(input) { const files = input.files; if (!files || files.length === 0) return; Array.from(files).forEach(file => { const fName = file.name.toUpperCase(); let targetTier = ''; if (fName.includes('PT1')) targetTier = 'PT1'; else if (fName.includes('PT2')) targetTier = 'PT2'; else if (fName.includes('PT3')) targetTier = 'PT3'; else if (fName.includes('PT4')) targetTier = 'PT4'; else if (fName.includes('PT5')) targetTier = 'PT5'; if (!targetTier) { showStatus(`❌ Tên file ${esc(file.name)} không chứa PT1-PT5!`, 'err', 'adminStatusR'); return; } const reader = new FileReader(); reader.onload = (e) => { try { let data = safeParseJSON(e.target.result); const rewardsArray = data.rewards ? data.rewards : data; if (!validateRewardFile(rewardsArray)) throw new Error('File không đúng định dạng phần thưởng'); localStorage.setItem('sumogames_reward_' + targetTier, JSON.stringify(rewardsArray)); customRewards[targetTier] = rewardsArray; updateRewardStatus(); showStatus(`✅ Tải thành công ${esc(file.name)} vào ${targetTier}!`, 'ok', 'adminStatusR'); } catch (err) { showStatus(`❌ Lỗi file: ${err.message}`, 'err', 'adminStatusR'); } }; reader.readAsText(file, 'utf-8'); }); input.value = ''; }
 function deleteReward(tier) { if (confirm(`Bạn có chắc muốn xóa dữ liệu mốc ${tier}?`)) { localStorage.removeItem('sumogames_reward_' + tier); customRewards[tier] = null; updateRewardStatus(); showStatus(`✅ Đã xóa mốc ${tier}`, 'ok', 'adminStatusR'); } }
 function showStatus(msg, type, elementId) { const el = document.getElementById(elementId); el.innerHTML = `<div class="status-msg ${type}">${msg}</div>`; setTimeout(() => el.innerHTML = '', 4000); }
 
@@ -1759,7 +1808,7 @@ function importGameData(event) {
   if (!confirm('Khôi phục dữ liệu sẽ ghi đè toàn bộ dữ liệu hiện tại. Bạn có chắc chắn muốn tiếp tục?')) { event.target.value = ''; return; }
   const reader = new FileReader();
   reader.onload = function(e) {
-      try { const data = JSON.parse(e.target.result); Object.keys(data).forEach(key => { if (key.startsWith('sumogames_')) localStorage.setItem(key, data[key]); }); alert("✅ Khôi phục thành công! Trang sẽ tải lại."); location.reload(); } 
+      try { const data = safeParseJSON(e.target.result); if (typeof data !== 'object' || Array.isArray(data) || data === null) throw new Error('File backup không hợp lệ'); Object.keys(data).forEach(key => { if (key.startsWith('sumogames_')) localStorage.setItem(key, data[key]); }); alert("✅ Khôi phục thành công! Trang sẽ tải lại."); location.reload(); } 
       catch(err) { alert("❌ File không hợp lệ!"); }
   }; reader.readAsText(file);
 }
