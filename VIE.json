@@ -4289,17 +4289,7 @@
     "correct": 0,
     "category": "Địa lý và Toán thường thức"
   },
-  {
-    "id": 391,
-    "question": "Trong Doraemon, món bảo bối 'Cánh cửa thần kỳ' có thể đưa bạn đi xa tối đa bao nhiêu?",
-    "answers": [
-      "100 km",
-      "Toàn thế giới",
-      "10 năm ánh sáng"
-    ],
-    "correct": 2,
-    "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
-  },
+  
   {
     "id": 392,
     "question": "Trong máy tính, đơn vị nhỏ nhất để đo dung lượng thông tin là gì?",
@@ -11703,17 +11693,7 @@
     "correct": 2,
     "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
   },
-  {
-    "id": 1065,
-    "question": "Bảo bối nổi tiếng nhất của Doraemon để di chuyển đến bất kỳ đâu là gì?",
-    "answers": [
-      "Túi thần kỳ",
-      "Đèn thần",
-      "Cánh cửa thần kỳ (Anywhere Door)"
-    ],
-    "correct": 2,
-    "category": "Sách khoa học và phiêu lưu + Sách thiếu nhi"
-  },
+  
   {
     "id": 1066,
     "question": "Doraemon lấy bảo bối từ đâu?",
@@ -11862,7 +11842,7 @@
     "question": "Người bạn thổ dân của Robinson tên là gì?",
     "answers": [
       "Monday",
-      "Friday (Thứ Sáu)",
+      "Friday",
       "Sunday"
     ],
     "correct": 1,
@@ -12918,7 +12898,7 @@
     "question": "Loài động vật quý hiếm nào chỉ có duy nhất tại quần đảo Cát Bà?",
     "answers": [
       "Vượn đen",
-      "Voọc Cát Bà",
+      "Voọc",
       "Gấu ngựa"
     ],
     "correct": 1,
@@ -13023,17 +13003,7 @@
     "correct": 1,
     "category": "Khoa học và Lịch sử"
   },
-  {
-    "id": 1185,
-    "question": "Tên gọi 'Thăng Long' do vua Lý Thái Tổ đặt có nghĩa là gì?",
-    "answers": [
-      "Rồng đậu xuống",
-      "Rồng bay lên",
-      "Rồng vàng"
-    ],
-    "correct": 1,
-    "category": "Khoa học và Lịch sử"
-  },
+  
   {
     "id": 1186,
     "question": "Hồ Tây là hồ nước ngọt lớn nhất Hà Nội, em có biết chu vi vòng hồ khoảng bao nhiêu không?",
