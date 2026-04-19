@@ -3424,7 +3424,7 @@
     "id": 312,
     "question": "Khi tham gia giao thông bằng xe máy, trẻ em từ mấy tuổi bắt buộc phải đội mũ bảo hiểm?",
     "answers": [
-      "Từ 3 tuổi trở lên",
+      "Từ 8 tuổi trở lên",
       "Từ 10 tuổi trở lên",
       "Từ 6 tuổi trở lên"
     ],
@@ -12198,17 +12198,6 @@
       "Nhìn trái-phải-trái rồi mới qua đường tại vạch kẻ"
     ],
     "correct": 2,
-    "category": "Kỹ năng sinh tồn và sơ cứu"
-  },
-  {
-    "id": 1112,
-    "question": "Trẻ em dưới mấy tuổi bắt buộc phải đội mũ bảo hiểm khi ngồi xe máy?",
-    "answers": [
-      "5 tuổi",
-      "Tất cả mọi lứa tuổi đều phải đội",
-      "10 tuổi"
-    ],
-    "correct": 1,
     "category": "Kỹ năng sinh tồn và sơ cứu"
   },
   {
