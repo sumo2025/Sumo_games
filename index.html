@@ -1001,15 +1001,54 @@ function proceedStartGame() {
   const hour = new Date().getHours();
   const isBedtime = hour >= 22;
 
-  // Sửa tỷ lệ mặc định: 30 câu thì 25 câu VIE + 5 câu ENG (tỉ lệ 5/30)
-  const engCount = bankENG.length > 0 ? Math.min(bankENG.length, Math.round(gameState.totalQ * (5/30))) : 0;
+  // Số câu ENG cố định theo gói: 25→4, 30→5, 35→6
+  const engMap = { 25: 4, 30: 5, 35: 6 };
+  const engTarget = bankENG.length > 0 ? (engMap[gameState.totalQ] ?? Math.round(gameState.totalQ * (5/30))) : 0;
+  const engCount = Math.min(bankENG.length, engTarget);
   const vieCount = gameState.totalQ - engCount;
   if (bankVIE.length < vieCount) { alert(`Ngân hàng Tiếng Việt chỉ có ${bankVIE.length} câu, cần ${vieCount} câu.`); return; }
 
   const shuffledVIE = selectAntiRepeat(bankVIE, vieCount, 'VIE');
   const shuffledENG = engCount > 0 ? selectAntiRepeat(bankENG, engCount, 'ENG') : [];
-  let pool = [...shuffledVIE];
-  shuffledENG.forEach(q => pool.splice(Math.floor(Math.random() * pool.length), 0, q));
+
+  // Phân bổ câu ENG rải đều — không để 2 câu ENG liền nhau
+  // Chia pool VIE thành (engCount+1) khoảng bằng nhau, chèn 1 câu ENG vào giữa mỗi khoảng
+  let pool = [];
+  if (shuffledENG.length === 0) {
+      pool = [...shuffledVIE];
+  } else {
+      const total  = gameState.totalQ;
+      const n      = shuffledENG.length;
+      // Tính vị trí chèn: chia đều trong khoảng [1, total-1] tránh đầu/cuối
+      const step   = total / (n + 1);           // khoảng cách lý tưởng
+      const slots  = [];
+      for (let i = 1; i <= n; i++) {
+          // Thêm ±(step*0.3) ngẫu nhiên để tránh mẫu lặp lại mỗi lần chơi
+          const jitter = (Math.random() - 0.5) * step * 0.6;
+          slots.push(Math.round(i * step + jitter));
+      }
+      // Đảm bảo các vị trí hợp lệ và không trùng nhau
+      const used = new Set();
+      const safeSlots = slots.map(s => {
+          let pos = Math.max(1, Math.min(total - 1, s));
+          while (used.has(pos)) pos = (pos % (total - 1)) + 1;
+          used.add(pos);
+          return pos;
+      }).sort((a, b) => a - b);
+
+      // Xây dựng pool: chèn câu ENG tại các vị trí đã tính
+      let vIdx = 0;
+      safeSlots.forEach((pos, eIdx) => {
+          // Số câu VIE trước vị trí ENG này
+          const vieBefore = pos - eIdx - 1;   // vị trí trong VIE array
+          while (vIdx < vieBefore && vIdx < shuffledVIE.length) {
+              pool.push(shuffledVIE[vIdx++]);
+          }
+          pool.push(shuffledENG[eIdx]);
+      });
+      // Thêm phần VIE còn lại
+      while (vIdx < shuffledVIE.length) pool.push(shuffledVIE[vIdx++]);
+  }
 
   gameState.playerName = name;
   gameState.currentIdx = 0; gameState.score = 0; gameState.correct = 0;
