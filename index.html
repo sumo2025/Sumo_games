@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <!-- Security: Content Security Policy -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://raw.githubusercontent.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; manifest-src 'self'; object-src 'none';">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDDVZMNXF0"></script>
 <script>
@@ -13,8 +13,25 @@
   gtag('config', 'G-RDDVZMNXF0');
 </script>  
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>Triệu phú tri thức</title>
+
+<!-- ── PWA / Add to Home Screen ──────────────────────────────── -->
+<!-- manifest.json khai báo tên app, icon, display:standalone      -->
+<link rel="manifest" href="manifest.json">
+
+<!-- iOS Safari: chạy fullscreen, không có address bar -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Triệu Phú">
+<link rel="apple-touch-icon" href="icon-192.png">
+<!-- iOS splash screens (optional, improves launch experience) -->
+<link rel="apple-touch-startup-image" href="icon-512.png">
+
+<!-- Android Chrome: chạy standalone, không có address bar -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0A0A2E">
+<!-- ────────────────────────────────────────────────────────── -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
 <style>
 /* ─── EMBEDDED FONTS ─── */
@@ -273,6 +290,42 @@ body { font-family: var(--font-body); background: var(--bg-dark); color: var(--t
 </head>
 <body>
 
+<!-- ── MODAL: HƯỚNG DẪN CÀI ỨNG DỤNG LÊN HOME SCREEN ──────── -->
+<div id="installGuideModal" class="modal-overlay" style="display:none; z-index:10010; overflow-y:auto; align-items:flex-start; padding:20px 10px;">
+  <div class="modal-box" style="max-width:480px; text-align:left; padding:28px;">
+    <h2 style="font-family:var(--font-display); color:var(--gold); font-size:1.4rem; margin-bottom:6px; text-align:center;">📲 Thêm Vào Màn Hình Chính</h2>
+    <p style="color:var(--text-dim); font-size:0.85rem; text-align:center; margin-bottom:20px;">Chạy như ứng dụng thật — không có thanh địa chỉ!</p>
+
+    <!-- iOS Safari -->
+    <div style="background:rgba(30,144,255,0.1); border:1px solid rgba(30,144,255,0.35); border-radius:14px; padding:16px; margin-bottom:14px;">
+      <div style="font-weight:800; color:#74b9ff; font-size:1rem; margin-bottom:10px;">🍎 iPhone / iPad (Safari)</div>
+      <ol style="color:#fff; font-size:0.9rem; line-height:2; padding-left:20px; margin:0;">
+        <li>Mở link bằng trình duyệt <strong style="color:#74b9ff;">Safari</strong></li>
+        <li>Bấm nút <strong style="color:#74b9ff;">Chia sẻ</strong> <span style="font-size:1.1rem;">⎙</span> ở thanh dưới</li>
+        <li>Cuộn xuống, chọn <strong style="color:#74b9ff;">"Thêm vào Màn hình chính"</strong></li>
+        <li>Đặt tên rồi bấm <strong style="color:#74b9ff;">Thêm</strong> — xong! 🎉</li>
+      </ol>
+      <p style="color:rgba(116,185,255,0.7); font-size:0.78rem; margin-top:8px; margin-bottom:0;">⚠️ Chỉ hoạt động trên Safari. Chrome/Firefox trên iOS không hỗ trợ.</p>
+    </div>
+
+    <!-- Android Chrome -->
+    <div style="background:rgba(46,213,115,0.1); border:1px solid rgba(46,213,115,0.35); border-radius:14px; padding:16px; margin-bottom:20px;">
+      <div style="font-weight:800; color:#2ED573; font-size:1rem; margin-bottom:10px;">🤖 Android (Chrome)</div>
+      <ol style="color:#fff; font-size:0.9rem; line-height:2; padding-left:20px; margin:0;">
+        <li>Mở link bằng trình duyệt <strong style="color:#2ED573;">Chrome</strong></li>
+        <li>Bấm menu <strong style="color:#2ED573;">⋮</strong> (3 chấm, góc trên phải)</li>
+        <li>Chọn <strong style="color:#2ED573;">"Thêm vào Màn hình chính"</strong></li>
+        <li>Bấm <strong style="color:#2ED573;">Thêm</strong> — icon xuất hiện ngay! 🎉</li>
+      </ol>
+      <p style="color:rgba(46,213,115,0.7); font-size:0.78rem; margin-top:8px; margin-bottom:0;">💡 Chrome có thể tự hiện banner "Cài đặt ứng dụng" ở thanh dưới.</p>
+    </div>
+
+    <button class="btn btn-primary btn-full" onclick="document.getElementById('installGuideModal').style.display='none'">✅ Đã Hiểu!</button>
+  </div>
+</div>
+<!-- ────────────────────────────────────────────────────────── -->
+
+
 <div class="stars" id="stars"></div>
 <div class="streak-warn" id="streakWarn">⚠️ Sai 3 lần liên tiếp! -10 điểm</div>
 
@@ -477,6 +530,7 @@ body { font-family: var(--font-body); background: var(--bg-dark); color: var(--t
       <button class="btn btn-primary" onclick="startGame()">🚀 Bắt Đầu Chơi!</button>
       <button class="btn btn-secondary" onclick="showScreen('screen-leaderboard')">🥇 Bảng Xếp Hạng</button>
       <button class="btn btn-secondary" onclick="showScreen('screen-admin')">⚙️ Cài Đặt</button>
+      <button class="btn btn-secondary" onclick="showInstallGuide()" style="border-color:rgba(30,144,255,0.4);">📲 Hướng Dẫn</button>
       <button class="btn btn-secondary" onclick="showScreen('screen-about')" style="margin-top:8px;border-color:rgba(255,71,87,0.3);">❤️ About</button>
     </div>
   </div>
@@ -641,7 +695,7 @@ body { font-family: var(--font-body); background: var(--bg-dark); color: var(--t
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">1.8.5</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">1.8.6</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 18, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -2009,6 +2063,12 @@ const SUMO_UPDATE = (() => {
 SUMO_UPDATE.applyLoadedData();
 
 // Kiểm tra cập nhật sau khi DOM sẵn sàng
+
+// ── HƯỚNG DẪN CÀI ỨNG DỤNG ───────────────────────────────────
+function showInstallGuide() {
+  document.getElementById('installGuideModal').style.display = 'flex';
+}
+
 window.addEventListener('DOMContentLoaded', SUMO_UPDATE.run);
 </script>
 </body>
