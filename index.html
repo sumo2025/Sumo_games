@@ -1509,7 +1509,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">1.9.10</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.0</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1533,7 +1533,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '1.9.10';
+const APP_VERSION  = '2.0.1';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -3414,6 +3414,20 @@ function importGameData(event) {
 // ===================================================
 //  AUTO-UPDATE FROM GITHUB (v1.9.0)
 // ===================================================
+// === VERSION COMPARISON HELPER ===
+// So sánh segment-by-segment để tránh lỗi string comparison:
+// "1.9.9" > "2.0.0" khi dùng string nhưng false khi so sánh số đúng
+function isNewerVersion(remote, local) {
+    const r = remote.replace(/[^0-9.]/g, '').split('.').map(Number);
+    const l = local.replace(/[^0-9.]/g, '').split('.').map(Number);
+    for (let i = 0; i < Math.max(r.length, l.length); i++) {
+        const rv = r[i] || 0, lv = l[i] || 0;
+        if (rv > lv) return true;
+        if (rv < lv) return false;
+    }
+    return false; // bằng nhau
+}
+
 const SUMO_UPDATE = (() => {
     const BASE_URL  = './';
     const META_FILE = 'meta.json';
@@ -3500,8 +3514,10 @@ const SUMO_UPDATE = (() => {
         if (!meta || typeof meta !== 'object') return { dataUpdated: false, versionBannerShown: false };
 
         // === Kiểm tra version index.html ===
+        // Dùng isNewerVersion() so sánh segment-by-segment để tránh lỗi:
+        // "1.9.9" > "1.9.10" khi so sánh string nhưng đúng khi so sánh số
         let versionBannerShown = false;
-        if (meta.APP_VERSION && meta.APP_VERSION !== APP_VERSION) {
+        if (meta.APP_VERSION && isNewerVersion(meta.APP_VERSION, APP_VERSION)) {
             const lastUpdated = localStorage.getItem('sumogames_notified_version');
             if (lastUpdated !== meta.APP_VERSION && !SUMO_UPDATE._bannerShown) {
                 SUMO_UPDATE._bannerShown = true;
@@ -3511,6 +3527,13 @@ const SUMO_UPDATE = (() => {
         }
 
         // === Kiểm tra data JSON files ===
+        // Nếu có banner version → KHÔNG tải data ngầm.
+        // Data sẽ được tải sau khi user bấm "Cập nhật" → location.reload(true).
+        // Tránh app tự cập nhật nội dung mà không có sự đồng ý của người dùng.
+        if (versionBannerShown) {
+            return { dataUpdated: false, versionBannerShown: true };
+        }
+
         const oldHash  = JSON.parse(localStorage.getItem(LS_HASH) || '{}');
         const toUpdate = Object.keys(FILES).filter(n => meta[n] && meta[n] !== oldHash[n]);
         if (toUpdate.length === 0) return { dataUpdated: false, versionBannerShown };
@@ -3697,8 +3720,18 @@ function initPWA() {
         const swCode = `
 const CACHE = 'sumogames-v${APP_VERSION}';
 const STATIC = ['./'];
-self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(STATIC)).catch(()=>{})); self.skipWaiting(); });
-self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))); self.clients.claim(); });
+self.addEventListener('install', e => {
+    // Không gọi skipWaiting() - SW mới chờ tab hiện tại đóng/reload mới activate
+    // Điều này đảm bảo banner backup được hiện trước khi app chạy bản mới
+    e.waitUntil(caches.open(CACHE).then(c => c.addAll(STATIC)).catch(()=>{}));
+});
+self.addEventListener('activate', e => {
+    // Xóa cache version cũ nhưng không clients.claim() ngay
+    // Tab hiện tại vẫn dùng SW cũ cho đến khi user chủ động reload
+    e.waitUntil(caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ));
+});
 self.addEventListener('fetch', e => {
     const url = e.request.url;
     const isHTML = url.endsWith('.html') || url.endsWith('/') || (!url.includes('.') && !url.includes('?'));
