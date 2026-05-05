@@ -824,10 +824,19 @@ body {
 /* ===================================================
    MODALS
 =================================================== */
+/* === Z-INDEX LAYERS (tập trung) === */
+:root {
+  --z-stars:   0;
+  --z-screen:  1;
+  --z-toast:   500;
+  --z-modal:   1000;
+  --z-topmost: 9999;
+}
+
 .modal-overlay {
   display: none;
   position: fixed;
-  z-index: 10000;
+  z-index: var(--z-modal);
   inset: 0;
   background: rgba(0,0,0,0.85);
   flex-direction: column;
@@ -1500,7 +1509,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">1.9.9</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">1.9.10</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1524,7 +1533,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '1.9.9';
+const APP_VERSION  = '1.9.10';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -1800,8 +1809,52 @@ function initAdminScreen() {
 // ===================================================
 //  MODALS
 // ===================================================
-function showModal(id)  { document.getElementById(id).style.display = 'flex'; }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function showModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'flex';
+    // Chống scroll-through
+    document.body.style.overflow = 'hidden';
+    // aria-hidden trên content phía sau
+    document.querySelectorAll('.screen.active').forEach(el => {
+        if (!el.contains(modal)) el.setAttribute('aria-hidden', 'true');
+    });
+    // Lưu focus để restore sau
+    modal._prevFocus = document.activeElement;
+    // Focus vào element đầu tiên trong modal
+    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length) setTimeout(() => focusable[0].focus(), 50);
+    // Focus trap
+    modal._trapFn = (e) => {
+        if (e.key !== 'Tab') return;
+        const els = Array.from(modal.querySelectorAll('button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'));
+        if (!els.length) return;
+        const first = els[0], last = els[els.length - 1];
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+    };
+    document.addEventListener('keydown', modal._trapFn);
+}
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'none';
+    // Restore scroll nếu không còn modal nào khác mở
+    const anyOpen = document.querySelectorAll('.modal-overlay[style*="flex"]');
+    if (anyOpen.length === 0) {
+        document.body.style.overflow = '';
+        document.querySelectorAll('[aria-hidden="true"]').forEach(el => el.removeAttribute('aria-hidden'));
+    }
+    // Unbind focus trap + restore focus
+    if (modal._trapFn) {
+        document.removeEventListener('keydown', modal._trapFn);
+        modal._trapFn = null;
+    }
+    if (modal._prevFocus && modal._prevFocus.focus) {
+        try { modal._prevFocus.focus(); } catch {}
+        modal._prevFocus = null;
+    }
+}
 
 function showInfoModal(text) {
     document.getElementById('infoModalText').innerHTML = text;
