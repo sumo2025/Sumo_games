@@ -1500,7 +1500,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">1.9.8</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">1.9.9</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1524,7 +1524,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '1.9.8';
+const APP_VERSION  = '1.9.9';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -3444,30 +3444,30 @@ const SUMO_UPDATE = (() => {
 
     async function checkViaManifest() {
         const meta = await safeFetch(BASE_URL + META_FILE + bust());
-        if (!meta || typeof meta !== 'object') return false;
+        if (!meta || typeof meta !== 'object') return { dataUpdated: false, versionBannerShown: false };
 
-        // Kiểm tra APP_VERSION trong meta.json để detect update index.html
+        // === Kiểm tra version index.html ===
+        let versionBannerShown = false;
         if (meta.APP_VERSION && meta.APP_VERSION !== APP_VERSION) {
-            // Chỉ hiện toast nếu chưa từng thông báo version này
             const lastUpdated = localStorage.getItem('sumogames_notified_version');
-            // Dùng biến in-memory để tránh hiện banner 2 lần trong cùng 1 lần chạy
-            // sessionStorage không dùng vì một số PWA giữ session qua refresh
             if (lastUpdated !== meta.APP_VERSION && !SUMO_UPDATE._bannerShown) {
                 SUMO_UPDATE._bannerShown = true;
+                versionBannerShown = true;
                 showVersionUpdateToast(meta.APP_VERSION);
             }
         }
 
+        // === Kiểm tra data JSON files ===
         const oldHash  = JSON.parse(localStorage.getItem(LS_HASH) || '{}');
         const toUpdate = Object.keys(FILES).filter(n => meta[n] && meta[n] !== oldHash[n]);
-        if (toUpdate.length === 0) return false;
+        if (toUpdate.length === 0) return { dataUpdated: false, versionBannerShown };
         let anyUpdated = false;
         for (const name of toUpdate) {
             const raw = await safeFetch(BASE_URL + name + '.json' + bust());
             if (raw && saveFile(name, raw)) { oldHash[name] = meta[name]; anyUpdated = true; }
         }
         if (anyUpdated) localStorage.setItem(LS_HASH, JSON.stringify(oldHash));
-        return anyUpdated;
+        return { dataUpdated: anyUpdated, versionBannerShown };
     }
 
     async function checkViaContentLength() {
@@ -3495,7 +3495,7 @@ const SUMO_UPDATE = (() => {
     }
 
     function showVersionUpdateToast(newVersion) {
-        // === UPDATE BANNER v1.9.8: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
+        // === UPDATE BANNER v1.9.9: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
         const existing = document.getElementById('sumo-update-banner');
         if (existing) existing.remove();
 
@@ -3592,12 +3592,20 @@ const SUMO_UPDATE = (() => {
             if (anyLoaded) { window.location.reload(); }
             return;
         }
-        let updated = false;
-        try { updated = await checkViaManifest(); } catch { try { updated = await checkViaContentLength(); } catch {} }
-        // Nếu banner cập nhật version đang hiện → không hiện toast data và không auto-reload
-        // Người dùng sẽ reload thủ công sau khi backup
-        const versionBannerVisible = !!document.getElementById('sumo-update-banner');
-        if (updated && !versionBannerVisible) {
+        let dataUpdated = false;
+        let versionBannerShown = false;
+        try {
+            const result = await checkViaManifest();
+            dataUpdated       = result.dataUpdated;
+            versionBannerShown = result.versionBannerShown;
+        } catch {
+            // fallback: checkViaContentLength không biết về version banner
+            try { dataUpdated = await checkViaContentLength(); } catch {}
+        }
+        // Chỉ hiện toast data + auto-reload khi KHÔNG có banner version
+        // Nếu có banner version: người dùng tự reload sau khi backup
+        // → reload đó sẽ tải cả index.html mới lẫn data mới trong 1 lần
+        if (dataUpdated && !versionBannerShown) {
             showUpdateToast();
             setTimeout(() => window.location.reload(), 1800);
         }
