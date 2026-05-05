@@ -10,7 +10,7 @@
   },
   {
     "emoji": " 🤣 ",
-    "title": "Kể chuyện cười",
+    "title": "Kể chuyện cười cho bố mẹ nghe",
     "message": "Hãy kể cho bố mẹ nghe một câu chuyện cười thật hóm hỉnh để cả nhà cùng cười vang nào!",
     "schedules": [
       { "type": "weekday", "from": "07:00", "to": "22:30" },
@@ -19,7 +19,7 @@
   },
   {
     "emoji": " 🏫 ",
-    "title": "Kể truyện ở trường",
+    "title": "Kể truyện ở trường cho bố mẹ nghe",
     "message": "Hôm nay ở trường có gì vui không? Hãy kể ngay cho bố mẹ nghe một mẩu chuyện thú vị về thầy cô hay bạn bè nhé!",
     "schedules": [
       { "type": "weekday", "from": "07:00", "to": "22:30" },
@@ -28,7 +28,7 @@
   },
   {
     "emoji": " 💆‍♂️ ",
-    "title": "Massage Cho Bố 2 phút",
+    "title": "Con massage cho bố 2 phút",
     "message": "Bố đi làm về mệt rồi, con hãy matxa mặt cho bố trong 2 phút để bố thấy thư giãn hơn nhé!",
     "schedules": [
       { "type": "weekday", "from": "07:00", "to": "22:30" },

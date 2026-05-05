@@ -28,8 +28,8 @@
   },
   {
     "emoji": " 💆‍♂️ ",
-    "title": "Tẩm quất 3 phút",
-    "message": "Chúc mừng con nhận được voucher tẩm quất/massage 3 phút do chuyên gia vật lý trị liệu Papa bự đảm nhận!",
+    "title": "Voucher tẩm quất 3 phút",
+    "message": "Chúc mừng con nhận được voucher tẩm quất/massage 3 phút, yêu cầu do chính chuyên gia vật lý trị liệu Papa bự đảm nhận!",
     "schedules": [
       { "type": "weekday", "from": "06:00", "to": "22:00" },
       { "type": "weekend", "from": "06:00", "to": "22:00" }
@@ -99,8 +99,8 @@
   },
   {
     "emoji": " ⚽ ",
-    "title": "Chơi bóng đá với bố 10 phút",
-    "message": "Ra sân thôi! Con được chơi bóng cùng bố trong 10 phút. Chúc hai bố con có những giây phút vui vẻ!",
+    "title": "Chơi bóng đá 10 phút",
+    "message": "Ra sân thôi! Hãy ghi nhiều bàn thắng vào lưới Papa bự nào!",
     "schedules": [
       { "type": "weekend", "from": "08:00", "to": "18:00" }
     ]

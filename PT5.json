@@ -1,8 +1,8 @@
 [
   {
     "emoji": " ⚽ ",
-    "title": "Chơi bóng đá với bố 20 Phút",
-    "message": "Quá tuyệt! Con được chơi bóng cùng bố tận 20 phút. Tha hồ kiến tạo và ghi bàn nhé!",
+    "title": "Chơi bóng đá 20 Phút",
+    "message": "Quá tuyệt! Hãy xỏ giày và ra sân cùng Papa bự nào. Tha hồ kiến tạo và ghi bàn nhé!",
     "schedules": [
       { "type": "weekday", "from": "07:00", "to": "18:00" },
       { "type": "weekend", "from": "09:00", "to": "18:00" }
@@ -10,7 +10,7 @@
   },
   {
     "emoji": " 🦖 ",
-    "title": "Chuyến Đi Tới Cây Sấu",
+    "title": "Bố cõng từ nhà ra tới cây sấu",
     "message": "Phần thưởng đặc biệt: Yêu cầu bố cõng từ sân nhà mình ra tới tận chỗ cây sấu gần nhà bác Việt nhé!",
     "schedules": [
       { "type": "weekday", "from": "07:00", "to": "21:00" },
@@ -26,15 +26,7 @@
       { "type": "weekend", "from": "09:00", "to": "21:00" }
     ]
   },
-  {
-    "emoji": " 🍦 ",
-    "title": "1 Cây Kem ốc quế",
-    "message": "Chúc mừng con! Con được thưởng trọn vẹn 1 cây kem ốc quế siêu to khổng lồ!",
-    "schedules": [
-      { "type": "weekday", "from": "06:00", "to": "22:00" },
-      { "type": "weekend", "from": "06:00", "to": "22:00" }
-    ]
-  },
+  
   {
     "emoji": " 📚 ",
     "title": "1/2 Cuốn truyện tranh",
@@ -55,8 +47,8 @@
   },
   {
     "emoji": " 💆 ",
-    "title": "5 Phút Massage",
-    "message": "Nghỉ ngơi thôi! Con được tận hưởng 5 phút massage/tầm quất cực kỳ chuyên nghiệp!",
+    "title": "Voucher tẩm quất 5 phút",
+    "message": "Nghỉ ngơi thôi! Con được tận hưởng 5 phút tẩm quất cực kỳ chuyên nghiệp, yêu cầu do chính chuyên gia Papa thực hiện!",
     "schedules": [
       { "type": "weekday", "from": "06:00", "to": "22:00" },
       { "type": "weekend", "from": "06:00", "to": "22:00" }
@@ -110,7 +102,7 @@
   {
     "emoji": " 🚲 ",
     "title": "Đạp xe buổi sáng cuối tuần",
-    "message": "Một buổi sáng năng động: Yêu cầu bố cùng đi đạp xe dạo chơi để hít thở không khí trong lành nhé!",
+    "message": "Một buổi sáng năng động, cùng bố đi đạp xe dạo chơi để hít thở không khí trong lành nhé!",
     "schedules": [
       { "type": "weekend", "from": "06:00", "to": "22:00" }
     ]

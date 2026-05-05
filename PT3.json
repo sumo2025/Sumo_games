@@ -2,7 +2,7 @@
   {
     "emoji": " 🎵 ",
     "title": "Mở một bản nhạc yêu thích",
-    "message": "Nếu bố mẹ có nhà, hãy xin phép được mở một bài nhạc yêu thích trên Youtube để cả nhà cùng chill nhé!",
+    "message": "Nếu bố mẹ có nhà, hãy xin phép được mở một bài nhạc yêu thích để cả nhà cùng chill nhé!",
     "schedules": [
       { "type": "weekday", "from": "07:00", "to": "21:00" },
       { "type": "weekend", "from": "06:00", "to": "21:00" }
