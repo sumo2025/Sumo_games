@@ -1500,7 +1500,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">1.9.4</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">1.9.8</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1524,7 +1524,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '1.9.4';
+const APP_VERSION  = '1.9.8';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -3366,6 +3366,7 @@ const SUMO_UPDATE = (() => {
     const META_FILE = 'meta.json';
     const LS_HASH   = 'sumogames_data_hash';
     const LS_LOADED = 'sumogames_first_load_done';
+    let _bannerShown = false; // in-memory, reset mỗi lần tải trang
 
     const FILES = {
         // Lưu vào key riêng _github để không xung đột với upload thủ công qua Admin
@@ -3448,10 +3449,12 @@ const SUMO_UPDATE = (() => {
         // Kiểm tra APP_VERSION trong meta.json để detect update index.html
         if (meta.APP_VERSION && meta.APP_VERSION !== APP_VERSION) {
             // Chỉ hiện toast nếu chưa từng thông báo version này
-            const lastNotified = localStorage.getItem('sumogames_notified_version');
-            if (lastNotified !== meta.APP_VERSION) {
+            const lastUpdated = localStorage.getItem('sumogames_notified_version');
+            // Dùng biến in-memory để tránh hiện banner 2 lần trong cùng 1 lần chạy
+            // sessionStorage không dùng vì một số PWA giữ session qua refresh
+            if (lastUpdated !== meta.APP_VERSION && !SUMO_UPDATE._bannerShown) {
+                SUMO_UPDATE._bannerShown = true;
                 showVersionUpdateToast(meta.APP_VERSION);
-                localStorage.setItem('sumogames_notified_version', meta.APP_VERSION);
             }
         }
 
@@ -3492,13 +3495,89 @@ const SUMO_UPDATE = (() => {
     }
 
     function showVersionUpdateToast(newVersion) {
-        // Toast thông báo có phiên bản mới của index.html
-        const t = document.createElement('div');
-        t.innerHTML = `✨ Phiên bản mới <strong>v${newVersion}</strong> đã sẵn sàng! <button onclick="location.reload(true)" style="margin-left:10px;background:#000;color:#FFD700;border:none;border-radius:20px;padding:4px 12px;font-weight:800;cursor:pointer;font-size:0.9rem">Cập nhật</button>`;
-        t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(255,215,0,0.97);color:#000;font-weight:700;padding:12px 20px;border-radius:50px;font-size:0.95rem;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,.5);animation:fadeUp .3s ease;font-family:var(--font-body);white-space:nowrap;max-width:90vw';
-        document.body.appendChild(t);
-        // Tự ẩn sau 15 giây nếu không tap
-        setTimeout(() => { if (t.parentNode) t.remove(); }, 15000);
+        // === UPDATE BANNER v1.9.8: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
+        const existing = document.getElementById('sumo-update-banner');
+        if (existing) existing.remove();
+
+        const banner = document.createElement('div');
+        banner.id = 'sumo-update-banner';
+        banner.dataset.version = newVersion;
+        banner.style.cssText = [
+            'position:fixed','bottom:0','left:0','right:0','z-index:99999',
+            'background:linear-gradient(135deg,#1a1a4e,#0d0d3a)',
+            'border-top:2px solid #FFD700',
+            'padding:16px 20px',
+            'padding-bottom:max(16px,env(safe-area-inset-bottom,16px))',
+            'font-family:var(--font-body)',
+            'box-shadow:0 -4px 24px rgba(0,0,0,.6)',
+            'animation:slideUpBanner .35s cubic-bezier(.25,.46,.45,.94)',
+        ].join(';');
+
+        banner.innerHTML = `
+            <div style="max-width:520px;margin:0 auto">
+                <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px">
+                    <span style="font-size:1.4rem;line-height:1;flex-shrink:0">✨</span>
+                    <div>
+                        <div style="color:#FFD700;font-weight:800;font-size:1rem;line-height:1.3">
+                            Có phiên bản mới <strong>v${newVersion}</strong>!
+                        </div>
+                        <div style="color:#ccc;font-size:0.82rem;margin-top:4px;line-height:1.5">
+                            Vui lòng <strong style="color:#FFD700">backup dữ liệu</strong> trước khi cập nhật
+                            để tránh mất điểm số, danh sách người chơi và voucher.
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    <button id="sumo-upd-backup"
+                        style="flex:1;min-width:110px;height:40px;border:none;border-radius:20px;
+                               background:#FFD700;color:#000;font-weight:800;font-size:0.85rem;
+                               cursor:pointer;font-family:var(--font-body)">
+                        💾 Backup ngay
+                    </button>
+                    <button id="sumo-upd-now"
+                        style="flex:1;min-width:110px;height:40px;border:1.5px solid #FFD700;
+                               border-radius:20px;background:transparent;color:#FFD700;
+                               font-weight:800;font-size:0.85rem;cursor:pointer;
+                               font-family:var(--font-body)">
+                        🔄 Cập nhật
+                    </button>
+                    <button id="sumo-upd-later"
+                        style="flex:1;min-width:80px;height:40px;border:1.5px solid #555;
+                               border-radius:20px;background:transparent;color:#aaa;
+                               font-weight:700;font-size:0.85rem;cursor:pointer;
+                               font-family:var(--font-body)">
+                        Để sau
+                    </button>
+                </div>
+            </div>`;
+
+        if (!document.getElementById('sumo-banner-style')) {
+            const st = document.createElement('style');
+            st.id = 'sumo-banner-style';
+            st.textContent = '@keyframes slideUpBanner{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}';
+            document.head.appendChild(st);
+        }
+        document.body.appendChild(banner);
+
+        // Backup ngay: chạy exportGameData() rồi đổi trạng thái nút
+        document.getElementById('sumo-upd-backup').addEventListener('click', () => {
+            exportGameData();
+            const btn = document.getElementById('sumo-upd-backup');
+            if (btn) { btn.textContent = '✅ Đã backup'; btn.style.opacity = '0.6'; btn.disabled = true; }
+        });
+
+        // Cập nhật: lưu version đã cập nhật rồi hard reload bypass SW cache
+        document.getElementById('sumo-upd-now').addEventListener('click', () => {
+            localStorage.setItem('sumogames_notified_version', banner.dataset.version || '');
+            banner.remove();
+            location.reload(true);
+        });
+
+        // Để sau: slide down rồi remove, không nhắc lại trong session
+        document.getElementById('sumo-upd-later').addEventListener('click', () => {
+            banner.style.cssText += ';transition:transform .3s ease,opacity .3s ease;transform:translateY(100%);opacity:0';
+            setTimeout(() => banner.remove(), 320);
+        });
     }
 
     async function run() {
@@ -3515,7 +3594,13 @@ const SUMO_UPDATE = (() => {
         }
         let updated = false;
         try { updated = await checkViaManifest(); } catch { try { updated = await checkViaContentLength(); } catch {} }
-        if (updated) { showUpdateToast(); setTimeout(() => window.location.reload(), 1800); }
+        // Nếu banner cập nhật version đang hiện → không hiện toast data và không auto-reload
+        // Người dùng sẽ reload thủ công sau khi backup
+        const versionBannerVisible = !!document.getElementById('sumo-update-banner');
+        if (updated && !versionBannerVisible) {
+            showUpdateToast();
+            setTimeout(() => window.location.reload(), 1800);
+        }
     }
 
     return { run, applyLoadedData };
