@@ -1509,7 +1509,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.0</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.2</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1529,11 +1529,11 @@ body {
 <script>
 // ===================================================
 //  SUMO GAMES - Triệu Phú Tri Thức
-//  Version 1.9.0 | Developed by Pavel Hải
+//  Version 2.0.2 | Developed by Pavel Hải
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.1';
+const APP_VERSION  = '2.0.2';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -1556,7 +1556,7 @@ function _djb2(str) {
 function _lsHash(str) { return _djb2(str + _LS_SALT); }
 
 // === MIGRATION: salt cũ (userAgent-based) → salt mới (cố định) ===
-// Chạy 1 lần duy nhất khi người dùng nâng cấp lên V1.9.1+
+// Chạy 1 lần duy nhất khi người dùng nâng cấp lên V2.0.0+
 
 
 // PIN hash sử dụng salt riêng để tránh rainbow attack đơn giản
@@ -1738,13 +1738,32 @@ function migrateDataOnce() {
             return v;
         });
     }
-    lsSet('sumogames_players', JSON.stringify(pData));
+    // Chỉ lưu nếu có data thực - tránh ghi đè {} khi lsGet fail
+    if (Object.keys(pData).length > 0) {
+        lsSet('sumogames_players', JSON.stringify(pData));
+    }
     localStorage.setItem('sumogames_migrated_v5', 'true');
 }
 
 function loadPlayersData() {
     migrateDataOnce();
-    const raw = lsGet('sumogames_players');
+    let raw = lsGet('sumogames_players');
+    // Fallback: lsGet fail (hash mismatch) → thử đọc raw localStorage
+    if (!raw) {
+        const stored = localStorage.getItem('sumogames_players');
+        if (stored && stored !== '{}') {
+            try {
+                const p = JSON.parse(stored);
+                // Nếu là wrapped {d,h} nhưng hash fail → lấy d trực tiếp
+                if (p && typeof p.d === 'string') {
+                    raw = p.d;
+                    console.warn('[SumoGames] loadPlayersData: dùng fallback raw data');
+                    // Re-sign với salt mới
+                    lsSet('sumogames_players', raw);
+                }
+            } catch {}
+        }
+    }
     playersData = raw ? JSON.parse(raw) : {};
     const now = Date.now();
     for (let n in playersData) {
@@ -1754,7 +1773,18 @@ function loadPlayersData() {
         if (!playersData[n].redeemedItems) playersData[n].redeemedItems = [];
     }
 }
-function savePlayersData() { lsSet('sumogames_players', JSON.stringify(playersData)); }
+function savePlayersData() {
+    // Guard: không ghi đè data cũ bằng object rỗng
+    // Xảy ra khi lsGet fail (hash mismatch) → playersData = {} → gọi save → xóa data
+    if (Object.keys(playersData).length === 0) {
+        const existing = localStorage.getItem('sumogames_players');
+        if (existing && existing !== '{}') {
+            console.warn('[SumoGames] Bỏ qua savePlayersData: playersData rỗng nhưng localStorage có data');
+            return;
+        }
+    }
+    lsSet('sumogames_players', JSON.stringify(playersData));
+}
 
 function getPlayer(name) {
     if (!playersData[name]) playersData[name] = { vouchers: [], redeemedItems: [] };
@@ -3412,7 +3442,7 @@ function importGameData(event) {
 }
 
 // ===================================================
-//  AUTO-UPDATE FROM GITHUB (v1.9.0)
+//  AUTO-UPDATE FROM GITHUB (v2.0.2)
 // ===================================================
 // === VERSION COMPARISON HELPER ===
 // So sánh segment-by-segment để tránh lỗi string comparison:
@@ -3571,7 +3601,7 @@ const SUMO_UPDATE = (() => {
     }
 
     function showVersionUpdateToast(newVersion) {
-        // === UPDATE BANNER v1.9.9: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
+        // === UPDATE BANNER v2.0.2: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
         const existing = document.getElementById('sumo-update-banner');
         if (existing) existing.remove();
 
