@@ -3022,20 +3022,23 @@ function calcFunGroup() {
     const totalEl = document.getElementById('invFunTotal');
     const unitEl  = document.getElementById('invFunUnit');
 
-    const playerName = document.getElementById('invPlayerName').textContent;
-    const limits     = getDailyLimits(playerName);
-    const usedBome   = limits.boMeCount || 0;
-    const maxBome    = 6;
+    const playerName    = document.getElementById('invPlayerName').textContent;
+    const limits        = getDailyLimits(playerName);
+    const usedBome      = limits.boMeCount || 0;
+    const maxBome       = 6;
     const redeemedToday = limits.redeemedFunItems || [];
 
     let selectedCount = 0, bomeCount = 0;
-    const duplicateItems = []; // tên items fun_parent đã đổi hôm nay
+    const duplicateItems = [];
+    const selectedItems  = [];
 
     document.querySelectorAll('.cb-fun:checked').forEach(cb => {
         selectedCount++;
-        if (cb.getAttribute('data-type') === 'fun_parent') {
+        const name = cb.getAttribute('data-name') || '';
+        const type = cb.getAttribute('data-type') || '';
+        selectedItems.push({ name, type });
+        if (type === 'fun_parent') {
             bomeCount++;
-            const name = cb.getAttribute('data-name') || '';
             if (redeemedToday.includes(name)) duplicateItems.push(name);
         }
     });
@@ -3045,11 +3048,17 @@ function calcFunGroup() {
 
     if (selectedCount === 0) { btn.disabled = true; note.textContent = ''; return; }
 
-    // Check: trùng tên trong chính lần chọn hiện tại
-    const selectedBomeNames = [];
-    document.querySelectorAll('.cb-fun:checked').forEach(cb => {
-        if (cb.getAttribute('data-type') === 'fun_parent') selectedBomeNames.push(cb.getAttribute('data-name')||'');
-    });
+    // === NGUYÊN TẬC CAO NHẤT: chỉ được chọn cùng loại (cùng base name) ===
+    const baseNames = new Set(selectedItems.map(i => getBaseName(i.name)));
+    if (baseNames.size > 1) {
+        btn.disabled = true;
+        note.style.color = 'var(--red)';
+        note.textContent = '❌ Chỉ được đổi các phần quà cùng loại (cùng tên, chỉ khác số)!';
+        return;
+    }
+
+    // Check: trùng tên y hệt trong cùng lần chọn (fun_parent 1 lần/ngày)
+    const selectedBomeNames = selectedItems.filter(i => i.type === 'fun_parent').map(i => i.name);
     const dupInSelection = selectedBomeNames.filter((n, i) => selectedBomeNames.indexOf(n) !== i);
     if (dupInSelection.length > 0) {
         btn.disabled = true;
@@ -3067,7 +3076,7 @@ function calcFunGroup() {
         return;
     }
 
-    // Check: vượt tổng 6 lần/ngày
+    // Check: vượt tổng 6 lần/ngày (fun_parent)
     if (bomeCount > 0 && usedBome + bomeCount > maxBome) {
         btn.disabled = true;
         note.style.color = 'var(--red)';
