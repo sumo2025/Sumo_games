@@ -1,8 +1,8 @@
 {
   "_comment": "Sumo Games — Data Version Manifest. Cập nhật APP_VERSION khi thay đổi index.html. Cập nhật hash file khi thay đổi file JSON tương ứng.",
   "APP_VERSION": "2.0.3",
-  "VIE": "2026-04-28-v2",
-  "ENG": "2026-04-28-v2",
+  "VIE": "2026-04-28-v6",
+  "ENG": "2026-04-28-v6",
   "PT1": "2026-04-28-v1",
   "PT2": "2026-04-28-v1",
   "PT3": "2026-04-28-v1",
