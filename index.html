@@ -1509,7 +1509,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.2</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.3</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1533,7 +1533,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.2';
+const APP_VERSION  = '2.0.3';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -3553,8 +3553,6 @@ const SUMO_UPDATE = (() => {
         if (!meta || typeof meta !== 'object') return { dataUpdated: false, versionBannerShown: false };
 
         // === Kiểm tra version index.html ===
-        // Dùng isNewerVersion() so sánh segment-by-segment để tránh lỗi:
-        // "1.9.9" > "1.9.10" khi so sánh string nhưng đúng khi so sánh số
         let versionBannerShown = false;
         if (meta.APP_VERSION && isNewerVersion(meta.APP_VERSION, APP_VERSION)) {
             const lastUpdated = localStorage.getItem('sumogames_notified_version');
@@ -3565,14 +3563,10 @@ const SUMO_UPDATE = (() => {
             }
         }
 
-        // === Kiểm tra data JSON files ===
-        // Nếu có banner version → KHÔNG tải data ngầm.
-        // Data sẽ được tải sau khi user bấm "Cập nhật" → location.reload(true).
-        // Tránh app tự cập nhật nội dung mà không có sự đồng ý của người dùng.
-        if (versionBannerShown) {
-            return { dataUpdated: false, versionBannerShown: true };
-        }
-
+        // === Kiểm tra data JSON files - LUÔN chạy dù có banner version hay không ===
+        // Nếu có banner version: vẫn fetch & lưu data mới vào localStorage ngay
+        // → Khi user bấm "Cập nhật" → reload → HTML mới + data mới đều sẵn sàng
+        // Nếu không có banner: fetch xong → auto-reload để apply data mới
         const oldHash  = JSON.parse(localStorage.getItem(LS_HASH) || '{}');
         const toUpdate = Object.keys(FILES).filter(n => meta[n] && meta[n] !== oldHash[n]);
         if (toUpdate.length === 0) return { dataUpdated: false, versionBannerShown };
