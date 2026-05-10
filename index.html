@@ -1509,8 +1509,8 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.4</span></li>
-      <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.5</span></li>
+      <li><span class="lbl">📅 Release date:</span><span class="val">May 11, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
       <li><span class="lbl">🌐 Ngôn ngữ:</span><span class="val">Tiếng Việt + English</span></li>
@@ -1529,11 +1529,11 @@ body {
 <script>
 // ===================================================
 //  SUMO GAMES - Triệu Phú Tri Thức
-//  Version 2.0.2 | Developed by Pavel Hải
+//  Version 2.0.5 | Developed by Pavel Hải
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.4';
+const APP_VERSION  = '2.0.5';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -2012,14 +2012,18 @@ function shuffle(arr) {
  * Câu "untagged" (không có difficulty/grade) được xếp vào easy.
  */
 function classifyQuestion(q) {
-    const d = (q.difficulty || 'easy').toLowerCase();
-    const g = (q.grade || '2-3');
-    // easy: difficulty=easy hoặc grade=2-3
-    if (d === 'easy' || g === '2-3') return 'easy';
-    // hard: difficulty=hard hoặc grade=5-6
-    if (d === 'hard' || g === '5-6') return 'hard';
-    // medium: còn lại (difficulty=medium hoặc grade=4-5)
-    return 'medium';
+    const d = (q.difficulty || '').toLowerCase();
+    const g = (q.grade || '').trim();
+    // Grade ưu tiên tuyệt đối (chính xác hơn difficulty)
+    if (g === '2-3') return 'easy';
+    if (g === '5-6') return 'hard';
+    if (g === '4-5') return 'medium';
+    // Fallback: không có grade → dùng difficulty
+    if (d === 'easy')   return 'easy';
+    if (d === 'hard')   return 'hard';
+    if (d === 'medium') return 'medium';
+    // Untagged → easy
+    return 'easy';
 }
 
 /**
@@ -2079,6 +2083,7 @@ const _usedQuestionIds = { vi: [], en: [] };
 /**
  * Phân loại câu tiếng Anh theo CEFR.
  * Ưu tiên field cefr nếu có, fallback sang grade.
+ * grade=3-5 → A2 (intermediate-lower).
  * Untagged → A1 (cơ bản).
  */
 function classifyEngQuestion(q) {
@@ -2086,7 +2091,7 @@ function classifyEngQuestion(q) {
     const grade = (q.grade || '').trim();
     if (cefr === 'A1' || grade === '2-3') return 'A1';
     if (cefr === 'B1' || grade === '5-6') return 'B1';
-    if (cefr === 'A2' || grade === '4-5') return 'A2';
+    if (cefr === 'A2' || grade === '4-5' || grade === '3-5') return 'A2';
     return 'A1'; // fallback: untagged → A1
 }
 
@@ -3454,7 +3459,7 @@ function importGameData(event) {
 }
 
 // ===================================================
-//  AUTO-UPDATE FROM GITHUB (v2.0.2)
+//  AUTO-UPDATE FROM GITHUB (v2.0.5)
 // ===================================================
 // === VERSION COMPARISON HELPER ===
 // So sánh segment-by-segment để tránh lỗi string comparison:
@@ -3612,7 +3617,7 @@ const SUMO_UPDATE = (() => {
     }
 
     function showVersionUpdateToast(newVersion) {
-        // === UPDATE BANNER v2.0.2: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
+        // === UPDATE BANNER v2.0.5: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
         const existing = document.getElementById('sumo-update-banner');
         if (existing) existing.remove();
 
@@ -3849,6 +3854,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Cấp độ chơi ảnh hưởng đến tỷ lệ câu hỏi theo độ khó:<br><br>' +
         '🟢 <strong>Dễ</strong>: 75% câu dễ (lớp 2-3) + 25% câu trung bình (lớp 4-5)<br>' +
         '🔴 <strong>Khó</strong>: 50% câu trung bình (lớp 4-5) + 50% câu khó (lớp 5-6)<br><br>' +
+        '<em>Độ khó của câu hỏi VIE được xác định theo lớp học (grade), ' +
+        'câu hỏi ENG theo khung CEFR (A1/A2/B1).</em><br><br>' +
         'Ngưỡng thưởng thống nhất:<br>' +
         'PT5 ≥ 92% | PT4 81-91% | PT3 71-80% | PT2 60-70% | PT1 &lt; 60%'
     ));
