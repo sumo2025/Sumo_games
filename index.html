@@ -1509,7 +1509,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.3</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.4</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">Apr 30, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1533,7 +1533,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.3';
+const APP_VERSION  = '2.0.4';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -1638,9 +1638,9 @@ function validateQuestionFile(arr) {
     return arr.every(q =>
         typeof q.id       === 'number' &&
         typeof q.question === 'string' && q.question.length > 0 && q.question.length < 1000 &&
-        Array.isArray(q.answers) && q.answers.length === 3 &&
-        q.answers.every(a => typeof a === 'string' && a.length < 500) &&
-        [0, 1, 2].includes(Number(q.correct))
+        Array.isArray(q.options) && q.options.length >= 2 && q.options.length <= 4 &&
+        q.options.every(a => typeof a === 'string' && a.length < 500) &&
+        Number.isInteger(Number(q.answer)) && Number(q.answer) >= 0 && Number(q.answer) < q.options.length
     );
 }
 function validateRewardFile(arr) {
@@ -2275,19 +2275,20 @@ function showQuestion() {
     const badge = document.getElementById('qLangBadge');
     badge.style.display = isEng ? 'inline-block' : 'none';
 
-    // Answers (shuffle)
+    // Options (shuffle, hỗ trợ 3 hoặc 4 options)
     const grid     = document.getElementById('answersGrid');
     grid.innerHTML = '';
-    const answers  = q.answers
-        .map((text, i) => ({ text, isCorrect: i === Number(q.correct) }))
+    const answers  = (q.options || q.answers || [])
+        .map((text, i) => ({ text, isCorrect: i === Number(q.answer ?? q.correct) }))
         .sort(() => 0.5 - Math.random());
 
-    ['A', 'B', 'C'].forEach((letter, i) => {
+    const letters = ['A', 'B', 'C', 'D'];
+    answers.forEach((ans, i) => {
         const btn = document.createElement('button');
         btn.className = 'answer-btn';
-        btn.innerHTML = `<span class="letter">${letter}</span><span>${esc(answers[i].text)}</span>`;
-        btn.dataset.correct = answers[i].isCorrect;
-        btn.addEventListener('click', () => selectAnswer(btn, answers[i].isCorrect));
+        btn.innerHTML = `<span class="letter">${letters[i]}</span><span>${esc(ans.text)}</span>`;
+        btn.dataset.correct = ans.isCorrect;
+        btn.addEventListener('click', () => selectAnswer(btn, ans.isCorrect));
         grid.appendChild(btn);
     });
 
@@ -3284,7 +3285,9 @@ function handleBankUpload(input, lang) {
                     ...q,
                     lang: q.lang || langLower,
                     difficulty: q.difficulty || 'easy',
-                    grade: q.grade || '2-3'
+                    grade: q.grade || '2-3',
+                    options: q.options || q.answers,
+                    answer:  q.answer  ?? q.correct,
                 }));
                 const lsKey = lang === 'VIE' ? 'sumogames_bankVIE' : 'sumogames_bankENG';
                 // Lưu vào admin key (REPLACE - không merge với github)
@@ -3520,7 +3523,10 @@ const SUMO_UPDATE = (() => {
                 // Không có admin → builtin + github
                 const fromGithub = githubVIE ? JSON.parse(githubVIE).map(q => ({
                     ...q, lang: q.lang || 'vi',
-                    difficulty: q.difficulty || 'easy', grade: q.grade || '2-3'
+                    difficulty: q.difficulty || 'easy', grade: q.grade || '2-3',
+                    // Chuẩn hóa field names: hỗ trợ cả format cũ (answers/correct) và mới (options/answer)
+                    options: q.options || q.answers,
+                    answer:  q.answer  ?? q.correct,
                 })) : [];
                 bankVIE = [...BUILTIN_VIE, ...fromGithub];
             }
@@ -3536,7 +3542,9 @@ const SUMO_UPDATE = (() => {
             } else {
                 const fromGithub = githubENG ? JSON.parse(githubENG).map(q => ({
                     ...q, lang: q.lang || 'en',
-                    difficulty: q.difficulty || 'easy', grade: q.grade || '2-3'
+                    difficulty: q.difficulty || 'easy', grade: q.grade || '2-3',
+                    options: q.options || q.answers,
+                    answer:  q.answer  ?? q.correct,
                 })) : [];
                 bankENG = [...BUILTIN_ENG, ...fromGithub];
             }
