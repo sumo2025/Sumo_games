@@ -2465,11 +2465,11 @@
   },
   {
     "id": 177,
-    "question": "Tại sao bóng bị nảy lên khi ném xuống đất?",
+    "question": "Tại sao bóng cao su nảy lên khi ném xuống đất?",
     "options": [
-      "Vì đất đẩy bóng lên theo lực phản chiều",
-      "Vì bóng có nam châm hút về phía trên",
-      "Vì không khí trong bóng kéo bóng lên"
+      "Vì mặt đất đẩy ngược bóng lên khi bóng đập vào",
+      "Vì bóng nhẹ hơn không khí nên tự bật lên",
+      "Vì không khí trong bóng kéo bóng lên trên"
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -4467,11 +4467,11 @@
   },
   {
     "id": 320,
-    "question": "Vì sao cần phải đội mũ bảo hiểm khi đi xe đạp điện?",
+    "question": "Vì sao cần đội mũ bảo hiểm khi đi xe đạp trên đường?",
     "options": [
-      "Bảo vệ đầu tránh chấn thương khi xảy ra tai nạn",
+      "Bảo vệ đầu tránh chấn thương khi ngã hoặc va chạm",
       "Để trông đẹp hơn khi ra đường",
-      "Vì luật bắt buộc phải đội mũ trong mọi trường hợp"
+      "Vì trời nắng mũ giúp che nắng tốt hơn"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -9353,11 +9353,11 @@
   },
   {
     "id": 669,
-    "question": "Khi bé trai bước vào tuổi dậy thì, dấu hiệu nào dưới đây là bình thường?",
+    "question": "Khi bé gái bước vào tuổi dậy thì, dấu hiệu nào dưới đây là bình thường?",
     "options": [
-      "Vai rộng ra và bắt đầu mọc lông ở nách",
+      "Hông rộng ra và ngực bắt đầu phát triển",
       "Cơ thể ngừng phát triển chiều cao",
-      "Da mặt trở nên mịn màng và trắng hơn"
+      "Giọng nói trở nên trầm hơn như bé trai"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -10417,11 +10417,11 @@
   },
   {
     "id": 745,
-    "question": "Trong ẩm thực, phản ứng Maillard xảy ra khi nấu ăn tạo ra điều gì giúp món ăn ngon hơn?",
+    "question": "Vì sao thịt và bánh mì khi nướng có lớp vỏ nâu giòn và mùi thơm hấp dẫn?",
     "options": [
-      "Màu nâu và mùi thơm đặc trưng trên bề mặt thực phẩm",
-      "Thực phẩm chín đều từ trong ra ngoài",
-      "Vitamin được bảo toàn tốt hơn trong quá trình nấu"
+      "Nhiệt độ cao làm đường và chất đạm trên bề mặt chuyển màu và sinh mùi thơm",
+      "Màu nâu là màu của dầu mỡ thấm vào bề mặt thực phẩm",
+      "Thực phẩm bị cháy nhẹ tạo màu và mùi đặc trưng"
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -11539,7 +11539,7 @@
     "id": 825,
     "question": "Khi làm bánh bao, tại sao bột cần được ủ trước khi hấp?",
     "options": [
-      "Để bột nở xốp nhờ men hoạt động sinh khí CO2",
+      "Để men nở hoạt động, sinh khí làm bột phồng xốp",
       "Để bột hút thêm nước và nặng hơn",
       "Để bột có màu trắng đẹp hơn"
     ],
@@ -13119,7 +13119,7 @@
   },
   {
     "id": 938,
-    "question": "Khi đi xe đạp điện đến trường và muốn rẽ vào ngõ hẹp có nhiều người đi bộ, em nên làm gì?",
+    "question": "Khi đi xe đạp vào ngõ hẹp có nhiều người đi bộ, em nên làm gì?",
     "options": [
       "Bóp còi liên tục để người tránh đường",
       "Giảm tốc độ và nhường đường cho người đi bộ",
@@ -15149,11 +15149,11 @@
   },
   {
     "id": 1083,
-    "question": "Trong vật lý, tại sao khi bơm không khí vào bóng bay, bóng căng phồng lên?",
+    "question": "Tại sao khi bơm không khí vào bóng bay, bóng căng phồng lên?",
     "options": [
-      "Vì không khí có khối lượng và chiếm thể tích, tạo áp suất bên trong",
-      "Vì nhiệt từ hơi thở làm lớp cao su bóng giãn ra",
-      "Vì không khí chứa khí heli nhẹ nâng bóng lên"
+      "Không khí có thể tích và chiếm chỗ, đẩy thành bóng từ bên trong",
+      "Nhiệt từ hơi thở làm cao su bóng giãn nở ra",
+      "Không khí nhẹ hơn bóng nên đẩy bóng phồng lên"
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -18803,11 +18803,11 @@
   },
   {
     "id": 1344,
-    "question": "Trong an toàn giao thông, khi đi xe đạp điện phải đội mũ bảo hiểm vì lý do chính nào?",
+    "question": "Khi đi xe đạp, đội mũ bảo hiểm giúp ích gì nếu xảy ra va chạm?",
     "options": [
-      "Vì luật quy định và mũ giảm chấn thương đầu khi va chạm",
-      "Vì mũ giúp tránh nắng và mưa khi đi đường",
-      "Vì mũ giúp người khác nhìn thấy em từ xa hơn"
+      "Giảm chấn thương đầu vì mũ hấp thụ lực tác động khi ngã",
+      "Giúp em trông nổi bật hơn để xe khác dễ thấy",
+      "Giúp em giữ thăng bằng tốt hơn khi đạp xe"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -21337,11 +21337,11 @@
   },
   {
     "id": 1525,
-    "question": "Trạm vũ trụ quốc tế ISS bay quanh Trái Đất ở độ cao nào và mất bao lâu để đi một vòng?",
+    "question": "Trạm vũ trụ quốc tế bay quanh Trái Đất ở độ cao và tốc độ như thế nào?",
     "options": [
-      "Khoảng 400km, mất khoảng 90 phút một vòng",
-      "Khoảng 4.000km, mất khoảng 12 giờ một vòng",
-      "Khoảng 40.000km, mất đúng 24 giờ một vòng"
+      "Khoảng 400km, bay một vòng mất khoảng 90 phút",
+      "Khoảng 4.000km, bay một vòng mất khoảng 12 giờ",
+      "Khoảng 40.000km, bay một vòng mất đúng 24 giờ"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -21396,7 +21396,7 @@
     "question": "Trong thiên văn học, tại sao Sao Kim dù gần Mặt Trời hơn Sao Thuỷ lại có bề mặt nóng hơn?",
     "options": [
       "Sao Kim lớn hơn nên giữ nhiều nhiệt hơn",
-      "Lớp khí CO2 dày tạo hiệu ứng nhà kính cực mạnh giữ nhiệt",
+      "Lớp khí nhà kính dày tạo hiệu ứng nhà kính cực mạnh giữ nhiệt",
       "Sao Kim quay chậm nên mặt ban ngày tích nhiệt lâu hơn"
     ],
     "answer": 1,
@@ -21757,13 +21757,13 @@
   },
   {
     "id": 1555,
-    "question": "Trong công nghệ, tại sao các trang web thương mại điện tử sử dụng giao thức HTTPS thay vì HTTP?",
+    "question": "Khi địa chỉ trang web bắt đầu bằng ổ khoá và chữ 's' bảo mật, điều đó có nghĩa gì?",
     "options": [
-      "HTTPS giúp trang web tải nhanh hơn HTTP",
-      "HTTPS mã hoá dữ liệu truyền đi giúp bảo vệ thông tin người dùng",
-      "HTTPS cho phép trang web hiển thị nhiều màu sắc hơn HTTP"
+      "Dữ liệu giữa em và trang web được mã hoá, khó bị kẻ xấu đánh cắp",
+      "Trang web tải nhanh hơn các trang web thông thường",
+      "Trang web được nhà nước cấp phép hoạt động chính thức"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "medium",
     "grade": "5-6",
     "category": "Công nghệ",
@@ -21785,11 +21785,11 @@
   },
   {
     "id": 1557,
-    "question": "Trong công nghệ, 'deepfake' gây nguy hiểm như thế nào trong đời sống xã hội?",
+    "question": "Video giả tạo bằng trí tuệ nhân tạo gây nguy hiểm gì trong đời sống?",
     "options": [
-      "Deepfake làm chậm tốc độ internet toàn cầu",
-      "Deepfake tạo video giả chân thực có thể lan truyền thông tin sai lệch và gây hại",
-      "Deepfake chỉ ảnh hưởng đến thiết bị cũ và lạc hậu"
+      "Làm chậm tốc độ internet toàn cầu",
+      "Tạo hình ảnh giả chân thực, dễ lan truyền thông tin sai lệch và gây hại",
+      "Chỉ ảnh hưởng đến thiết bị điện tử cũ và lạc hậu"
     ],
     "answer": 1,
     "difficulty": "hard",
@@ -22121,11 +22121,11 @@
   },
   {
     "id": 1581,
-    "question": "Trong ẩm thực, kỹ thuật 'blanching' (chần nhanh) rau củ vào nước sôi rồi ngâm ngay vào nước đá có tác dụng gì?",
+    "question": "Vì sao chần rau vào nước sôi rồi ngâm ngay vào nước đá giúp rau giữ màu xanh và giòn?",
     "options": [
-      "Dừng quá trình nấu ngay lập tức, giữ màu sắc tươi và kết cấu giòn của rau",
-      "Khử trùng rau hoàn toàn để an toàn khi ăn sống",
-      "Làm mềm rau để dễ tiêu hoá hơn khi ăn"
+      "Nước đá dừng quá trình nấu đột ngột, giữ màu và kết cấu rau",
+      "Nước lạnh khử trùng rau hoàn toàn để ăn sống an toàn hơn",
+      "Nước lạnh làm rau mềm hơn và dễ tiêu hoá hơn khi ăn"
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -22135,9 +22135,9 @@
   },
   {
     "id": 1582,
-    "question": "Trong ẩm thực, tại sao thịt kho cần đun lửa nhỏ trong thời gian dài thay vì đun lửa to cho nhanh?",
+    "question": "Vì sao thịt kho lửa nhỏ thời gian dài lại mềm và nước sốt sánh hơn kho lửa to?",
     "options": [
-      "Lửa nhỏ làm collagen trong thịt chuyển thành gelatin từ từ, tạo nước sốt sánh và thịt mềm",
+      "Lửa nhỏ làm chất keo trong thịt tan từ từ, tạo nước sốt sánh và thịt mềm nhừ",
       "Lửa to làm cháy gia vị bên ngoài trước khi thịt kịp chín bên trong",
       "Lửa nhỏ giúp tiết kiệm gas và tránh làm cạn nước kho nhanh"
     ],
@@ -22331,13 +22331,13 @@
   },
   {
     "id": 1596,
-    "question": "Môn thể thao nào mà mỗi vận động viên thi đấu 3 nội dung liên tiếp là bơi, đạp xe và chạy bộ?",
+    "question": "Trong bơi lội, kiểu bơi nào được dùng trong thi đấu tự do vì nhanh nhất?",
     "options": [
-      "Triathlon",
-      "Decathlon",
-      "Biathlon"
+      "Bơi ngửa",
+      "Bơi bướm",
+      "Bơi trườn sấp"
     ],
-    "answer": 0,
+    "answer": 2,
     "difficulty": "medium",
     "grade": "2-3",
     "category": "Thể thao",
@@ -22667,11 +22667,11 @@
   },
   {
     "id": 1620,
-    "question": "Trong an toàn giao thông, hiệu ứng 'aquaplaning' xảy ra khi nào và nguy hiểm thế nào?",
+    "question": "Vì sao lốp xe dễ mất bám đường và trơn trượt khi đường có vũng nước lớn?",
     "options": [
-      "Lốp xe mất tiếp xúc với đường do màng nước mỏng, mất kiểm soát tay lái",
-      "Phanh quá mạnh làm lốp bị khoá, xe mất lái trên đường ướt",
-      "Kính chắn gió bị đọng sương làm tầm nhìn tài xế bị che khuất"
+      "Lớp nước mỏng chen giữa lốp và đường làm lốp mất ma sát, xe mất lái",
+      "Phanh quá mạnh làm lốp bị khoá, xe trượt dài trên nền ướt",
+      "Kính chắn gió đọng hơi nước làm tài xế không nhìn rõ đường"
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -22723,11 +22723,11 @@
   },
   {
     "id": 1624,
-    "question": "Trong an toàn giao thông, tại sao không nên đi xe đạp điện quá tốc độ quy định dù đường vắng?",
+    "question": "Vì sao không nên đi xe đạp quá nhanh trên đường khu dân cư dù đường vắng?",
     "options": [
-      "Tốc độ cao giảm khả năng phản ứng và tăng lực va chạm khi tai nạn xảy ra dù bất ngờ",
-      "Xe đạp điện hao pin nhanh hơn khi đi tốc độ cao",
-      "Đường vắng thường có ổ gà ẩn gây nguy hiểm hơn đường đông"
+      "Tốc độ cao làm giảm khả năng phản ứng và tăng lực va chạm nếu tai nạn",
+      "Xe đạp đi nhanh hao lực đạp và mau hỏng xích hơn",
+      "Đường khu dân cư thường có ổ gà ẩn nguy hiểm hơn đường lớn"
     ],
     "answer": 0,
     "difficulty": "hard",
