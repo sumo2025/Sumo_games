@@ -4579,11 +4579,11 @@
   },
   {
     "id": 328,
-    "question": "Một tờ giấy hình chữ nhật gấp đôi theo chiều dài thì chu vi mới bằng bao nhiêu phần chu vi cũ?",
+    "question": "Một cửa hàng có 5 hộp kẹo, mỗi hộp có 6 cái. Nếu bán đi 8 cái thì còn lại bao nhiêu cái kẹo?",
     "options": [
-      "Bằng chu vi cũ",
-      "Nhỏ hơn chu vi cũ",
-      "Lớn hơn chu vi cũ"
+      "22 cái",
+      "30 cái",
+      "14 cái"
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -7183,13 +7183,13 @@
   },
   {
     "id": 514,
-    "question": "Một cái hộp hình lập phương có cạnh 3cm. Diện tích một mặt bằng bao nhiêu?",
+    "question": "Bạn An vẽ một hình có 4 cạnh, 4 góc vuông và 4 cạnh bằng nhau. Đó là hình gì?",
     "options": [
-      "9 cm²",
-      "6 cm²",
-      "27 cm²"
+      "Hình chữ nhật",
+      "Hình thoi",
+      "Hình vuông"
     ],
-    "answer": 0,
+    "answer": 2,
     "difficulty": "hard",
     "grade": "2-3",
     "category": "Toán học",
@@ -9283,11 +9283,11 @@
   },
   {
     "id": 664,
-    "question": "Loài cá nào dưới đây là đặc sản nước ngọt nổi tiếng của miền Bắc Việt Nam, thường dùng nấu giả cầy?",
+    "question": "Trong ẩm thực, tại sao thịt bò nướng ngon hơn khi ướp muối sau khi nướng xong thay vì trước?",
     "options": [
-      "Cá trê",
-      "Cá chép",
-      "Cá lóc"
+      "Muối làm thịt giữ nước tốt hơn khi nướng",
+      "Muối trước làm thịt mất nước và bị khô",
+      "Muối sau giúp thịt không bị cháy"
     ],
     "answer": 1,
     "difficulty": "medium",
@@ -10417,13 +10417,13 @@
   },
   {
     "id": 745,
-    "question": "Đặc sản nem lụi nổi tiếng là món ăn của tỉnh thành nào ở miền Trung Việt Nam?",
+    "question": "Trong ẩm thực, phản ứng Maillard xảy ra khi nấu ăn tạo ra điều gì giúp món ăn ngon hơn?",
     "options": [
-      "Đà Nẵng",
-      "Huế",
-      "Quảng Ngãi"
+      "Màu nâu và mùi thơm đặc trưng trên bề mặt thực phẩm",
+      "Thực phẩm chín đều từ trong ra ngoài",
+      "Vitamin được bảo toàn tốt hơn trong quá trình nấu"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "hard",
     "grade": "5-6",
     "category": "Ẩm thực",
@@ -10809,11 +10809,11 @@
   },
   {
     "id": 773,
-    "question": "Món nộm hoa chuối là đặc sản ăn kèm với món gì nổi tiếng ở miền Trung Việt Nam?",
+    "question": "Trong ẩm thực Việt Nam, nước chấm phổ biến nhất thường được pha từ những nguyên liệu nào?",
     "options": [
-      "Bún bò Huế",
-      "Mì Quảng",
-      "Bánh canh cua"
+      "Nước mắm, đường, chanh và tỏi ớt",
+      "Tương đen, mật ong và gừng",
+      "Dầu hào, giấm và hành phi"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -11537,11 +11537,11 @@
   },
   {
     "id": 825,
-    "question": "Đặc sản bánh tráng cuốn thịt heo nổi tiếng nhất là món ăn của tỉnh thành nào?",
+    "question": "Khi làm bánh bao, tại sao bột cần được ủ trước khi hấp?",
     "options": [
-      "Đà Nẵng",
-      "Hội An",
-      "Quảng Nam"
+      "Để bột nở xốp nhờ men hoạt động sinh khí CO2",
+      "Để bột hút thêm nước và nặng hơn",
+      "Để bột có màu trắng đẹp hơn"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -12083,11 +12083,11 @@
   },
   {
     "id": 864,
-    "question": "Đặc sản bún cá Châu Đốc là món ăn nổi tiếng của tỉnh nào ở miền Tây Nam Bộ?",
+    "question": "Trong ẩm thực, màu đỏ tự nhiên của một số món ăn Việt Nam thường đến từ nguyên liệu nào?",
     "options": [
-      "An Giang",
-      "Tiền Giang",
-      "Cần Thơ"
+      "Gấc hoặc ớt",
+      "Nghệ hoặc cà rốt",
+      "Lá dứa hoặc rong biển"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -12839,11 +12839,11 @@
   },
   {
     "id": 918,
-    "question": "Món bánh đúc lạc là đặc sản của vùng nào ở Việt Nam?",
+    "question": "Món phở bò truyền thống có nguyên liệu chính nào dưới đây?",
     "options": [
-      "Miền Bắc",
-      "Miền Trung",
-      "Miền Nam"
+      "Bánh phở và thịt bò",
+      "Bún và thịt heo",
+      "Mì và thịt gà"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -13497,13 +13497,13 @@
   },
   {
     "id": 965,
-    "question": "Món bánh canh cua là đặc sản nổi tiếng của tỉnh thành nào ở miền Trung Việt Nam?",
+    "question": "Món canh chua thường được nấu với nguyên liệu chua nào phổ biến nhất?",
     "options": [
-      "Tỉnh Trà Vinh",
-      "Tỉnh Phú Yên",
-      "Tỉnh Thừa Thiên Huế"
+      "Me hoặc cà chua",
+      "Chanh và tỏi",
+      "Giấm và ớt"
     ],
-    "answer": 2,
+    "answer": 0,
     "difficulty": "medium",
     "grade": "2-3",
     "category": "Ẩm thực",
@@ -15597,13 +15597,13 @@
   },
   {
     "id": 1115,
-    "question": "Món nào dưới đây là đặc sản nổi tiếng của tỉnh Quảng Ngãi?",
+    "question": "Món chả giò (nem rán) thường được chiên bằng gì để có lớp vỏ giòn?",
     "options": [
-      "Bánh mì que giòn",
-      "Đường phèn và kẹo gương",
-      "Mì Quảng sốt đậu phộng"
+      "Dầu ăn nóng",
+      "Nước sôi",
+      "Lò nướng"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "medium",
     "grade": "2-3",
     "category": "Ẩm thực",
@@ -17403,13 +17403,13 @@
   },
   {
     "id": 1244,
-    "question": "Trong ẩm thực, món chả cá Lã Vọng là đặc sản nổi tiếng của thành phố nào?",
+    "question": "Trong ẩm thực Việt Nam, loại rau thơm nào thường được thêm vào phở để tăng hương vị?",
     "options": [
-      "Đà Nẵng",
-      "Hà Nội",
-      "Thành phố Hồ Chí Minh"
+      "Húng quế, giá đỗ và chanh",
+      "Hành tây, cà rốt và nấm",
+      "Bắp cải, cần tây và dưa leo"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "medium",
     "grade": "4-5",
     "category": "Ẩm thực",
@@ -17571,13 +17571,13 @@
   },
   {
     "id": 1256,
-    "question": "Món bánh đa cua là đặc sản nổi tiếng của thành phố nào?",
+    "question": "Nước mắm được làm từ nguyên liệu chính nào?",
     "options": [
-      "Hà Nội",
-      "Hải Phòng",
-      "Nam Định"
+      "Cá và muối",
+      "Tôm và đường",
+      "Mực và ớt"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "easy",
     "grade": "2-3",
     "category": "Ẩm thực",
@@ -17977,13 +17977,13 @@
   },
   {
     "id": 1285,
-    "question": "Trong ẩm thực, món cao lầu là đặc sản nổi tiếng của tỉnh thành nào?",
+    "question": "Trong ẩm thực, tại sao dầu ăn không được đổ vào nồi khi dầu đã bốc khói quá nhiều?",
     "options": [
-      "Đà Nẵng",
-      "Quảng Nam - Hội An",
-      "Bình Định"
+      "Dầu quá nóng tạo ra chất độc hại và làm thức ăn có mùi khét",
+      "Dầu khói làm thức ăn mau chín hơn",
+      "Dầu quá nóng làm thức ăn không thấm gia vị"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "medium",
     "grade": "4-5",
     "category": "Ẩm thực",
@@ -18355,11 +18355,11 @@
   },
   {
     "id": 1312,
-    "question": "Hình vuông có cạnh 6cm thì diện tích bằng bao nhiêu?",
+    "question": "Trong một tuần có 7 ngày. Hai tuần có bao nhiêu ngày?",
     "options": [
-      "24cm²",
-      "36cm²",
-      "12cm²"
+      "12 ngày",
+      "14 ngày",
+      "21 ngày"
     ],
     "answer": 1,
     "difficulty": "easy",
@@ -18719,11 +18719,11 @@
   },
   {
     "id": 1338,
-    "question": "Trong ẩm thực, bánh khọt là đặc sản của tỉnh thành nào ở miền Nam Việt Nam?",
+    "question": "Trong ẩm thực, loại đường nào thường được dùng để làm nước hàng (nước màu) trong các món kho của Việt Nam?",
     "options": [
-      "Bà Rịa - Vũng Tàu",
-      "Cần Thơ",
-      "Kiên Giang"
+      "Đường cát thắng caramel",
+      "Đường thốt nốt hoà nước",
+      "Mật ong pha nước sôi"
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -19363,15 +19363,15 @@
   },
   {
     "id": 1384,
-    "question": "Trong ẩm thực, món hủ tiếu Nam Vang có nguồn gốc từ đâu?",
+    "question": "Trong ẩm thực, tại sao nước dùng phở truyền thống cần được hầm xương bò nhiều giờ ở lửa nhỏ thay vì đun sôi mạnh?",
     "options": [
-      "Cần Thơ, miền Tây Nam Bộ",
-      "Người Hoa và người Khmer ở Nam Bộ",
-      "Người Pháp mang vào Việt Nam"
+      "Đun nhỏ lửa giúp nước dùng trong và ngọt tự nhiên, đun sôi mạnh làm nước bị đục",
+      "Đun nhỏ lửa tiết kiệm gas hơn và an toàn hơn",
+      "Đun sôi mạnh làm xương bị vỡ và mất chất dinh dưỡng"
     ],
-    "answer": 1,
-    "difficulty": "medium",
-    "grade": "4-5",
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
     "category": "Ẩm thực",
     "lang": "vi"
   },
@@ -19979,13 +19979,13 @@
   },
   {
     "id": 1428,
-    "question": "Trong ẩm thực, bánh pía là đặc sản truyền thống của tỉnh nào ở miền Tây?",
+    "question": "Trong ẩm thực Việt Nam, kỹ thuật 'phi hành' có nghĩa là gì?",
     "options": [
-      "Bến Tre",
-      "Sóc Trăng",
-      "An Giang"
+      "Chiên hành trong dầu nóng cho đến khi vàng thơm",
+      "Hấp hành chín trong nồi cơm",
+      "Ngâm hành vào nước muối để khử mùi hăng"
     ],
-    "answer": 1,
+    "answer": 0,
     "difficulty": "medium",
     "grade": "4-5",
     "category": "Ẩm thực",
@@ -20996,6 +20996,2554 @@
     "answer": 1,
     "difficulty": "hard",
     "grade": "5-6",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1501,
+    "question": "Hành tinh nào trong hệ Mặt Trời có màu vàng nhạt và nhiều mây dày nhất?",
+    "options": [
+      "Sao Kim",
+      "Sao Hoả",
+      "Sao Mộc"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1502,
+    "question": "Trong vũ trụ, thiên thể nào tự phát sáng nhờ năng lượng của chính nó?",
+    "options": [
+      "Ngôi sao",
+      "Hành tinh",
+      "Vệ tinh"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1503,
+    "question": "Mặt Trăng có bề mặt như thế nào khi nhìn qua kính thiên văn?",
+    "options": [
+      "Phẳng và trơn bóng",
+      "Lồi lõm với nhiều hố và núi",
+      "Có nhiều rừng cây xanh"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1504,
+    "question": "Vì sao ban ngày ta không nhìn thấy các ngôi sao dù chúng vẫn ở đó?",
+    "options": [
+      "Sao biến mất ban ngày",
+      "Ánh sáng Mặt Trời quá sáng làm mờ ánh sao",
+      "Sao chỉ xuất hiện vào mùa đông"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1505,
+    "question": "Trong hệ Mặt Trời, hành tinh nào được gọi là 'hành tinh vòng nhẫn' nổi tiếng nhất?",
+    "options": [
+      "Sao Mộc",
+      "Sao Thổ",
+      "Sao Thiên Vương"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1506,
+    "question": "Khi nhìn lên bầu trời ban đêm, các ngôi sao trông lấp lánh vì lý do gì?",
+    "options": [
+      "Sao tự nhấp nháy theo chu kỳ",
+      "Ánh sáng sao bị khí quyển Trái Đất làm nhiễu loạn",
+      "Mắt người không nhìn rõ sao khi nhìn thẳng"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1507,
+    "question": "Trong vũ trụ, hành tinh nào được gọi là 'người anh em sinh đôi' của Trái Đất vì có kích thước tương tự?",
+    "options": [
+      "Sao Hoả",
+      "Sao Kim",
+      "Sao Thuỷ"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1508,
+    "question": "Vì sao trên Mặt Trăng không có gió, mưa hay thời tiết như Trái Đất?",
+    "options": [
+      "Mặt Trăng quá xa Mặt Trời",
+      "Mặt Trăng không có bầu khí quyển",
+      "Mặt Trăng quay quá nhanh"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1509,
+    "question": "Tại sao Trái Đất có ngày và đêm luân phiên nhau?",
+    "options": [
+      "Mặt Trời di chuyển quanh Trái Đất mỗi ngày",
+      "Trái Đất tự quay quanh trục của nó",
+      "Mặt Trăng che khuất Mặt Trời định kỳ"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1510,
+    "question": "Tại sao trên Mặt Trăng, các phi hành gia bước đi nhẹ nhàng hơn rất nhiều so với trên Trái Đất?",
+    "options": [
+      "Không khí trên Mặt Trăng nhẹ hơn",
+      "Lực hút của Mặt Trăng yếu hơn Trái Đất",
+      "Bộ đồ phi hành gia giúp họ bay lơ lửng"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1511,
+    "question": "Hành tinh nào trong hệ Mặt Trời có bề mặt nóng nhất dù không phải gần Mặt Trời nhất?",
+    "options": [
+      "Sao Hoả",
+      "Sao Kim",
+      "Sao Thuỷ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1512,
+    "question": "Trong thiên văn học, thiên thể nào được gọi là 'ngôi sao chổi' khi bay gần Mặt Trời?",
+    "options": [
+      "Tiểu hành tinh đất đá",
+      "Khối băng bụi có đuôi sáng",
+      "Mảnh vỡ từ Mặt Trăng"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1513,
+    "question": "Trên Trái Đất, Mặt Trăng trông có kích thước xấp xỉ bằng Mặt Trời vì lý do nào?",
+    "options": [
+      "Mặt Trăng và Mặt Trời thực sự có kích thước bằng nhau",
+      "Mặt Trăng nhỏ nhưng gần hơn nên trông to tương đương Mặt Trời ở xa",
+      "Mắt người không phân biệt được kích thước của vật thể ngoài vũ trụ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1514,
+    "question": "Trong hệ Mặt Trời, đai tiểu hành tinh chủ yếu nằm ở đâu?",
+    "options": [
+      "Giữa Sao Hoả và Sao Mộc",
+      "Giữa Trái Đất và Sao Hoả",
+      "Ngoài quỹ đạo Sao Hải Vương"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1515,
+    "question": "Tại sao Mặt Trời trông có màu vàng từ Trái Đất trong khi thực ra nó là ngôi sao màu trắng?",
+    "options": [
+      "Mặt Trời có lõi màu vàng",
+      "Bầu khí quyển Trái Đất tán xạ ánh sáng làm Mặt Trời trông vàng hơn",
+      "Mắt người chỉ nhìn thấy ánh sáng vàng từ Mặt Trời"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1516,
+    "question": "Trong vũ trụ, hành tinh nào có một ngày (tự quay một vòng) kéo dài tới 243 ngày Trái Đất?",
+    "options": [
+      "Sao Hoả",
+      "Sao Kim",
+      "Sao Mộc"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1517,
+    "question": "Trong thiên văn học, 'nhật thực toàn phần' xảy ra ở đâu trên Trái Đất?",
+    "options": [
+      "Toàn bộ bề mặt Trái Đất cùng một lúc",
+      "Chỉ vùng nằm trong bóng tối hoàn toàn của Mặt Trăng",
+      "Chỉ ở hai cực Bắc và Nam"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1518,
+    "question": "Hành tinh nào trong hệ Mặt Trời xa Mặt Trời nhất?",
+    "options": [
+      "Sao Thiên Vương",
+      "Sao Hải Vương",
+      "Sao Thổ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1519,
+    "question": "Trong thiên văn học, tại sao các mùa trong năm trên Trái Đất không phải do khoảng cách đến Mặt Trời?",
+    "options": [
+      "Khoảng cách Trái Đất - Mặt Trời không thay đổi trong năm",
+      "Mùa do trục Trái Đất nghiêng nên bán cầu nhận ánh sáng khác nhau",
+      "Mùa do Mặt Trăng che bớt ánh sáng Mặt Trời theo chu kỳ"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1520,
+    "question": "Trong hệ Mặt Trời, tại sao Sao Diêm Vương không còn được gọi là hành tinh kể từ năm 2006?",
+    "options": [
+      "Nó đã bị Mặt Trời hút vào và tan chảy",
+      "Nó không đáp ứng tiêu chí 'dọn sạch' quỹ đạo của Hiệp hội Thiên văn Quốc tế",
+      "Kính thiên văn mới phát hiện ra nó thực ra là một ngôi sao"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1521,
+    "question": "Trong vũ trụ, 'siêu tân tinh' là gì?",
+    "options": [
+      "Một ngôi sao mới được hình thành từ đám bụi khí",
+      "Vụ nổ khổng lồ khi một ngôi sao lớn kết thúc vòng đời",
+      "Một hành tinh khổng lồ lớn hơn Sao Mộc"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1522,
+    "question": "Trong thiên văn học, tại sao Mặt Trời được gọi là ngôi sao 'lùn vàng'?",
+    "options": [
+      "Mặt Trời nhỏ hơn và mờ hơn so với phần lớn các ngôi sao trong vũ trụ",
+      "Mặt Trời có nhiệt độ bề mặt thấp nhất trong các ngôi sao",
+      "Mặt Trời chỉ là hành tinh lớn nhất hệ của chúng ta"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1523,
+    "question": "Trong thiên văn học, 'lỗ đen' hút mọi vật xung quanh nhờ yếu tố nào?",
+    "options": [
+      "Lực từ trường cực mạnh",
+      "Lực hấp dẫn cực lớn do khối lượng khổng lồ",
+      "Nhiệt độ cực thấp hút vật chất vào trong"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1524,
+    "question": "Trong hệ Mặt Trời, tại sao Sao Mộc không trở thành ngôi sao dù là hành tinh lớn nhất?",
+    "options": [
+      "Sao Mộc không đủ khối lượng để kích hoạt phản ứng hạt nhân bên trong",
+      "Sao Mộc quay quanh Mặt Trời nên không thể là ngôi sao",
+      "Sao Mộc không có đủ khí hydro để tạo ra ánh sáng"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1525,
+    "question": "Trạm vũ trụ quốc tế ISS bay quanh Trái Đất ở độ cao nào và mất bao lâu để đi một vòng?",
+    "options": [
+      "Khoảng 400km, mất khoảng 90 phút một vòng",
+      "Khoảng 4.000km, mất khoảng 12 giờ một vòng",
+      "Khoảng 40.000km, mất đúng 24 giờ một vòng"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1526,
+    "question": "Trong vũ trụ, ánh sáng từ Mặt Trời mất bao lâu để đến Trái Đất?",
+    "options": [
+      "Khoảng 8 phút",
+      "Khoảng 8 giờ",
+      "Khoảng 8 giây"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1527,
+    "question": "Tại sao khi quan sát bầu trời, các hành tinh trong hệ Mặt Trời trông sáng hơn hầu hết các ngôi sao?",
+    "options": [
+      "Hành tinh tự phát sáng mạnh hơn ngôi sao",
+      "Hành tinh gần Trái Đất hơn và phản chiếu ánh Mặt Trời",
+      "Hành tinh có kích thước lớn hơn ngôi sao"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1528,
+    "question": "Trong thiên văn học, tại sao khi nhìn vào các ngôi sao xa xôi, chúng ta thực chất đang nhìn vào quá khứ?",
+    "options": [
+      "Kính thiên văn làm chậm hình ảnh của các thiên thể",
+      "Ánh sáng từ ngôi sao mất hàng nghìn năm để đến mắt ta",
+      "Vũ trụ không có thời gian tuyệt đối như trên Trái Đất"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1529,
+    "question": "Trong thiên văn học, tại sao Sao Kim dù gần Mặt Trời hơn Sao Thuỷ lại có bề mặt nóng hơn?",
+    "options": [
+      "Sao Kim lớn hơn nên giữ nhiều nhiệt hơn",
+      "Lớp khí CO2 dày tạo hiệu ứng nhà kính cực mạnh giữ nhiệt",
+      "Sao Kim quay chậm nên mặt ban ngày tích nhiệt lâu hơn"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1530,
+    "question": "Trong thiên văn học, hiện tượng gì xảy ra khi hai thiên hà va chạm nhau?",
+    "options": [
+      "Tất cả các ngôi sao trong hai thiên hà đều đâm vào nhau",
+      "Hai thiên hà xuyên qua nhau phần lớn do khoảng cách giữa các ngôi sao rất lớn",
+      "Vụ nổ lớn tiêu diệt toàn bộ hai thiên hà ngay lập tức"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1531,
+    "question": "Trong thiên văn học, tại sao vũ trụ được cho là đang giãn nở và không phải đang co lại?",
+    "options": [
+      "Các nhà khoa học quan sát ánh sáng các thiên hà xa bị dịch chuyển về phía đỏ",
+      "Nhiệt độ vũ trụ đang tăng dần theo thời gian",
+      "Số lượng ngôi sao trong vũ trụ tăng lên mỗi năm"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "Vũ trụ",
+    "lang": "vi"
+  },
+  {
+    "id": 1532,
+    "question": "Thiết bị nào dùng để nghe nhạc hoặc cuộc gọi qua tai?",
+    "options": [
+      "Tai nghe",
+      "Loa ngoài",
+      "Màn hình"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1533,
+    "question": "Nút nào trên bàn phím máy tính dùng để xoá chữ vừa gõ?",
+    "options": [
+      "Enter",
+      "Backspace",
+      "Space"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1534,
+    "question": "Máy in dùng để làm gì?",
+    "options": [
+      "In chữ và hình ảnh ra giấy",
+      "Chụp ảnh và lưu vào máy",
+      "Kết nối máy tính với internet"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1535,
+    "question": "Pin điện thoại sắp hết thì em cần làm gì?",
+    "options": [
+      "Cắm sạc điện thoại",
+      "Tắt máy và vứt pin đi",
+      "Lắc điện thoại để pin dùng được lâu hơn"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1536,
+    "question": "Thiết bị nào dùng để chụp ảnh và quay phim?",
+    "options": [
+      "Máy in",
+      "Máy ảnh hoặc điện thoại có camera",
+      "Màn hình máy tính"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1537,
+    "question": "Khi điện thoại báo 'hết bộ nhớ', điều đó có nghĩa là gì?",
+    "options": [
+      "Pin điện thoại sắp hết",
+      "Không còn chỗ lưu thêm ảnh hoặc ứng dụng",
+      "Điện thoại bị hỏng và cần sửa chữa"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1538,
+    "question": "Biểu tượng wifi trên điện thoại cho biết điều gì?",
+    "options": [
+      "Điện thoại đang sạc pin",
+      "Điện thoại đang kết nối mạng không dây",
+      "Điện thoại đang chụp ảnh"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1539,
+    "question": "Khi muốn tìm một bài hát trên điện thoại, em dùng tính năng gì?",
+    "options": [
+      "Tìm kiếm hoặc search",
+      "Chụp ảnh màn hình",
+      "Cài đặt âm lượng"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1540,
+    "question": "Tại sao không nên chia sẻ mật khẩu của mình với bạn bè?",
+    "options": [
+      "Bạn bè có thể dùng tài khoản của em mà không có phép",
+      "Mật khẩu sẽ tự đổi khi bị chia sẻ",
+      "Điện thoại sẽ bị hỏng nếu ai khác biết mật khẩu"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1541,
+    "question": "Khi nhận được tin nhắn từ người lạ trên điện thoại, em nên làm gì?",
+    "options": [
+      "Trả lời và kết bạn ngay",
+      "Cho bố mẹ xem và hỏi ý kiến",
+      "Ấn vào các đường dẫn trong tin nhắn để xem"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1542,
+    "question": "Tại sao không nên nhìn màn hình điện thoại trong phòng tối?",
+    "options": [
+      "Màn hình phát ra ánh sáng có hại cho mắt trong bóng tối",
+      "Điện thoại sẽ tự tắt khi ở nơi tối",
+      "Pin sẽ hết nhanh hơn khi dùng trong bóng tối"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1543,
+    "question": "Khi bố mẹ quy định giờ dùng điện thoại, em nên làm gì?",
+    "options": [
+      "Tìm cách dùng lén sau giờ quy định",
+      "Tôn trọng giờ giấc bố mẹ đặt ra",
+      "Tranh cãi để được dùng thêm giờ"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1544,
+    "question": "Tại sao không nên dùng điện thoại trong bữa ăn gia đình?",
+    "options": [
+      "Sóng điện thoại làm thức ăn bị nguội nhanh",
+      "Bữa ăn là thời gian quý để trò chuyện cùng gia đình",
+      "Điện thoại có thể bị rơi vào thức ăn"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1545,
+    "question": "Khi thấy quảng cáo trên điện thoại hứa cho tiền nếu nhấp vào, em nên làm gì?",
+    "options": [
+      "Nhấp vào vì tiền thật sẽ được chuyển vào tài khoản",
+      "Bỏ qua hoặc hỏi người lớn vì có thể là lừa đảo",
+      "Chia sẻ cho bạn bè cùng nhấp để được nhiều tiền hơn"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1546,
+    "question": "Tại sao máy tính cần được cập nhật phần mềm thường xuyên?",
+    "options": [
+      "Cập nhật làm máy tính trông đẹp hơn",
+      "Cập nhật sửa lỗi và tăng cường bảo mật cho máy",
+      "Cập nhật giúp máy tính tiêu thụ ít điện hơn"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1547,
+    "question": "Khi dùng máy tính bảng của trường, em không được tự ý làm điều gì?",
+    "options": [
+      "Dùng để tra cứu bài học",
+      "Cài thêm ứng dụng khi chưa được phép",
+      "Lưu tài liệu học tập vào máy"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1548,
+    "question": "Tại sao khi chơi game quá nhiều, một số trẻ em khó ngủ vào ban đêm?",
+    "options": [
+      "Game làm não bộ hưng phấn và ánh sáng xanh màn hình ức chế hormone ngủ",
+      "Game tạo ra tiếng ồn làm khó ngủ",
+      "Mắt mỏi sau khi chơi game làm trẻ không muốn nhắm mắt"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1549,
+    "question": "Vì sao robot có thể làm một số việc nhanh hơn và chính xác hơn con người?",
+    "options": [
+      "Robot thông minh hơn con người và biết suy nghĩ",
+      "Robot không mệt mỏi và thực hiện đúng lệnh lập trình liên tục",
+      "Robot có nhiều tay hơn con người nên làm được nhiều việc cùng lúc"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1550,
+    "question": "Khi em chụp ảnh và đăng lên mạng, bức ảnh đó có thể xảy ra điều gì mà em không kiểm soát được?",
+    "options": [
+      "Ảnh tự xoá sau 24 giờ nếu không ai xem",
+      "Người khác có thể lưu, chia sẻ hoặc chỉnh sửa ảnh đó",
+      "Ảnh chỉ được lưu trên điện thoại của em mà thôi"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1551,
+    "question": "Tại sao trí tuệ nhân tạo trong ứng dụng học tập có thể đề xuất bài phù hợp với từng học sinh?",
+    "options": [
+      "Vì AI phân tích bài làm trước đó để hiểu điểm mạnh và yếu của em",
+      "Vì AI chọn ngẫu nhiên bài từ kho câu hỏi sẵn có",
+      "Vì AI hỏi trực tiếp giáo viên để biết em cần học gì"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1552,
+    "question": "Khi ứng dụng trên điện thoại yêu cầu quyền truy cập vị trí liên tục dù không cần thiết, em nên làm gì?",
+    "options": [
+      "Chấp nhận vì đây là yêu cầu bắt buộc",
+      "Từ chối hoặc chỉ cho phép khi đang dùng app",
+      "Gỡ cài đặt ngay lập tức dù app đang cần dùng"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1553,
+    "question": "Trong công nghệ, 'đám mây' (cloud) dùng để lưu dữ liệu có nghĩa là gì?",
+    "options": [
+      "Dữ liệu được lưu trên các máy chủ kết nối internet ở xa",
+      "Dữ liệu bay lơ lửng trong không khí và được tải về khi cần",
+      "Dữ liệu chỉ tồn tại khi máy tính đang bật"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1554,
+    "question": "Trong công nghệ, 'phần mềm độc hại' (malware) có thể xâm nhập vào máy tính qua đường nào phổ biến nhất?",
+    "options": [
+      "Qua cắm sạc điện thoại vào ổ cắm điện",
+      "Qua tệp đính kèm email lạ hoặc trang web không an toàn",
+      "Qua tiếng ồn hoặc sóng âm thanh môi trường xung quanh"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1555,
+    "question": "Trong công nghệ, tại sao các trang web thương mại điện tử sử dụng giao thức HTTPS thay vì HTTP?",
+    "options": [
+      "HTTPS giúp trang web tải nhanh hơn HTTP",
+      "HTTPS mã hoá dữ liệu truyền đi giúp bảo vệ thông tin người dùng",
+      "HTTPS cho phép trang web hiển thị nhiều màu sắc hơn HTTP"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1556,
+    "question": "Trong công nghệ, thuật toán của mạng xã hội thường ưu tiên hiển thị nội dung nào cho người dùng?",
+    "options": [
+      "Nội dung mới nhất theo thứ tự thời gian tuyệt đối",
+      "Nội dung người dùng tương tác nhiều và xem lâu nhất",
+      "Nội dung do các tài khoản có nhiều người theo dõi nhất đăng"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1557,
+    "question": "Trong công nghệ, 'deepfake' gây nguy hiểm như thế nào trong đời sống xã hội?",
+    "options": [
+      "Deepfake làm chậm tốc độ internet toàn cầu",
+      "Deepfake tạo video giả chân thực có thể lan truyền thông tin sai lệch và gây hại",
+      "Deepfake chỉ ảnh hưởng đến thiết bị cũ và lạc hậu"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1558,
+    "question": "Trong công nghệ, tại sao việc sử dụng mạng Wifi công cộng để đăng nhập tài khoản ngân hàng là nguy hiểm?",
+    "options": [
+      "Wifi công cộng có tốc độ chậm làm lỗi giao dịch",
+      "Kẻ xấu có thể chặn và đọc dữ liệu không được mã hoá trên mạng không an toàn",
+      "Wifi công cộng tự động xoá dữ liệu sau khi ngắt kết nối"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1559,
+    "question": "Khi chụp ảnh bằng điện thoại, 'độ phân giải' cao có nghĩa là gì?",
+    "options": [
+      "Ảnh có kích thước tệp nhỏ hơn",
+      "Ảnh có nhiều điểm ảnh hơn, sắc nét và chi tiết hơn",
+      "Ảnh được chụp nhanh hơn"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Công nghệ",
+    "lang": "vi"
+  },
+  {
+    "id": 1560,
+    "question": "Món canh bí đỏ thường được nấu với nguyên liệu nào phổ biến nhất?",
+    "options": [
+      "Thịt heo hoặc tôm",
+      "Thịt bò và khoai tây",
+      "Cá biển và rau muống"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1561,
+    "question": "Bánh mì Việt Nam có vỏ ngoài như thế nào khi mới ra lò?",
+    "options": [
+      "Mềm và dẻo",
+      "Giòn và vàng",
+      "Cứng và dày"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1562,
+    "question": "Vì sao bún bò Huế có vị cay hơn phở?",
+    "options": [
+      "Công thức Huế truyền thống dùng nhiều sả và ớt hơn",
+      "Bún sợi to hơn bánh phở nên cần gia vị mạnh hơn",
+      "Người Huế không dùng đường trong nước dùng"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1563,
+    "question": "Món cháo gà thường được nấu bằng cách nào để nước cháo ngọt tự nhiên?",
+    "options": [
+      "Hầm xương và thịt gà lâu với lửa nhỏ",
+      "Dùng bột nêm thay nước hầm",
+      "Cho nhiều muối vào từ đầu"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1564,
+    "question": "Trong ẩm thực, vì sao rau sống như giá đỗ và húng quế thường được ăn kèm phở thay vì nấu cùng?",
+    "options": [
+      "Rau sống giữ được vitamin và độ giòn tươi khi không đun nóng",
+      "Rau nấu chín sẽ làm đục nước dùng phở",
+      "Quy định của nhà hàng không cho phép nấu rau cùng phở"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1565,
+    "question": "Trong ẩm thực Việt Nam, 'kho tộ' là cách chế biến như thế nào?",
+    "options": [
+      "Ninh thịt hoặc cá trong nước dừa và gia vị cho cạn nước",
+      "Chiên ngập dầu đến vàng giòn",
+      "Hấp thức ăn trong nồi kín với hơi nước"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1566,
+    "question": "Trong ẩm thực, tại sao cơm gạo tẻ nấu ngon hơn khi vo gạo nhẹ tay và không vo quá kỹ?",
+    "options": [
+      "Vo kỹ làm mất lớp tinh bột ngoài giúp hạt cơm bóng dẻo",
+      "Vo kỹ làm gạo hút thêm nước và cơm bị nhão",
+      "Vo nhẹ giúp gạo chín đều hơn từ ngoài vào trong"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1567,
+    "question": "Trong ẩm thực, nguyên liệu nào tạo ra màu vàng đặc trưng cho bánh xèo miền Nam?",
+    "options": [
+      "Nghệ tươi cho vào bột bánh",
+      "Nước cốt dừa nấu chín có màu vàng",
+      "Lòng đỏ trứng gà trộn vào bột"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1568,
+    "question": "Trong ẩm thực, tại sao nem (chả giò) sau khi chiên vàng cần để ráo dầu trên giấy thấm?",
+    "options": [
+      "Dầu thừa làm nem mất giòn nhanh hơn và thêm lượng chất béo không cần thiết",
+      "Giấy thấm hút gia vị làm nem có vị đậm đà hơn",
+      "Dầu nóng sẽ làm rách nhân nếu không để ráo ngay"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1569,
+    "question": "Trong ẩm thực, loại gạo nào thường được dùng để nấu cơm hàng ngày tại Việt Nam?",
+    "options": [
+      "Gạo tẻ",
+      "Gạo nếp",
+      "Gạo lứt"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1570,
+    "question": "Trong ẩm thực Việt Nam, 'nước cốt dừa' được lấy từ đâu?",
+    "options": [
+      "Nước bên trong quả dừa tươi",
+      "Dừa già nạo vắt lấy nước",
+      "Nước nấu từ lá dừa xanh"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1571,
+    "question": "Trong ẩm thực, 'ngũ vị hương' là hỗn hợp của bao nhiêu loại gia vị?",
+    "options": [
+      "Ba loại",
+      "Năm loại",
+      "Bảy loại"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1572,
+    "question": "Trong ẩm thực Việt Nam, nước tương và nước mắm khác nhau ở điểm nào chính?",
+    "options": [
+      "Nước tương làm từ đậu nành, nước mắm làm từ cá",
+      "Nước tương mặn hơn và có màu đen",
+      "Nước mắm dùng để nấu còn nước tương chỉ dùng để chấm"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1573,
+    "question": "Trong ẩm thực, món 'lẩu' phổ biến ở Việt Nam có đặc điểm gì khác các món ăn thông thường?",
+    "options": [
+      "Thức ăn được nhúng và nấu chín ngay tại bàn ăn trong nồi nước dùng nóng",
+      "Món lẩu chỉ dùng rau không dùng thịt hay hải sản",
+      "Nước dùng lẩu không thêm gia vị mà chỉ dùng nước sôi"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1574,
+    "question": "Trong ẩm thực, 'hạt nêm' khác 'bột ngọt' ở điểm nào?",
+    "options": [
+      "Hạt nêm có thêm thành phần từ thịt hoặc xương, bột ngọt là mì chính nguyên chất",
+      "Hạt nêm có màu trắng còn bột ngọt có màu vàng",
+      "Bột ngọt mặn hơn hạt nêm và dùng với lượng nhiều hơn"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1575,
+    "question": "Trong ẩm thực, tại sao thịt muối chua (như nem chua) bảo quản được lâu hơn thịt tươi?",
+    "options": [
+      "Môi trường axit từ quá trình lên men ức chế vi khuẩn gây hỏng thức ăn",
+      "Muối hút hết nước trong thịt làm vi khuẩn không sống được",
+      "Lá gói nem chua có chất kháng khuẩn tự nhiên bảo vệ thịt"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1576,
+    "question": "Trong ẩm thực, tại sao chanh nên vắt vào món ăn ngay trước khi ăn thay vì trong quá trình nấu?",
+    "options": [
+      "Nhiệt độ cao phá vỡ vitamin C và làm bay hơi hương thơm của chanh",
+      "Chanh nấu lâu làm đắng món ăn do tinh dầu vỏ tan vào nước",
+      "Chanh sẽ làm cứng thịt nếu tiếp xúc với nhiệt độ cao lâu"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1577,
+    "question": "Trong ẩm thực, tại sao món ăn được ướp gia vị trước khi nấu thường ngon hơn nêm gia vị khi nấu?",
+    "options": [
+      "Ướp trước giúp gia vị ngấm sâu vào thớ thịt, tạo hương vị đậm đà hơn",
+      "Ướp trước làm thịt mềm hơn do gia vị phá vỡ tế bào",
+      "Nêm khi nấu làm mất vitamin trong rau củ đi kèm"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1578,
+    "question": "Trong ẩm thực, tại sao một số món ăn Việt Nam dùng lá chuối để gói thay vì hộp nhựa?",
+    "options": [
+      "Lá chuối kháng khuẩn nhẹ, giữ ẩm và truyền hương thơm tự nhiên cho thực phẩm",
+      "Lá chuối rẻ hơn hộp nhựa và dễ kiếm ở nông thôn",
+      "Hộp nhựa không chịu được nhiệt độ hấp nên phải dùng lá chuối"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1579,
+    "question": "Trong ẩm thực, tại sao thịt bò nhúng giấm chín nhanh hơn thịt bò nấu canh thông thường?",
+    "options": [
+      "Axit acetic trong giấm làm biến tính protein thịt bò ở nhiệt độ thấp hơn",
+      "Giấm có nhiệt độ sôi cao hơn nước làm chín thịt nhanh hơn",
+      "Thịt bò nhúng giấm được thái mỏng hơn nên chín nhanh hơn"
+    ],
+    "answer": 2,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1580,
+    "question": "Trong ẩm thực, tại sao thêm một chút muối vào nước luộc rau giúp rau xanh bóng hơn?",
+    "options": [
+      "Muối tăng nhiệt độ sôi giúp rau chín nhanh và giữ màu diệp lục",
+      "Muối phá huỷ enzyme làm đổi màu rau",
+      "Muối làm cứng tế bào rau giúp giữ màu xanh lâu hơn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1581,
+    "question": "Trong ẩm thực, kỹ thuật 'blanching' (chần nhanh) rau củ vào nước sôi rồi ngâm ngay vào nước đá có tác dụng gì?",
+    "options": [
+      "Dừng quá trình nấu ngay lập tức, giữ màu sắc tươi và kết cấu giòn của rau",
+      "Khử trùng rau hoàn toàn để an toàn khi ăn sống",
+      "Làm mềm rau để dễ tiêu hoá hơn khi ăn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1582,
+    "question": "Trong ẩm thực, tại sao thịt kho cần đun lửa nhỏ trong thời gian dài thay vì đun lửa to cho nhanh?",
+    "options": [
+      "Lửa nhỏ làm collagen trong thịt chuyển thành gelatin từ từ, tạo nước sốt sánh và thịt mềm",
+      "Lửa to làm cháy gia vị bên ngoài trước khi thịt kịp chín bên trong",
+      "Lửa nhỏ giúp tiết kiệm gas và tránh làm cạn nước kho nhanh"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1583,
+    "question": "Trong ẩm thực, tại sao gỏi (salad Việt Nam) thường được trộn và ăn ngay thay vì để lâu?",
+    "options": [
+      "Rau héo nhanh và nước tiết ra làm loãng nước trộn, mất độ giòn và hương vị",
+      "Gỏi để lâu sẽ bị cay hơn do ớt tiếp tục thôi chất cay",
+      "Nước mắm trong gỏi lên men thành rượu nếu để quá 30 phút"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1584,
+    "question": "Trong ẩm thực, hiện tượng 'thịt nghỉ' sau khi nướng trước khi cắt có tác dụng gì?",
+    "options": [
+      "Nước trong thịt phân bổ lại đều khắp, thịt mềm và ngọt hơn khi cắt",
+      "Thịt nguội bớt để tránh bỏng tay khi cắt",
+      "Thịt cứng lại giúp dễ cắt thành lát mỏng đẹp hơn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1585,
+    "question": "Trong bóng đá, cầu thủ nào đứng trong khung thành để cản bóng?",
+    "options": [
+      "Tiền đạo",
+      "Thủ môn",
+      "Hậu vệ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1586,
+    "question": "Môn thể thao nào dùng cung và tên để bắn vào bia?",
+    "options": [
+      "Bắn súng",
+      "Bắn cung",
+      "Ném lao"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1587,
+    "question": "Trong môn bơi lội, khi bơi ếch hai tay làm động tác gì?",
+    "options": [
+      "Kéo ra hai bên rồi đẩy về phía trước",
+      "Quay vòng tròn lần lượt hai tay",
+      "Vỗ xuống nước cùng lúc như cánh chim"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1588,
+    "question": "Trong thể thao, khi chạy bộ thì bộ phận nào của bàn chân tiếp đất trước để tránh chấn thương?",
+    "options": [
+      "Gót chân",
+      "Phần giữa hoặc mũi chân",
+      "Ngón chân"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1589,
+    "question": "Môn thể thao nào mà vận động viên trượt trên băng dùng gậy để đẩy bóng vào lưới?",
+    "options": [
+      "Khúc côn cầu trên băng",
+      "Bóng chuyền",
+      "Quần vợt"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1590,
+    "question": "Trong cầu lông, quả cầu được làm từ vật liệu nào?",
+    "options": [
+      "Cao su và vải",
+      "Lông vũ và nút gỗ hoặc nhựa",
+      "Nhựa cứng toàn bộ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1591,
+    "question": "Môn thể thao nào dùng vợt để đánh bóng qua lưới trên sân đất nện hoặc cỏ?",
+    "options": [
+      "Cầu lông",
+      "Quần vợt",
+      "Bóng bàn"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1592,
+    "question": "Trong thể thao, 'khởi động' trước khi tập luyện có tác dụng gì?",
+    "options": [
+      "Làm mệt cơ thể trước để tập ít hơn",
+      "Làm nóng cơ và khớp, giúp tránh bị chấn thương",
+      "Giúp cơ thể quen với việc dừng lại sau khi tập"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1593,
+    "question": "Trong bóng đá, trận đấu chính thức có mấy cầu thủ mỗi đội trên sân?",
+    "options": [
+      "9 người",
+      "11 người",
+      "13 người"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1594,
+    "question": "Trong thể thao, huy chương vàng Olympic được trao cho ai?",
+    "options": [
+      "Người về nhì trong cuộc thi",
+      "Người giành vị trí cao nhất - vô địch",
+      "Người phá kỷ lục thế giới"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1595,
+    "question": "Trong môn bơi lội, bơi tự do thường dùng kiểu bơi nào vì nhanh nhất?",
+    "options": [
+      "Bơi ngửa",
+      "Bơi bướm",
+      "Bơi trườn sấp"
+    ],
+    "answer": 2,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1596,
+    "question": "Môn thể thao nào mà mỗi vận động viên thi đấu 3 nội dung liên tiếp là bơi, đạp xe và chạy bộ?",
+    "options": [
+      "Triathlon",
+      "Decathlon",
+      "Biathlon"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1597,
+    "question": "Trong bóng đá, 'cú sút phạt trực tiếp' xảy ra sau lỗi vi phạm ở đâu?",
+    "options": [
+      "Ngoài vòng cấm địa",
+      "Trong vòng cấm địa của đội phòng thủ",
+      "Ở giữa sân"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1598,
+    "question": "Trong thể thao điền kinh, nội dung nào yêu cầu vận động viên chạy qua các thanh chắn trên đường đua?",
+    "options": [
+      "Chạy tiếp sức",
+      "Chạy vượt rào",
+      "Nhảy xa"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1599,
+    "question": "Trong cờ vua, quân tốt (chốt) chỉ tiến được theo hướng nào?",
+    "options": [
+      "Lùi về phía sau",
+      "Tiến thẳng về phía trước, ăn quân theo đường chéo",
+      "Đi ngang sang trái hoặc phải"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1600,
+    "question": "Olympic được tổ chức mấy năm một lần?",
+    "options": [
+      "Hai năm",
+      "Bốn năm",
+      "Sáu năm"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1601,
+    "question": "Trong bóng đá, 'luật việt vị' không cho phép điều gì?",
+    "options": [
+      "Cầu thủ nhận bóng khi đứng phía sau hàng thủ cuối cùng của đối phương lúc bóng được chuyền",
+      "Cầu thủ chạm tay vào bóng trong vòng cấm",
+      "Thủ môn cầm bóng quá 6 giây trong vòng cấm"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1602,
+    "question": "Trong thể thao, tại sao vận động viên cần uống nước đều đặn khi tập luyện dù chưa khát?",
+    "options": [
+      "Cảm giác khát xuất hiện trễ hơn khi cơ thể đã mất 1-2% lượng nước, ảnh hưởng hiệu suất",
+      "Uống nước giúp cơ bắp to hơn sau mỗi buổi tập",
+      "Nước giúp cơ thể hấp thu hết oxy trong không khí khi tập"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1603,
+    "question": "Trong bơi lội thi đấu, tại sao vận động viên mặc đồ bơi bó sát và đội mũ bơi?",
+    "options": [
+      "Giảm lực cản của nước để bơi nhanh hơn",
+      "Quy định bắt buộc của ban tổ chức không liên quan đến tốc độ",
+      "Giữ ấm cơ thể trong bể bơi có nước lạnh"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1604,
+    "question": "Trong điền kinh, vì sao vận động viên nhảy xa cần chạy đà nhanh trước khi bật nhảy?",
+    "options": [
+      "Tốc độ chạy đà chuyển thành lực bật lên giúp nhảy xa hơn",
+      "Chạy đà nhanh giúp vận động viên không bị việt vị",
+      "Luật thi đấu quy định phải chạy đà tối thiểu 30m"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1605,
+    "question": "Trong SEA Games, Việt Nam thường giành nhiều huy chương nhất ở các môn nào?",
+    "options": [
+      "Bơi lội, điền kinh và các môn võ thuật",
+      "Đua xe đạp, trượt băng và thể dục dụng cụ",
+      "Bóng chày, khúc côn cầu và polo"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1606,
+    "question": "Trong cầu lông, khi thi đấu đôi (đánh đôi), sân rộng hơn hay hẹp hơn so với đánh đơn?",
+    "options": [
+      "Sân đôi rộng hơn ở hai bên, dùng thêm phần biên ngoài",
+      "Sân đôi hẹp hơn để hai người không va nhau",
+      "Sân đôi và đơn hoàn toàn giống nhau"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1607,
+    "question": "Trong thể thao, tại sao vận động viên chạy 400m thường xuất phát ở các ô khác nhau trên đường đua cong?",
+    "options": [
+      "Bù trừ độ dài đường chạy để mỗi người chạy đúng 400m dù ở làn khác nhau",
+      "Tránh va chạm giữa các vận động viên lúc xuất phát",
+      "Giúp trọng tài dễ quan sát từng vận động viên hơn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1608,
+    "question": "Trong thể thao, tại sao vận động viên nhảy sào hiện đại đạt độ cao vượt trội so với cách đây 100 năm?",
+    "options": [
+      "Sào hiện đại bằng sợi carbon dự trữ và giải phóng năng lượng đàn hồi hiệu quả hơn",
+      "Vận động viên hiện đại được ăn uống tốt hơn nên khỏe mạnh hơn",
+      "Quy tắc thi đấu hiện đại cho phép dùng đệm cao hơn giảm chấn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1609,
+    "question": "Trong an toàn giao thông, biển báo hình tam giác viền đỏ có chữ 'STOP' có nghĩa là gì?",
+    "options": [
+      "Giảm tốc độ xuống còn 30km/h",
+      "Dừng hẳn và nhường đường cho xe khác trước khi đi tiếp",
+      "Dừng lại chờ đèn xanh bật sáng"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1610,
+    "question": "Khi đi xe đạp vào khu dân cư, em phát hiện trẻ nhỏ đang chạy ra từ ngõ hẹp, em nên làm gì?",
+    "options": [
+      "Bấm chuông liên tục và vẫn giữ tốc độ",
+      "Giảm tốc độ và chuẩn bị phanh ngay, ưu tiên an toàn cho trẻ",
+      "Đánh lái sang làn ngược chiều để tránh"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1611,
+    "question": "Trong an toàn giao thông, khi đi bộ cùng nhóm bạn trên đường vắng không có vỉa hè, em nên đi thành hàng như thế nào?",
+    "options": [
+      "Đi hàng ngang dàn rộng để dễ trò chuyện",
+      "Đi hàng dọc sát mép đường, quay mặt về hướng xe đến",
+      "Đi giữa đường để xe thấy và tránh"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1612,
+    "question": "Trong an toàn giao thông, tại sao người ngồi sau xe máy cũng bắt buộc phải đội mũ bảo hiểm?",
+    "options": [
+      "Người sau ngã dễ bị đầu va vào mặt đường hoặc xe khác với lực tương đương người lái",
+      "Quy định chỉ để đồng bộ ngoại hình, không ảnh hưởng mức độ nguy hiểm",
+      "Người sau không cần mũ vì được người lái che chắn phía trước"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1613,
+    "question": "Trong an toàn giao thông, tại sao không nên vừa đi bộ vừa nhìn điện thoại dù đang đi trên vỉa hè?",
+    "options": [
+      "Mất tập trung vào môi trường xung quanh, không nhận ra nguy hiểm kịp thời",
+      "Điện thoại sẽ mất sóng khi di chuyển",
+      "Quy định giao thông cấm dùng điện thoại ở mọi nơi công cộng"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1614,
+    "question": "Trong an toàn giao thông, 'vùng mù' của xe tải là gì và tại sao nguy hiểm?",
+    "options": [
+      "Vùng tài xế không nhìn thấy dù nhìn gương, người/xe trong vùng này dễ bị tai nạn",
+      "Vùng đèn pha xe tải không chiếu sáng được vào ban đêm",
+      "Làn đường ưu tiên xe tải mà xe khác không được vào"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1615,
+    "question": "Trong an toàn giao thông, tại sao không nên dừng xe hoặc đứng ở dải phân cách giữa đường cao tốc?",
+    "options": [
+      "Xe chạy tốc độ cao không kịp phản ứng, nguy cơ tai nạn rất cao",
+      "Dải phân cách là tài sản nhà nước không được phép đứng lên",
+      "Đứng dải phân cách làm hỏng kết cấu đường"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1616,
+    "question": "Trong an toàn giao thông, khi thấy đèn vàng nhấp nháy tại ngã tư vào ban đêm, xe cộ cần làm gì?",
+    "options": [
+      "Giảm tốc độ và quan sát kỹ trước khi qua ngã tư",
+      "Dừng hẳn như đèn đỏ và chờ đèn xanh",
+      "Tăng tốc nhanh để vượt qua trước khi có xe khác"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1617,
+    "question": "Trong an toàn giao thông, tại sao xe cần giảm tốc độ khi đến gần trường học dù không có biển báo?",
+    "options": [
+      "Trẻ em có thể chạy ra đường bất ngờ và phản xạ chưa tốt bằng người lớn",
+      "Đường gần trường thường bị lún nên xe dễ hỏng khi đi nhanh",
+      "Quy định giao thông yêu cầu 0km/h trong bán kính 100m quanh trường"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1618,
+    "question": "Trong an toàn giao thông, tại sao khoảng cách an toàn giữa các xe tăng lên khi tốc độ tăng?",
+    "options": [
+      "Quãng đường phanh tăng theo bình phương tốc độ, xe nhanh hơn cần đường dừng dài hơn nhiều",
+      "Tốc độ cao làm mờ tầm nhìn của tài xế",
+      "Xe chạy nhanh tiêu thụ nhiều nhiên liệu nên cần thêm không gian để ổn định"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1619,
+    "question": "Trong an toàn giao thông, tại sao không nên vượt xe ô tô ở bên phải trong điều kiện giao thông Việt Nam?",
+    "options": [
+      "Tài xế ô tô ít kiểm tra gương phải và bên phải thường là lề đường hoặc vỉa hè nguy hiểm hơn",
+      "Luật giao thông Việt Nam cấm tuyệt đối mọi hành vi vượt bên phải",
+      "Xe bên phải luôn có tốc độ cao hơn nên không vượt được"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1620,
+    "question": "Trong an toàn giao thông, hiệu ứng 'aquaplaning' xảy ra khi nào và nguy hiểm thế nào?",
+    "options": [
+      "Lốp xe mất tiếp xúc với đường do màng nước mỏng, mất kiểm soát tay lái",
+      "Phanh quá mạnh làm lốp bị khoá, xe mất lái trên đường ướt",
+      "Kính chắn gió bị đọng sương làm tầm nhìn tài xế bị che khuất"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1621,
+    "question": "Trong an toàn giao thông, tại sao không nên sử dụng điện thoại cầm tay khi lái xe dù chỉ vài giây?",
+    "options": [
+      "Phản xạ chậm đi đáng kể và mắt rời đường dù ngắn gây nguy hiểm tương đương lái xe say rượu",
+      "Sóng điện thoại làm nhiễu hệ thống điện của xe",
+      "Điện thoại làm phân tâm âm thanh không ảnh hưởng đến tầm nhìn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1622,
+    "question": "Trong an toàn giao thông, tại sao xe buýt khi dừng đón khách cần bật đèn cảnh báo nguy hiểm?",
+    "options": [
+      "Cảnh báo xe phía sau giảm tốc vì xe đang dừng bất thường và người có thể băng qua đường",
+      "Quy định bắt buộc bật đèn mỗi khi xe buýt dừng quá 10 giây",
+      "Đèn cảnh báo giúp hành khách biết đây là điểm đúng để xuống xe"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1623,
+    "question": "Trong an toàn giao thông, tại sao người đi xe đạp nên tránh đi vào vùng song song sát bên xe tải lớn?",
+    "options": [
+      "Xe tải khi rẽ có bán kính quẹt lớn và tài xế không nhìn thấy người trong vùng mù bên hông",
+      "Xe tải phát nhiệt lớn có thể làm nổ lốp xe đạp khi đi gần",
+      "Quy định giao thông cấm xe đạp đi trong phạm vi 5m cạnh xe tải"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1624,
+    "question": "Trong an toàn giao thông, tại sao không nên đi xe đạp điện quá tốc độ quy định dù đường vắng?",
+    "options": [
+      "Tốc độ cao giảm khả năng phản ứng và tăng lực va chạm khi tai nạn xảy ra dù bất ngờ",
+      "Xe đạp điện hao pin nhanh hơn khi đi tốc độ cao",
+      "Đường vắng thường có ổ gà ẩn gây nguy hiểm hơn đường đông"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1625,
+    "question": "Trong an toàn giao thông, tại sao người đi bộ nên bước qua đường từng bước và giữ tốc độ đều thay vì chạy nhanh qua?",
+    "options": [
+      "Tốc độ đều giúp tài xế dự đoán vị trí của người đi bộ và điều chỉnh tốc độ xe kịp thời",
+      "Chạy nhanh qua đường tiêu thụ nhiều năng lượng và gây mệt mỏi",
+      "Quy định giao thông cấm chạy trên vạch sang đường"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "An toàn giao thông",
+    "lang": "vi"
+  },
+  {
+    "id": 1626,
+    "question": "Trong ẩm thực, tại sao dầu dừa được dùng phổ biến trong nhiều món ăn miền Nam Việt Nam?",
+    "options": [
+      "Dầu dừa có hương thơm đặc trưng và nhiều ở vùng đồng bằng sông Cửu Long",
+      "Dầu dừa rẻ hơn tất cả các loại dầu thực vật khác",
+      "Dầu dừa không bị cháy ở nhiệt độ cao như các loại dầu khác"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Ẩm thực",
+    "lang": "vi"
+  },
+  {
+    "id": 1627,
+    "question": "Trong thể thao điền kinh, nội dung 'đẩy tạ' yêu cầu vận động viên phóng vật nặng bằng cách nào?",
+    "options": [
+      "Ném vòng tay từ trên vai",
+      "Đẩy bật từ cổ tay và vai, không phải ném vòng",
+      "Quay người và buông vật nặng theo quán tính"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Thể thao",
+    "lang": "vi"
+  },
+  {
+    "id": 1628,
+    "question": "Nghề nào dưới đây chuyên sản xuất và sửa chữa đồ gốm, đồ sứ?",
+    "options": [
+      "Thợ gốm",
+      "Thợ hàn",
+      "Thợ nhuộm"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1629,
+    "question": "Khi mua 6 quyển vở giá 8.000đ mỗi quyển, em cần trả bao nhiêu tiền?",
+    "options": [
+      "42.000đ",
+      "48.000đ",
+      "54.000đ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1630,
+    "question": "Nghề nào dưới đây chuyên vẽ và thiết kế hình ảnh cho sách báo?",
+    "options": [
+      "Hoạ sĩ minh hoạ",
+      "Nhiếp ảnh gia",
+      "Nhà điêu khắc"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1631,
+    "question": "Một hộp bút màu có 12 chiếc giá 36.000đ. Mỗi chiếc bút màu có giá bao nhiêu?",
+    "options": [
+      "2.500đ",
+      "3.000đ",
+      "3.500đ"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1632,
+    "question": "Mua 4 hộp sữa giá 22.000đ mỗi hộp, trả 100.000đ thì nhận lại bao nhiêu tiền thừa?",
+    "options": [
+      "10.000đ",
+      "12.000đ",
+      "14.000đ"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1633,
+    "question": "Em muốn mua đồ chơi giá 180.000đ, đã tiết kiệm 120.000đ. Cần tiết kiệm thêm bao nhiêu?",
+    "options": [
+      "50.000đ",
+      "60.000đ",
+      "70.000đ"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1634,
+    "question": "Tại sao siêu thị thường niêm yết giá rõ ràng, không mặc cả như chợ truyền thống?",
+    "options": [
+      "Quy định giá cố định giúp minh bạch và tiện lợi cho người mua",
+      "Siêu thị bán hàng nhập khẩu phải theo quy định nhà nước",
+      "Siêu thị lớn cần nhiều nhân viên tính tiền nên cần giá cố định"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1635,
+    "question": "Cửa hàng bán áo giá 90.000đ, giảm 10%. Mua 2 chiếc thì trả bao nhiêu tiền?",
+    "options": [
+      "160.000đ",
+      "162.000đ",
+      "180.000đ"
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "grade": "4-5",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1636,
+    "question": "Tại sao nên so sánh giá ở nhiều nơi trước khi mua hàng đắt tiền?",
+    "options": [
+      "Cùng sản phẩm có thể có giá khác nhau, so sánh giúp tiết kiệm",
+      "Hàng đắt tiền luôn tốt hơn hàng rẻ",
+      "Người bán thường giảm giá cho khách do dự"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "5-6",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1637,
+    "question": "Tại sao hàng qua nhiều khâu trung gian thường đến tay người mua với giá cao hơn?",
+    "options": [
+      "Mỗi khâu cộng thêm chi phí vận chuyển, lưu kho và lợi nhuận riêng",
+      "Hàng qua nhiều khâu được kiểm định kỹ hơn nên giá tăng",
+      "Nhà nước đánh thuế thêm mỗi lần hàng hoá đổi chủ"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "5-6",
+    "category": "Kinh tế cơ bản",
+    "lang": "vi"
+  },
+  {
+    "id": 1638,
+    "question": "Ngày 2 tháng 9 là ngày lễ gì của Việt Nam?",
+    "options": [
+      "Ngày Quốc khánh",
+      "Ngày Giải phóng miền Nam",
+      "Ngày thành lập Quân đội"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1639,
+    "question": "Bác Hồ có tên đầy đủ là gì?",
+    "options": [
+      "Nguyễn Tất Thành",
+      "Nguyễn Sinh Cung",
+      "Nguyễn Ái Quốc"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1640,
+    "question": "Ngày 30 tháng 4 là ngày kỷ niệm sự kiện gì?",
+    "options": [
+      "Giải phóng miền Nam, thống nhất đất nước",
+      "Thành lập nước Cộng hoà Xã hội Chủ nghĩa Việt Nam",
+      "Chiến thắng Điện Biên Phủ"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1641,
+    "question": "Bác Hồ đọc Tuyên ngôn Độc lập tại quảng trường nào ở Hà Nội?",
+    "options": [
+      "Quảng trường Cách mạng Tháng Tám",
+      "Quảng trường Ba Đình",
+      "Quảng trường Đông Kinh Nghĩa Thục"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1642,
+    "question": "Hai Bà Trưng là ai trong lịch sử Việt Nam?",
+    "options": [
+      "Hai nữ tướng khởi nghĩa chống quân xâm lược phương Bắc",
+      "Hai người phụ nữ đầu tiên đi học ở Việt Nam",
+      "Hai bà hoàng nổi tiếng của triều đình nhà Nguyễn"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1643,
+    "question": "Ngày 22 tháng 12 là ngày kỷ niệm thành lập lực lượng nào của Việt Nam?",
+    "options": [
+      "Quân đội Nhân dân Việt Nam",
+      "Công an Nhân dân Việt Nam",
+      "Dân quân tự vệ Việt Nam"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1644,
+    "question": "Ngày 20 tháng 11 là ngày tôn vinh ai ở Việt Nam?",
+    "options": [
+      "Bác sĩ và nhân viên y tế",
+      "Nhà giáo Việt Nam",
+      "Người lao động Việt Nam"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1645,
+    "question": "Vua Hùng được người Việt Nam tôn thờ là ai?",
+    "options": [
+      "Người lập ra triều đại phong kiến đầu tiên của Việt Nam",
+      "Tổ tiên chung của dân tộc Việt Nam",
+      "Vị vua đánh thắng quân Mông Cổ"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1646,
+    "question": "Thánh Gióng trong truyền thuyết đã đánh giặc nào xâm lược?",
+    "options": [
+      "Giặc Tống",
+      "Giặc Ân",
+      "Giặc Nguyên Mông"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1647,
+    "question": "Bác Hồ sinh ngày tháng năm nào?",
+    "options": [
+      "19-5-1890",
+      "19-8-1945",
+      "2-9-1969"
+    ],
+    "answer": 0,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1648,
+    "question": "Chiến thắng Điện Biên Phủ năm 1954 kết thúc cuộc kháng chiến chống lại quân xâm lược nào?",
+    "options": [
+      "Quân Mỹ",
+      "Quân Pháp",
+      "Quân Nhật"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1649,
+    "question": "Lý Thường Kiệt nổi tiếng trong lịch sử Việt Nam vì điều gì?",
+    "options": [
+      "Lập ra triều đại nhà Lý",
+      "Đánh thắng quân Tống trên sông Như Nguyệt",
+      "Đào kênh Vĩnh Tế ở biên giới Tây Nam"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1650,
+    "question": "Ngày Giỗ Tổ Hùng Vương được tổ chức vào ngày nào âm lịch?",
+    "options": [
+      "10 tháng 3",
+      "15 tháng 4",
+      "20 tháng 7"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1651,
+    "question": "Trận Bạch Đằng năm 938 do ai chỉ huy đánh thắng quân Nam Hán?",
+    "options": [
+      "Lê Lợi",
+      "Ngô Quyền",
+      "Trần Hưng Đạo"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1652,
+    "question": "Vua Quang Trung - Nguyễn Huệ nổi tiếng với chiến thắng nào vào đầu năm 1789?",
+    "options": [
+      "Chiến thắng Đống Đa đánh quân Thanh",
+      "Chiến thắng sông Bạch Đằng đánh quân Mông Cổ",
+      "Chiến thắng Chi Lăng đánh quân Minh"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1653,
+    "question": "Trong truyền thuyết, vua Lê Lợi trả gươm lại cho ai ở hồ Hoàn Kiếm?",
+    "options": [
+      "Thần Rồng",
+      "Rùa thần",
+      "Phật Bà Quan Âm"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1654,
+    "question": "Ngày 8 tháng 3 là ngày kỷ niệm quốc tế nào?",
+    "options": [
+      "Ngày Phụ nữ Việt Nam",
+      "Ngày Quốc tế Phụ nữ",
+      "Ngày Gia đình Việt Nam"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1655,
+    "question": "Đinh Bộ Lĩnh thống nhất đất nước, đặt tên nước là gì?",
+    "options": [
+      "Đại Việt",
+      "Đại Cồ Việt",
+      "Đại Nam"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1656,
+    "question": "Ai là người sáng lập ra Đội Thiếu niên Tiền phong Hồ Chí Minh?",
+    "options": [
+      "Bác Hồ trực tiếp thành lập",
+      "Anh Lý Tự Trọng",
+      "Anh Kim Đồng và đồng đội năm 1941"
+    ],
+    "answer": 2,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1657,
+    "question": "Trần Quốc Toản nổi tiếng trong lịch sử nhà Trần vì điều gì?",
+    "options": [
+      "Chỉ huy trận Bạch Đằng năm 1288",
+      "Dũng cảm lập đội quân riêng chống quân Nguyên Mông khi còn trẻ",
+      "Sáng tác bài Hịch tướng sĩ nổi tiếng"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1658,
+    "question": "Ngày 20 tháng 10 là ngày kỷ niệm gì ở Việt Nam?",
+    "options": [
+      "Ngày Phụ nữ Việt Nam",
+      "Ngày Quốc tế Phụ nữ",
+      "Ngày Gia đình Việt Nam"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1659,
+    "question": "Tại sao Ngô Quyền chọn cách đóng cọc ở sông Bạch Đằng để đánh quân Nam Hán?",
+    "options": [
+      "Lợi dụng thuỷ triều xuống để cọc nhô lên, làm thuyền địch bị đâm thủng",
+      "Cọc gỗ tạo chướng ngại vật cố định ngăn thuyền địch vào bờ",
+      "Bố trí quân mai phục hai bên bờ, cọc chỉ là để cắm cờ hiệu"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1660,
+    "question": "Tại sao Lê Lợi chọn căn cứ ở vùng rừng núi Thanh Hoá khi khởi nghĩa chống quân Minh?",
+    "options": [
+      "Địa hình hiểm trở giúp bảo vệ nghĩa quân và khó bị truy đuổi",
+      "Thanh Hoá là nơi giàu có nhất để thu thuế nuôi quân",
+      "Quân Minh không biết đường vào Thanh Hoá"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1661,
+    "question": "Vì sao Bác Hồ đọc Tuyên ngôn Độc lập tại Hà Nội thay vì kinh đô Huế?",
+    "options": [
+      "Hà Nội là trung tâm chính trị miền Bắc, nơi Cách mạng Tháng Tám giành chính quyền thành công",
+      "Huế đã bị quân Pháp chiếm đóng toàn bộ trước ngày 2-9",
+      "Bác Hồ sinh ra ở miền Bắc nên chọn Hà Nội"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1662,
+    "question": "Tại sao trận Điện Biên Phủ 1954 được coi là chiến thắng lịch sử quan trọng của Việt Nam?",
+    "options": [
+      "Buộc Pháp ký Hiệp định Giơ-ne-vơ, kết thúc chiến tranh và chia đôi đất nước tạm thời",
+      "Đây là trận đánh duy nhất trong lịch sử kháng chiến chống Pháp",
+      "Chiến thắng giúp Việt Nam gia nhập Liên Hợp Quốc ngay sau đó"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1663,
+    "question": "Vì sao Trần Hưng Đạo được thờ phụng rộng rãi trong dân gian Việt Nam?",
+    "options": [
+      "Chỉ huy đánh thắng quân Nguyên Mông ba lần, bảo vệ nền độc lập dân tộc",
+      "Ông là vị vua có công mở rộng lãnh thổ Việt Nam lớn nhất",
+      "Ông sáng lập ra chữ Nôm giúp người Việt có chữ viết riêng"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Lịch sử",
+    "lang": "vi"
+  },
+  {
+    "id": 1664,
+    "question": "Thủ đô của nước Nhật Bản là thành phố nào?",
+    "options": [
+      "Osaka",
+      "Tokyo",
+      "Kyoto"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1665,
+    "question": "Thủ đô của nước Brazil là thành phố nào?",
+    "options": [
+      "São Paulo",
+      "Brasília",
+      "Rio de Janeiro"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1666,
+    "question": "Việt Nam có bao nhiêu vùng địa lý chính?",
+    "options": [
+      "4 vùng",
+      "6 vùng",
+      "8 vùng"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1667,
+    "question": "Thành phố lớn nhất Việt Nam về dân số là thành phố nào?",
+    "options": [
+      "Hà Nội",
+      "Đà Nẵng",
+      "Thành phố Hồ Chí Minh"
+    ],
+    "answer": 2,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1668,
+    "question": "Thủ đô của nước Thái Lan là thành phố nào?",
+    "options": [
+      "Pattaya",
+      "Bangkok",
+      "Chiang Mai"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1669,
+    "question": "Sông nào dài nhất Việt Nam?",
+    "options": [
+      "Sông Đồng Nai",
+      "Sông Mê Kông",
+      "Sông Hồng"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1670,
+    "question": "Tỉnh nào của Việt Nam có vịnh Hạ Long - di sản thiên nhiên thế giới?",
+    "options": [
+      "Hải Phòng",
+      "Quảng Ninh",
+      "Ninh Bình"
+    ],
+    "answer": 1,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1671,
+    "question": "Thủ đô của nước Mỹ là thành phố nào?",
+    "options": [
+      "New York",
+      "Los Angeles",
+      "Washington D.C."
+    ],
+    "answer": 2,
+    "difficulty": "easy",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1672,
+    "question": "Đồng bằng nào ở Việt Nam rộng lớn nhất và là vựa lúa phía Nam?",
+    "options": [
+      "Đồng bằng sông Hồng",
+      "Đồng bằng sông Cửu Long",
+      "Đồng bằng ven biển miền Trung"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1673,
+    "question": "Dãy núi nào chạy dọc biên giới giữa Lào và Việt Nam?",
+    "options": [
+      "Dãy Hoàng Liên Sơn",
+      "Dãy Trường Sơn",
+      "Dãy Bắc Sơn"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1674,
+    "question": "Tỉnh nào của Việt Nam có Phong Nha - Kẻ Bàng là hang động nổi tiếng thế giới?",
+    "options": [
+      "Hà Tĩnh",
+      "Quảng Bình",
+      "Thừa Thiên Huế"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1675,
+    "question": "Biển nào bao quanh phần lớn bờ biển phía Đông của Việt Nam?",
+    "options": [
+      "Biển Hoa Đông",
+      "Biển Đông",
+      "Biển Ả Rập"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1676,
+    "question": "Thủ đô của nước Ấn Độ là thành phố nào?",
+    "options": [
+      "Mumbai",
+      "New Delhi",
+      "Kolkata"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1677,
+    "question": "Tỉnh nào của Việt Nam có cố đô Huế - di sản văn hoá thế giới?",
+    "options": [
+      "Quảng Nam",
+      "Thừa Thiên Huế",
+      "Quảng Trị"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1678,
+    "question": "Thủ đô của nước Hàn Quốc nằm ở bờ sông nào nổi tiếng?",
+    "options": [
+      "Sông Hán",
+      "Sông Nakdong",
+      "Sông Geum"
+    ],
+    "answer": 0,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1679,
+    "question": "Tỉnh nào của Việt Nam nổi tiếng với phố cổ Hội An - di sản thế giới?",
+    "options": [
+      "Đà Nẵng",
+      "Quảng Nam",
+      "Quảng Ngãi"
+    ],
+    "answer": 1,
+    "difficulty": "medium",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1680,
+    "question": "Vì sao miền Trung Việt Nam thường có mưa lũ vào tháng 10 và 11?",
+    "options": [
+      "Gió mùa Đông Bắc mang hơi ẩm từ biển vào, gặp dãy Trường Sơn tạo mưa lớn",
+      "Miền Trung hẹp nên nước thoát chậm hơn đồng bằng",
+      "Bão từ Thái Bình Dương luôn đổ bộ vào miền Trung trong hai tháng này"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1681,
+    "question": "Vì sao Hà Nội có mùa đông lạnh còn Thành phố Hồ Chí Minh không có mùa đông?",
+    "options": [
+      "Hà Nội nằm gần vĩ độ cao hơn, chịu ảnh hưởng gió mùa Đông Bắc lạnh",
+      "Hà Nội nằm gần biển nên nhiệt độ thay đổi nhiều hơn",
+      "Hà Nội có nhiều cây xanh hơn nên hấp thụ nhiệt tốt hơn"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
+    "category": "Địa lý",
+    "lang": "vi"
+  },
+  {
+    "id": 1682,
+    "question": "Vì sao đồng bằng sông Cửu Long có đất phù sa màu mỡ, thuận lợi trồng lúa?",
+    "options": [
+      "Sông Mê Kông mang phù sa bồi đắp liên tục qua hàng nghìn năm",
+      "Vùng này có lượng mưa nhiều nhất Việt Nam tạo ra đất tốt",
+      "Người nông dân ở đây bón nhiều phân hơn các vùng khác"
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "grade": "2-3",
     "category": "Địa lý",
     "lang": "vi"
   }
