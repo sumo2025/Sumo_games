@@ -1509,7 +1509,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.5</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.7</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">May 11, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1529,11 +1529,11 @@ body {
 <script>
 // ===================================================
 //  SUMO GAMES - Triệu Phú Tri Thức
-//  Version 2.0.5 | Developed by Pavel Hải
+//  Version 2.0.7 | Developed by Pavel Hải
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.5';
+const APP_VERSION  = '2.0.7';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -2008,22 +2008,32 @@ function shuffle(arr) {
 }
 
 /**
- * Phân loại câu hỏi theo difficulty/grade.
- * Câu "untagged" (không có difficulty/grade) được xếp vào easy.
+ * Phân loại câu hỏi VI theo grade + difficulty kết hợp.
+ * Grade định khung lớp học, difficulty tinh chỉnh trong khung đó.
+ * - grade 1-2: easy (hard/medium trong grade này vẫn là easy so với toàn bank)
+ * - grade 3-4: medium (nhưng nếu difficulty=hard → hard, difficulty=easy → easy)
+ * - grade 5  : hard  (nhưng nếu difficulty=easy → medium, difficulty=medium → hard)
+ * Câu untagged → easy.
  */
 function classifyQuestion(q) {
     const d = (q.difficulty || '').toLowerCase();
     const g = (q.grade || '').trim();
-    // Grade ưu tiên tuyệt đối (chính xác hơn difficulty)
-    if (g === '2-3') return 'easy';
-    if (g === '5-6') return 'hard';
-    if (g === '4-5') return 'medium';
-    // Fallback: không có grade → dùng difficulty
+
+    if (g === '1-2') return 'easy';   // grade 1-2 luôn easy, bất kể difficulty
+
+    if (g === '3-4') {
+        if (d === 'hard')  return 'hard';
+        if (d === 'easy')  return 'easy';
+        return 'medium';              // medium hoặc untagged trong grade 3-4
+    }
+
+    if (g === '5') return 'hard'; // toàn bộ grade 5 → hard, không lọt vào cấp Dễ
+
+    // Không có grade → dùng difficulty
     if (d === 'easy')   return 'easy';
     if (d === 'hard')   return 'hard';
     if (d === 'medium') return 'medium';
-    // Untagged → easy
-    return 'easy';
+    return 'easy'; // untagged hoàn toàn → easy
 }
 
 /**
@@ -2077,48 +2087,49 @@ function selectByDifficulty(bank, count, level) {
 const _usedQuestionIds = { vi: [], en: [] };
 
 // ===================================================
-//  ENG DIFFICULTY - theo CEFR (A1/A2/B1)
+//  ENG DIFFICULTY - theo CEFR (A1/A2/A2+)
 // ===================================================
 
 /**
  * Phân loại câu tiếng Anh theo CEFR.
+ * 3 tier: A1 (cơ bản) | A2 (trung cấp) | A2+ (nâng cao, thay thế B1).
  * Ưu tiên field cefr nếu có, fallback sang grade.
- * grade=3-5 → A2 (intermediate-lower).
- * Untagged → A1 (cơ bản).
+ * Untagged → A1.
  */
 function classifyEngQuestion(q) {
     const cefr  = (q.cefr  || '').toUpperCase().trim();
     const grade = (q.grade || '').trim();
-    if (cefr === 'A1' || grade === '2-3') return 'A1';
-    if (cefr === 'B1' || grade === '5-6') return 'B1';
-    if (cefr === 'A2' || grade === '4-5' || grade === '3-5') return 'A2';
+    if (cefr === 'A2+' || grade === '5')   return 'A2+';
+    if (cefr === 'A2'  || grade === '3-4') return 'A2';
+    if (cefr === 'A1'  || grade === '1-2') return 'A1';
     return 'A1'; // fallback: untagged → A1
 }
 
 /**
  * Chọn câu ENG theo CEFR và level:
- * - Dễ:  75% A1 + 25% A2 + 0%  B1
- * - Khó: 0%  A1 + 70% A2 + 30% B1
- * Tự bù thiếu từ pool khác nếu không đủ câu.
+ * - Dễ:  75% A1 + 25% A2 + 0%   A2+   → 6 câu: 4xA1 + 2xA2
+ * - Khó: 25% A1 + 50% A2 + 25%  A2+   → 8 câu: 2xA1 + 4xA2 + 2xA2+
+ * Tự bù thiếu từ pool kề trên nếu không đủ câu.
  */
 function selectByDifficultyENG(bank, count, level) {
     if (count <= 0 || bank.length === 0) return [];
 
-    const a1Pool = bank.filter(q => classifyEngQuestion(q) === 'A1');
-    const a2Pool = bank.filter(q => classifyEngQuestion(q) === 'A2');
-    const b1Pool = bank.filter(q => classifyEngQuestion(q) === 'B1');
+    const a1Pool  = bank.filter(q => classifyEngQuestion(q) === 'A1');
+    const a2Pool  = bank.filter(q => classifyEngQuestion(q) === 'A2');
+    const a2pPool = bank.filter(q => classifyEngQuestion(q) === 'A2+');
 
     let targets;
     if (level === 'de') {
-        targets = { A1: Math.round(count * 0.75), A2: Math.round(count * 0.25), B1: 0 };
+        // Dễ: 75% A1 + 25% A2 + 0% A2+
+        targets = { A1: Math.round(count * 0.75), A2: Math.round(count * 0.25), 'A2+': 0 };
     } else {
-        targets = { A1: 0, A2: Math.round(count * 0.70), B1: Math.round(count * 0.30) };
+        // Khó: 25% A1 + 50% A2 + 25% A2+
+        targets = { A1: Math.round(count * 0.25), A2: Math.round(count * 0.50), 'A2+': Math.round(count * 0.25) };
     }
-    // Đảm bảo tổng == count
-    const total = targets.A1 + targets.A2 + targets.B1;
-    const mainKey = level === 'de' ? 'A1' : 'A2';
-    if (total < count) targets[mainKey] += count - total;
-    if (total > count) targets[mainKey] -= total - count;
+    // Đảm bảo tổng == count (bù vào A2 - tier giữa)
+    const total = targets.A1 + targets.A2 + targets['A2+'];
+    if (total < count) targets.A2 += count - total;
+    if (total > count) targets.A2 -= total - count;
 
     function pick(pool, n) {
         if (n <= 0 || pool.length === 0) return { picked: [], remaining: n };
@@ -2126,9 +2137,10 @@ function selectByDifficultyENG(bank, count, level) {
         return { picked: shuffled.slice(0, n), remaining: Math.max(0, n - shuffled.length) };
     }
 
-    const r1 = pick(a1Pool, targets.A1);
-    const r2 = pick(a2Pool, targets.A2 + r1.remaining);
-    const r3 = pick(b1Pool, targets.B1  + r2.remaining);
+    // Bù thiếu theo chiều tăng dần: A1 thiếu → bù sang A2, A2 thiếu → bù sang A2+
+    const r1 = pick(a1Pool,  targets.A1);
+    const r2 = pick(a2Pool,  targets.A2  + r1.remaining);
+    const r3 = pick(a2pPool, targets['A2+'] + r2.remaining);
 
     let result = [...r1.picked, ...r2.picked, ...r3.picked];
     if (result.length < count) {
@@ -2187,11 +2199,23 @@ function distributeEvenly(viePool, engPool) {
 }
 
 /**
- * Chọn câu theo ngôn ngữ (80% VIE + 20% ENG) và
- * phân bổ theo difficulty dựa vào level.
+ * Chọn câu theo ngôn ngữ và level:
+ * - Dễ:  ~20% ENG (tỷ lệ cố định theo totalQ)
+ * - Khó: ~27% ENG (nhiều hơn để tăng thử thách tiếng Anh)
+ *   Gói 25: 19 VI + 6 ENG | Gói 30: 22 VI + 8 ENG | Gói 35: 26 VI + 9 ENG
+ * Nếu không có bankENG → toàn bộ VIE.
  */
 function buildQuestionPool(totalQ, level) {
-    const engCount = bankENG.length > 0 ? Math.max(1, Math.round(totalQ * 0.2)) : 0;
+    let engCount = 0;
+    if (bankENG.length > 0) {
+        if (level === 'de') {
+            // Dễ: ~20% ENG, làm tròn gần nhất
+            engCount = Math.max(1, Math.round(totalQ * 0.20));
+        } else {
+            // Khó: ~27% ENG — gói 25→6, gói 30→8, gói 35→9
+            engCount = Math.max(1, Math.round(totalQ * 0.267));
+        }
+    }
     const vieCount = totalQ - engCount;
 
     // Chọn từng ngân hàng theo anti-repeat, rồi filter theo difficulty
@@ -3459,7 +3483,7 @@ function importGameData(event) {
 }
 
 // ===================================================
-//  AUTO-UPDATE FROM GITHUB (v2.0.5)
+//  AUTO-UPDATE FROM GITHUB (v2.0.7)
 // ===================================================
 // === VERSION COMPARISON HELPER ===
 // So sánh segment-by-segment để tránh lỗi string comparison:
@@ -3617,7 +3641,7 @@ const SUMO_UPDATE = (() => {
     }
 
     function showVersionUpdateToast(newVersion) {
-        // === UPDATE BANNER v2.0.5: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
+        // === UPDATE BANNER v2.0.7: nhắc lại mỗi lần mở app cho đến khi cập nhật ===
         const existing = document.getElementById('sumo-update-banner');
         if (existing) existing.remove();
 
@@ -3852,10 +3876,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ));
     document.getElementById('infoLvl').addEventListener('click', () => showInfoModal(
         'Cấp độ chơi ảnh hưởng đến tỷ lệ câu hỏi theo độ khó:<br><br>' +
-        '🟢 <strong>Dễ</strong>: 75% câu dễ (lớp 2-3) + 25% câu trung bình (lớp 4-5)<br>' +
-        '🔴 <strong>Khó</strong>: 50% câu trung bình (lớp 4-5) + 50% câu khó (lớp 5-6)<br><br>' +
-        '<em>Độ khó của câu hỏi VIE được xác định theo lớp học (grade), ' +
-        'câu hỏi ENG theo khung CEFR (A1/A2/B1).</em><br><br>' +
+        '🟢 <strong>Dễ</strong>: 75% câu dễ (lớp 1-2) + 25% câu trung bình (lớp 3-4)<br>' +
+        '🔴 <strong>Khó</strong>: 50% câu trung bình (lớp 3-4) + 50% câu khó (lớp 5)<br><br>' +
+        '<em>Câu hỏi VIE phân cấp theo lớp học kết hợp độ khó. ' +
+        'Câu hỏi ENG theo khung CEFR (A1 / A2 / A2+).</em><br><br>' +
         'Ngưỡng thưởng thống nhất:<br>' +
         'PT5 ≥ 92% | PT4 81-91% | PT3 71-80% | PT2 60-70% | PT1 &lt; 60%'
     ));
