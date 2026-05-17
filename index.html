@@ -81,6 +81,7 @@ body {
   font-family: var(--font-body);
   background: var(--bg-dark);
   color: var(--text);
+  min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
   background-image:
@@ -97,6 +98,7 @@ body {
   display: none;
   position: relative;
   z-index: 1;
+  min-height: 100vh;
   min-height: 100dvh;
   padding: 20px;
   padding-bottom: calc(20px + env(safe-area-inset-bottom));
@@ -171,6 +173,7 @@ body {
 }
 .logo-title {
   font-family: var(--font-display);
+  font-size: 2.8rem;
   font-size: clamp(2.2rem, 6vw, 3.8rem);
   font-weight: 800;
   background: linear-gradient(135deg, #FFD700, #FF8C00, #FFD700);
@@ -182,6 +185,7 @@ body {
   line-height: 1.1;
 }
 .logo-sub {
+  font-size: 1.1rem;
   font-size: clamp(0.9rem, 2.5vw, 1.3rem);
   color: var(--gold);
   font-weight: 700;
@@ -450,6 +454,7 @@ body {
 .q-lang-badge { display: inline-block; background: rgba(30,144,255,0.2); color: var(--blue-light); border-radius: 50px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; margin-left: 6px; }
 .q-text {
   font-family: var(--font-display);
+  font-size: 1.2rem;
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   font-weight: 600;
   line-height: 1.5;
@@ -511,6 +516,7 @@ body {
 .result-emoji  { font-size: 68px; margin-bottom: 4px; animation: bounceIn 0.6s ease; display: block; }
 .result-title  {
   font-family: var(--font-display);
+  font-size: 2.2rem;
   font-size: clamp(1.8rem, 5vw, 3rem);
   font-weight: 800;
   background: linear-gradient(135deg, #FFD700, #FF8C00);
@@ -578,7 +584,7 @@ body {
 /* ===================================================
    LEADERBOARD SCREEN
 =================================================== */
-#screen-leaderboard { justify-content: flex-start; padding-top: max(30px, env(safe-area-inset-top, 30px)); }
+#screen-leaderboard { justify-content: flex-start; padding-top: 30px; padding-top: env(safe-area-inset-top, 30px); }
 .lb-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--gold); text-align: center; margin-bottom: 20px; }
 
 .lb-table {
@@ -669,7 +675,7 @@ body {
 /* ===================================================
    ADMIN / SETTINGS SCREEN
 =================================================== */
-#screen-admin { justify-content: flex-start; padding-top: max(24px, env(safe-area-inset-top, 24px)); }
+#screen-admin { justify-content: flex-start; padding-top: 24px; padding-top: env(safe-area-inset-top, 24px); }
 .admin-title  { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--gold); margin-bottom: 16px; }
 
 .tab-bar { display: flex; gap: 8px; margin-bottom: 22px; width: 100%; flex-wrap: wrap; }
@@ -815,9 +821,9 @@ body {
 }
 .about-love   { font-size: 1.25rem; color: #ff6b6b; font-weight: 800; font-family: var(--font-display); margin-bottom: 14px; text-shadow: 0 0 20px rgba(255,107,107,0.4); text-align: center; display: block; width: 100%; }
 .about-info   { list-style: none; text-align: left; width: 100%; }
-.about-info li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; gap: 10px; font-size: 0.92rem; }
+.about-info li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; gap: 10px; font-size: 0.92rem; align-items: baseline; }
 .about-info li:last-child { border-bottom: none; }
-.about-info .lbl { color: var(--text-dim); font-weight: 600; min-width: 120px; }
+.about-info .lbl { color: var(--text-dim); font-weight: 600; min-width: 120px; flex-shrink: 0; }
 .about-info .val { color: var(--gold); font-weight: 800; }
 .about-hearts { font-size: 1.4rem; margin-top: 14px; animation: heartbeat 1.5s ease-in-out infinite; align-self: center; }
 
@@ -905,7 +911,7 @@ body {
    RESPONSIVE - MOBILE (≤ 600px)
 =================================================== */
 @media (max-width: 600px) {
-  #screen-home { justify-content: flex-start; padding: 12px 16px 16px; padding-top: max(12px, env(safe-area-inset-top, 12px)); }
+  #screen-home { justify-content: flex-start; padding: 12px 16px 16px; padding-top: 12px; padding-top: env(safe-area-inset-top, 12px); }
 
   .logo-emoji  { font-size: 60px; }
   .logo-title  { font-size: 2.4rem; letter-spacing: 1px; }
@@ -946,7 +952,7 @@ body {
    RESPONSIVE - TABLET / DESKTOP (≥ 601px)
 =================================================== */
 @media (min-width: 601px) {
-  #screen-home { justify-content: center; padding: 16px 20px; min-height: 100dvh; }
+  #screen-home { justify-content: center; padding: 16px 20px; min-height: 100vh; min-height: 100dvh; }
 
   .home-btns .btn { max-width: 200px; }
   .home-btns-secondary {
@@ -959,8 +965,8 @@ body {
 
   .logo-wrap   { margin-bottom: 8px; }
   .logo-emoji  { font-size: 56px; }
-  .logo-title  { font-size: clamp(2rem, 5vw, 3.2rem); }
-  .logo-sub    { font-size: clamp(0.85rem, 2vw, 1.1rem); margin-top: 2px; }
+  .logo-title  { font-size: 2.6rem; font-size: clamp(2rem, 5vw, 3.2rem); }
+  .logo-sub    { font-size: 0.95rem; font-size: clamp(0.85rem, 2vw, 1.1rem); margin-top: 2px; }
   .card        { padding: 20px 24px; }
   .form-group  { margin-bottom: 14px; }
   .home-btns   { gap: 8px; }
@@ -1509,7 +1515,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.7</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.8</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">May 11, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1533,7 +1539,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.7';
+const APP_VERSION  = '2.0.8';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -2308,7 +2314,7 @@ function showQuestion() {
     const grid     = document.getElementById('answersGrid');
     grid.innerHTML = '';
     const answers  = (q.options || q.answers || [])
-        .map((text, i) => ({ text, isCorrect: i === Number(q.answer ?? q.correct) }))
+        .map((text, i) => ({ text, isCorrect: i === Number(q.answer != null ? q.answer : q.correct) }))
         .sort(() => 0.5 - Math.random());
 
     const letters = ['A', 'B', 'C', 'D'];
@@ -3316,7 +3322,7 @@ function handleBankUpload(input, lang) {
                     difficulty: q.difficulty || 'easy',
                     grade: q.grade || '2-3',
                     options: q.options || q.answers,
-                    answer:  q.answer  ?? q.correct,
+                    answer:  q.answer  != null ? q.answer : q.correct,
                 }));
                 const lsKey = lang === 'VIE' ? 'sumogames_bankVIE' : 'sumogames_bankENG';
                 // Lưu vào admin key (REPLACE - không merge với github)
@@ -3510,11 +3516,11 @@ const SUMO_UPDATE = (() => {
         // Lưu vào key riêng _github để không xung đột với upload thủ công qua Admin
         VIE: { lsKey:'sumogames_bankVIE_github',    parse: d => Array.isArray(d) ? d : null },
         ENG: { lsKey:'sumogames_bankENG_github',    parse: d => Array.isArray(d) ? d : null },
-        PT1: { lsKey:'sumogames_reward_PT1', parse: d => d.rewards ?? (Array.isArray(d) ? d : null) },
-        PT2: { lsKey:'sumogames_reward_PT2', parse: d => d.rewards ?? (Array.isArray(d) ? d : null) },
-        PT3: { lsKey:'sumogames_reward_PT3', parse: d => d.rewards ?? (Array.isArray(d) ? d : null) },
-        PT4: { lsKey:'sumogames_reward_PT4', parse: d => d.rewards ?? (Array.isArray(d) ? d : null) },
-        PT5: { lsKey:'sumogames_reward_PT5', parse: d => d.rewards ?? (Array.isArray(d) ? d : null) },
+        PT1: { lsKey:'sumogames_reward_PT1', parse: d => d.rewards != null ? d.rewards : (Array.isArray(d) ? d : null) },
+        PT2: { lsKey:'sumogames_reward_PT2', parse: d => d.rewards != null ? d.rewards : (Array.isArray(d) ? d : null) },
+        PT3: { lsKey:'sumogames_reward_PT3', parse: d => d.rewards != null ? d.rewards : (Array.isArray(d) ? d : null) },
+        PT4: { lsKey:'sumogames_reward_PT4', parse: d => d.rewards != null ? d.rewards : (Array.isArray(d) ? d : null) },
+        PT5: { lsKey:'sumogames_reward_PT5', parse: d => d.rewards != null ? d.rewards : (Array.isArray(d) ? d : null) },
     };
 
     function bust() { return `?t=${Math.floor(Date.now()/60000)}`; }
@@ -3555,7 +3561,7 @@ const SUMO_UPDATE = (() => {
                     difficulty: q.difficulty || 'easy', grade: q.grade || '2-3',
                     // Chuẩn hóa field names: hỗ trợ cả format cũ (answers/correct) và mới (options/answer)
                     options: q.options || q.answers,
-                    answer:  q.answer  ?? q.correct,
+                    answer:  q.answer  != null ? q.answer : q.correct,
                 })) : [];
                 bankVIE = [...BUILTIN_VIE, ...fromGithub];
             }
@@ -3573,7 +3579,7 @@ const SUMO_UPDATE = (() => {
                     ...q, lang: q.lang || 'en',
                     difficulty: q.difficulty || 'easy', grade: q.grade || '2-3',
                     options: q.options || q.answers,
-                    answer:  q.answer  ?? q.correct,
+                    answer:  q.answer  != null ? q.answer : q.correct,
                 })) : [];
                 bankENG = [...BUILTIN_ENG, ...fromGithub];
             }
@@ -3653,7 +3659,8 @@ const SUMO_UPDATE = (() => {
             'background:linear-gradient(135deg,#1a1a4e,#0d0d3a)',
             'border-top:2px solid #FFD700',
             'padding:16px 20px',
-            'padding-bottom:max(16px,env(safe-area-inset-bottom,16px))',
+            'padding-bottom:16px',
+            'padding-bottom:env(safe-area-inset-bottom,16px)',
             'font-family:var(--font-body)',
             'box-shadow:0 -4px 24px rgba(0,0,0,.6)',
             'animation:slideUpBanner .35s cubic-bezier(.25,.46,.45,.94)',
