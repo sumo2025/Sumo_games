@@ -1399,6 +1399,7 @@ body {
       <button class="tab-btn active" role="tab" data-tab="tab-questions">📚 Câu Hỏi</button>
       <button class="tab-btn" role="tab" data-tab="tab-rewards">🎁 Phần Thưởng</button>
       <button class="tab-btn" role="tab" data-tab="tab-data">💾 Dữ Liệu</button>
+      <button class="tab-btn" role="tab" data-tab="tab-pin">🔐 Đổi PIN</button>
       <button class="tab-btn" role="tab" data-tab="tab-resolution">🖥️ Hiển Thị</button>
     </div>
 
@@ -1490,6 +1491,29 @@ body {
             <button class="btn btn-danger" id="btnImport" style="width:100%;max-width:300px;justify-content:center">📤 Khôi phục từ file</button>
           </div>
         </div>
+
+        <!-- Tab: Đổi PIN -->
+        <div class="tab-pane" id="tab-pin-content">
+          <div id="changePinStatus"></div>
+          <p style="color:var(--text-dim);font-size:.88rem;margin-bottom:18px">Thay đổi mã PIN quản trị hệ thống. PIN gồm đúng 4 chữ số.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;max-width:300px;margin:0 auto">
+            <div>
+              <label style="color:var(--text-dim);font-size:.85rem;display:block;margin-bottom:6px">PIN hiện tại</label>
+              <input class="pin-input" id="pinOld" type="password" maxlength="4" inputmode="numeric" placeholder="••••" style="width:100%;text-align:center" aria-label="PIN hiện tại"/>
+            </div>
+            <div>
+              <label style="color:var(--text-dim);font-size:.85rem;display:block;margin-bottom:6px">PIN mới</label>
+              <input class="pin-input" id="pinNew" type="password" maxlength="4" inputmode="numeric" placeholder="••••" style="width:100%;text-align:center" aria-label="PIN mới"/>
+            </div>
+            <div>
+              <label style="color:var(--text-dim);font-size:.85rem;display:block;margin-bottom:6px">Xác nhận PIN mới</label>
+              <input class="pin-input" id="pinConfirm" type="password" maxlength="4" inputmode="numeric" placeholder="••••" style="width:100%;text-align:center" aria-label="Xác nhận PIN mới"/>
+            </div>
+            <div id="pinChangeError" style="display:none;color:var(--red);font-size:.85rem;font-weight:700;text-align:center"></div>
+            <button class="btn btn-primary" id="btnChangePin" style="margin-top:6px;justify-content:center">🔐 Cập nhật PIN</button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1515,7 +1539,7 @@ body {
     <div class="about-brand">SUMO GAMES</div>
     <div class="about-love">💌 From Papa with Love</div>
     <ul class="about-info">
-      <li><span class="lbl">📦 Version:</span><span class="val">2.0.8</span></li>
+      <li><span class="lbl">📦 Version:</span><span class="val">2.0.9</span></li>
       <li><span class="lbl">📅 Release date:</span><span class="val">May 11, 2026</span></li>
       <li><span class="lbl">👨‍💻 Developed by:</span><span class="val">Papa Bự 🦁 - Pavel.Hai@gmail.com</span></li>
       <li><span class="lbl">🎮 Game mode:</span><span class="val">Triệu Phú Tri Thức</span></li>
@@ -1535,17 +1559,18 @@ body {
 <script>
 // ===================================================
 //  SUMO GAMES - Triệu Phú Tri Thức
-//  Version 2.0.7 | Developed by Pavel Hải
+//  Version 2.0.9 | Developed by Pavel Hải
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.0.8';
+const APP_VERSION  = '2.0.9';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
 // ADMIN_PIN lưu dưới dạng djb2 hash - không lưu plaintext
 // djb2("1234", salt) - computed at runtime, see _pinHash()
-const _ADMIN_PIN_RAW = '1234'; // ⚠️ Đổi PIN: vào Admin > tab Hiển Thị không cần PIN, hoặc xóa key sumogames_pin_h trong localStorage rồi đổi biến này
+const _ADMIN_PIN_RAW = '1234'; // PIN mặc định khi chưa đổi
+const _CUSTOM_PIN_KEY = 'sumogames_custom_pin_h'; // key lưu PIN đã đổi
 
 // === SECURITY: localStorage salt & hash ===
 const _LS_SALT = 'sg_sumo2026'; // salt cố định - đảm bảo backup/restore cross-device
@@ -1561,16 +1586,15 @@ function _djb2(str) {
 
 function _lsHash(str) { return _djb2(str + _LS_SALT); }
 
-// === MIGRATION: salt cũ (userAgent-based) → salt mới (cố định) ===
-// Chạy 1 lần duy nhất khi người dùng nâng cấp lên V2.0.0+
-
-
 // PIN hash sử dụng salt riêng để tránh rainbow attack đơn giản
 const _PIN_HASH_KEY = 'sumogames_pin_h'; // giữ key để xóa hash cũ nếu có
 function _getAdminPinHash() {
     // Xóa hash cũ nếu còn trong localStorage (từ phiên bản trước)
     localStorage.removeItem(_PIN_HASH_KEY);
-    // Tính trực tiếp mỗi lần - không cache để tránh stale hash khi đổi salt
+    // Nếu admin đã đổi PIN, dùng hash đã lưu
+    const customHash = localStorage.getItem(_CUSTOM_PIN_KEY);
+    if (customHash) return customHash;
+    // Mặc định: tính từ _ADMIN_PIN_RAW
     return _djb2(_ADMIN_PIN_RAW + _LS_SALT + 'pin');
 }
 function _checkPin(input) {
@@ -1977,18 +2001,58 @@ function resetPinState() {
     document.getElementById('pinError').style.display = 'none';
     document.getElementById('pinSection').style.display = 'block';
     document.getElementById('protectedContent').style.display = 'none';
+    // Reset đổi PIN form
+    ['pinOld','pinNew','pinConfirm'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+    const err = document.getElementById('pinChangeError');
+    if (err) { err.style.display = 'none'; err.textContent = ''; }
+    const st = document.getElementById('changePinStatus');
+    if (st) st.innerHTML = '';
+}
+
+function changePin() {
+    const oldVal  = (document.getElementById('pinOld').value     || '').trim();
+    const newVal  = (document.getElementById('pinNew').value     || '').trim();
+    const confVal = (document.getElementById('pinConfirm').value || '').trim();
+    const errEl   = document.getElementById('pinChangeError');
+    const stEl    = document.getElementById('changePinStatus');
+
+    errEl.style.display = 'none'; errEl.textContent = '';
+    stEl.innerHTML = '';
+
+    function showErr(msg) {
+        errEl.textContent = msg;
+        errEl.style.display = 'block';
+        ['pinOld','pinNew','pinConfirm'].forEach(id => { document.getElementById(id).value = ''; });
+    }
+
+    if (!oldVal || !newVal || !confVal) return showErr('❌ Vui lòng điền đầy đủ 3 ô.');
+    if (!/^\d{4}$/.test(oldVal))  return showErr('❌ PIN hiện tại phải gồm đúng 4 chữ số.');
+    if (!/^\d{4}$/.test(newVal))  return showErr('❌ PIN mới phải gồm đúng 4 chữ số.');
+    if (!_checkPin(oldVal))       return showErr('❌ PIN hiện tại không đúng.');
+    if (newVal !== confVal)       return showErr('❌ PIN mới và xác nhận không khớp.');
+    if (newVal === oldVal)        return showErr('⚠️ PIN mới phải khác PIN hiện tại.');
+
+    // Lưu hash PIN mới vào localStorage
+    const newHash = _djb2(newVal + _LS_SALT + 'pin');
+    localStorage.setItem(_CUSTOM_PIN_KEY, newHash);
+
+    ['pinOld','pinNew','pinConfirm'].forEach(id => { document.getElementById(id).value = ''; });
+    stEl.innerHTML = '<div style="background:rgba(46,204,113,0.15);border:1px solid rgba(46,204,113,0.4);border-radius:10px;padding:12px;text-align:center;color:#2ecc71;font-weight:700;margin-bottom:10px">✅ Đổi PIN thành công! Ghi nhớ PIN mới của bạn.</div>';
 }
 
 function showTabContent(tabId) {
     // tabId có thể là 'tab-questions' hoặc 'tab-questions-content' - chuẩn hóa
     const base = tabId.replace('-content', '');
-    const protectedTabs = ['tab-questions', 'tab-rewards', 'tab-data'];
+    const protectedTabs = ['tab-questions', 'tab-rewards', 'tab-data', 'tab-pin'];
     const isProtected   = protectedTabs.includes(base);
 
     document.getElementById('adminProtectedArea').style.display    = isProtected ? 'block' : 'none';
     document.getElementById('tab-resolution-content').style.display = isProtected ? 'none' : 'block';
 
-    ['tab-questions-content', 'tab-rewards-content', 'tab-data-content'].forEach(id => {
+    ['tab-questions-content', 'tab-rewards-content', 'tab-data-content', 'tab-pin-content'].forEach(id => {
         document.getElementById(id).style.display =
             (id === base + '-content') ? 'block' : 'none';
     });
@@ -3905,6 +3969,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === ADMIN ===
     document.getElementById('btnAdminHome').addEventListener('click', () => showScreen('screen-home'));
     document.getElementById('pinInput').addEventListener('input', e => checkPin(e.target));
+    document.getElementById('btnChangePin').addEventListener('click', changePin);
 
     // Tab buttons (1 listener duy nhất)
     document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
