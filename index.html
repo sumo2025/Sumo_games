@@ -1163,6 +1163,17 @@ body {
       ⚠️ Hôm nay bạn đã đổi phần quà này rồi! Hãy quay lại vào ngày mai nhé.
     </div>
 
+    <div id="invSummaryBar" style="display:none;margin-bottom:14px">
+      <div id="invSummaryChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;justify-content:center"></div>
+      <div style="position:relative;max-width:360px;margin:0 auto">
+        <input type="text" id="invSearch" placeholder="🔍 Tìm nhanh voucher theo tên..." autocomplete="off"
+          style="width:100%;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:20px;color:#fff;font-size:16px;padding:10px 40px 10px 16px;outline:none">
+        <button id="invSearchClear" type="button" aria-label="Xóa tìm kiếm"
+          style="display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:0.9rem;line-height:1">✕</button>
+      </div>
+      <div id="invSearchEmpty" style="display:none;text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:10px">Không tìm thấy voucher nào khớp.</div>
+    </div>
+
     <div style="margin-bottom:20px" id="invSpecialSection">
       <h3 class="section-title">🌟 Quà Đặc Biệt</h3>
       <div id="invSpecialList" class="grid-3-cols"></div>
@@ -1212,6 +1223,7 @@ body {
         <span style="font-weight:800;color:#fff">📜 Lịch sử chơi</span> <span id="historyArrow">▼</span>
       </button>
       <div id="invHistoryList" style="display:none;margin-top:10px;overflow-x:auto"></div>
+      <div id="invScoreChart" style="display:none;margin-top:14px"></div>
     </div>
 
     <button class="btn btn-danger btn-full" id="btnCloseInventory">Đóng túi quà</button>
@@ -1685,7 +1697,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.2.0';
+const APP_VERSION  = '2.3.0';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -2946,6 +2958,8 @@ function openInventory(playerName) {
     document.getElementById('invPlayerName').textContent = playerName;
     document.getElementById('invHistoryList').style.display = 'none';
     document.getElementById('historyArrow').textContent    = '▼';
+    const _chart = document.getElementById('invScoreChart');
+    if (_chart) _chart.style.display = 'none';
     document.getElementById('invDailyWarning').style.display = 'none';
     selectedGroups.time = [];
     selectedGroups.fun  = [];
@@ -3060,7 +3074,81 @@ function renderInventoryContent(playerName) {
         });
     } else { rSec.style.display = 'none'; }
 
+    // === Thanh tổng quan: đếm số voucher mỗi loại (giúp gọn khi nhiều voucher) ===
+    const counts = {
+        special:  specials.length,
+        fraction: Object.keys(fracByItem).length,
+        time:     allTimeVouchers.length,
+        fun:      funCon.length + funParent.length,
+    };
+    const totalVouchers = counts.special + counts.fraction + counts.time + counts.fun;
+    const summaryBar   = document.getElementById('invSummaryBar');
+    const summaryChips = document.getElementById('invSummaryChips');
+    if (totalVouchers > 0) {
+        summaryBar.style.display = 'block';
+        const chipDefs = [
+            { key:'special',  label:'🌟 Đặc biệt',  n:counts.special,  color:'var(--gold)' },
+            { key:'fraction', label:'🧩 Ghép mảnh', n:counts.fraction, color:'#FFD700' },
+            { key:'time',     label:'▶️ Thời gian', n:counts.time,     color:'var(--blue-light)' },
+            { key:'fun',      label:'🎪 Vui vẻ',    n:counts.fun,      color:'#ff6b6b' },
+        ].filter(c => c.n > 0);
+        summaryChips.innerHTML =
+            `<span style="background:rgba(255,255,255,0.1);border-radius:20px;padding:5px 12px;font-size:0.8rem;font-weight:800;color:#fff">Tổng: ${totalVouchers}</span>` +
+            chipDefs.map(c =>
+                `<span style="background:rgba(255,255,255,0.06);border:1px solid ${c.color};border-radius:20px;padding:5px 12px;font-size:0.78rem;font-weight:700;color:${c.color}">${c.label}: ${c.n}</span>`
+            ).join('');
+    } else {
+        summaryBar.style.display = 'none';
+    }
+    // Reset ô tìm kiếm mỗi lần render lại nội dung
+    const searchInput = document.getElementById('invSearch');
+    if (searchInput) { searchInput.value = ''; }
+    document.getElementById('invSearchClear').style.display = 'none';
+    document.getElementById('invSearchEmpty').style.display = 'none';
+    applyVoucherSearch('');
+
     renderHistory(playerName);
+}
+
+// === Lọc voucher theo từ khóa - ẩn/hiện từng thẻ, không xóa DOM ===
+function applyVoucherSearch(term) {
+    const q = (term || '').trim().toLowerCase();
+    // Các container chứa voucher có thể tìm kiếm
+    const containers = ['invSpecialList', 'invFractionsList', 'invTimesList', 'invFunConList', 'invFunParentList'];
+    let anyVisible = false;
+    let hasAnyItem = false;
+
+    containers.forEach(id => {
+        const box = document.getElementById(id);
+        if (!box) return;
+        // Mỗi voucher là con trực tiếp của container
+        Array.from(box.children).forEach(child => {
+            hasAnyItem = true;
+            const text = (child.textContent || '').toLowerCase();
+            const match = !q || text.indexOf(q) !== -1;
+            child.style.display = match ? '' : 'none';
+            if (match) anyVisible = true;
+        });
+    });
+
+    // Khi đang tìm kiếm mà không có voucher nào khớp → hiện thông báo
+    const emptyEl = document.getElementById('invSearchEmpty');
+    if (emptyEl) emptyEl.style.display = (q && hasAnyItem && !anyVisible) ? 'block' : 'none';
+
+    // Khi tìm kiếm, ẩn các section header rỗng để gọn hơn
+    const sectionMap = [
+        { sec:'invSpecialSection',   list:'invSpecialList' },
+        { sec:'invFractionSection',  list:'invFractionsList' },
+        { sec:'voucher-time-section',list:'invTimesList' },
+    ];
+    sectionMap.forEach(({ sec, list }) => {
+        const secEl = document.getElementById(sec);
+        const listEl = document.getElementById(list);
+        if (!secEl || !listEl || secEl.style.display === 'none') return;
+        if (!q) { secEl.style.display = 'block'; return; }
+        const visibleChild = Array.from(listEl.children).some(c => c.style.display !== 'none');
+        secEl.style.display = visibleChild ? 'block' : 'none';
+    });
 }
 
 function buildSpecialItemHtml(v, playerName) {
@@ -3113,8 +3201,10 @@ function showRedeemedPopup(timeStr, dateStr, tier) {
 function toggleHistory() {
     const list  = document.getElementById('invHistoryList');
     const arrow = document.getElementById('historyArrow');
+    const chart = document.getElementById('invScoreChart');
     const shown = list.style.display !== 'none';
     list.style.display  = shown ? 'none' : 'block';
+    if (chart) chart.style.display = shown ? 'none' : 'block';
     arrow.textContent   = shown ? '▼' : '▲';
 }
 
@@ -3134,6 +3224,100 @@ function renderHistory(playerName) {
         html += `<tr><td style="color:var(--text-dim)">${i+1}</td><td style="font-size:0.85rem;text-align:left">${dHtml}</td><td style="font-size:0.85rem">${r.level||'Dễ'}</td><td style="color:var(--gold);font-weight:bold">${r.score}</td><td style="color:var(--correct)">${r.correct}/${r.total}</td><td style="text-align:center;font-size:1.1rem">${r.hasReward?'🏷️':'-'}</td></tr>`;
     });
     el.innerHTML = html + '</tbody></table>';
+    renderScoreChart(playerName);
+}
+
+// === Biểu đồ xu hướng điểm theo thời gian (SVG, không thư viện ngoài) ===
+function renderScoreChart(playerName) {
+    const box = document.getElementById('invScoreChart');
+    if (!box) return;
+    const raw = lsGet('sumogames_lb');
+    const lb  = raw ? JSON.parse(raw) : [];
+    // Lấy tối đa 15 lượt gần nhất, sắp xếp cũ -> mới để vẽ trục thời gian trái sang phải
+    const rows = lb.filter(r => r.name === playerName)
+        .sort((a, b) => getTimestamp(a) - getTimestamp(b))
+        .slice(-15);
+
+    if (rows.length < 2) {
+        // Cần ít nhất 2 điểm mới vẽ được đường
+        box.style.display = 'block';
+        box.innerHTML = '<div style="text-align:center;color:var(--text-dim);padding:10px;font-size:0.85rem">Cần ít nhất 2 lượt chơi để hiển thị biểu đồ xu hướng.</div>';
+        return;
+    }
+
+    const scores = rows.map(r => r.score);
+    const maxS   = Math.max(...scores, 10);
+    const minS   = Math.min(...scores, 0);
+    const range  = maxS - minS || 1;
+
+    // Kích thước viewBox - responsive theo container qua width:100%
+    const W = 320, H = 150, padL = 30, padR = 12, padT = 14, padB = 26;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+
+    const xFor = i => padL + (rows.length === 1 ? plotW / 2 : (i / (rows.length - 1)) * plotW);
+    const yFor = s => padT + plotH - ((s - minS) / range) * plotH;
+
+    // Đường lưới ngang (3 mức: min, giữa, max) + nhãn điểm
+    let grid = '';
+    for (let g = 0; g <= 2; g++) {
+        const val = Math.round(minS + (range * g / 2));
+        const y   = yFor(val);
+        grid += `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W - padR}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>`;
+        grid += `<text x="${padL - 5}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-size="9" fill="rgba(255,255,255,0.45)">${val}</text>`;
+    }
+
+    // Đường nối các điểm
+    const linePts = rows.map((r, i) => `${xFor(i).toFixed(1)},${yFor(r.score).toFixed(1)}`).join(' ');
+
+    // Vùng tô nhẹ dưới đường (area)
+    const areaPts = `${padL},${(padT + plotH).toFixed(1)} ${linePts} ${(W - padR),(padT + plotH)}`;
+    const areaPath = `${xFor(0).toFixed(1)},${(padT + plotH).toFixed(1)} ${linePts} ${xFor(rows.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)}`;
+
+    // Điểm tròn + đánh dấu lượt có quà
+    let dots = '';
+    rows.forEach((r, i) => {
+        const cx = xFor(i).toFixed(1), cy = yFor(r.score).toFixed(1);
+        const color = r.hasReward ? '#FFD700' : '#1E90FF';
+        dots += `<circle cx="${cx}" cy="${cy}" r="3.5" fill="${color}" stroke="#0A0A2E" stroke-width="1.5"/>`;
+    });
+
+    // Nhãn ngày ở điểm đầu và cuối (tránh chồng chữ)
+    const firstDate = (rows[0].date || '').split(' ')[1] || '';
+    const lastDate  = (rows[rows.length - 1].date || '').split(' ')[1] || '';
+    const labels = `
+        <text x="${xFor(0).toFixed(1)}" y="${H - 8}" text-anchor="start" font-size="9" fill="rgba(255,255,255,0.5)">${esc(firstDate)}</text>
+        <text x="${xFor(rows.length - 1).toFixed(1)}" y="${H - 8}" text-anchor="end" font-size="9" fill="rgba(255,255,255,0.5)">${esc(lastDate)}</text>`;
+
+    // Chỉ số tổng quan
+    const avg  = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+    const best = Math.max(...scores);
+    const trend = scores[scores.length - 1] - scores[0];
+    const trendTxt = trend > 0 ? `▲ +${trend}` : trend < 0 ? `▼ ${trend}` : '● 0';
+    const trendColor = trend > 0 ? '#2ecc71' : trend < 0 ? '#ff4757' : 'var(--text-dim)';
+
+    box.style.display = 'block';
+    box.innerHTML = `
+        <div style="background:rgba(0,0,0,0.2);border-radius:12px;padding:12px 10px 6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+                <span style="color:var(--gold);font-weight:800;font-size:0.9rem">📈 Xu hướng điểm (${rows.length} lượt gần nhất)</span>
+                <span style="font-size:0.78rem;color:var(--text-dim)">
+                    TB: <strong style="color:#fff">${avg}</strong> ·
+                    Cao nhất: <strong style="color:#fff">${best}</strong> ·
+                    <strong style="color:${trendColor}">${trendTxt}</strong>
+                </span>
+            </div>
+            <svg viewBox="0 0 ${W} ${H}" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="display:block">
+                ${grid}
+                <polygon points="${areaPath}" fill="rgba(30,144,255,0.12)"/>
+                <polyline points="${linePts}" fill="none" stroke="#1E90FF" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                ${dots}
+                ${labels}
+            </svg>
+            <div style="text-align:center;font-size:0.72rem;color:var(--text-dim);margin-top:2px">
+                🟡 Lượt có quà · 🔵 Lượt thường
+            </div>
+        </div>`;
 }
 
 // ===================================================
@@ -3937,8 +4121,29 @@ const SUMO_UPDATE = (() => {
         // Nếu có banner version: người dùng tự reload sau khi backup
         // → reload đó sẽ tải cả index.html mới lẫn data mới trong 1 lần
         if (dataUpdated && !versionBannerShown) {
+            // === CẦU CHÌ chống vòng lặp reload ===
+            // Nếu CDN lỗi khiến data "luôn mới" → đếm số lần reload liên tiếp.
+            // Quá 3 lần trong 2 phút → tạm dừng auto-reload để không kẹt vòng lặp.
+            const LS_RELOAD_GUARD = 'sumogames_reload_guard';
+            let guard = { count: 0, ts: 0 };
+            try { guard = JSON.parse(localStorage.getItem(LS_RELOAD_GUARD) || '{"count":0,"ts":0}'); } catch {}
+            const nowTs = Date.now();
+            // Reset bộ đếm nếu lần reload gần nhất đã quá 2 phút (nghĩa là không phải vòng lặp)
+            if (nowTs - guard.ts > 120000) guard = { count: 0, ts: nowTs };
+            if (guard.count >= 3) {
+                // Đã reload 3 lần liên tiếp - nhiều khả năng CDN trả data không ổn định.
+                // Dừng auto-reload, chỉ ghi nhận hash hiện tại để thôi báo, không làm phiền người dùng.
+                console.warn('[SumoGames] Tạm dừng auto-update: phát hiện vòng lặp reload (có thể do CDN cache).');
+                return;
+            }
+            guard.count += 1;
+            guard.ts = nowTs;
+            localStorage.setItem(LS_RELOAD_GUARD, JSON.stringify(guard));
             showUpdateToast();
             setTimeout(() => window.location.reload(), 1800);
+        } else {
+            // Không có cập nhật → reset cầu chì để lần cập nhật thật sau này chạy bình thường
+            try { localStorage.removeItem('sumogames_reload_guard'); } catch {}
         }
     }
 
@@ -4183,6 +4388,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnRimClose').addEventListener('click', () => closeModal('redeemedInfoModal'));
     document.getElementById('btnCloseInventory').addEventListener('click', () => closeModal('inventoryModal'));
     document.getElementById('btnToggleHistory').addEventListener('click', toggleHistory);
+    // Tìm kiếm voucher trong túi quà
+    const invSearchEl = document.getElementById('invSearch');
+    if (invSearchEl) {
+        invSearchEl.addEventListener('input', e => {
+            const val = e.target.value;
+            document.getElementById('invSearchClear').style.display = val ? 'block' : 'none';
+            applyVoucherSearch(val);
+        });
+    }
+    const invSearchClearEl = document.getElementById('invSearchClear');
+    if (invSearchClearEl) {
+        invSearchClearEl.addEventListener('click', () => {
+            const inp = document.getElementById('invSearch');
+            if (inp) { inp.value = ''; inp.focus(); }
+            invSearchClearEl.style.display = 'none';
+            applyVoucherSearch('');
+        });
+    }
 
     document.getElementById('btnRedeemTime').addEventListener('click',    () => redeemSelectedGroup('time'));
     document.getElementById('btnRedeemFun').addEventListener('click',      () => redeemSelectedGroup('fun'));
