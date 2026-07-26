@@ -1685,7 +1685,7 @@ body {
 // ===================================================
 
 // === CONSTANTS ===
-const APP_VERSION  = '2.1.5';
+const APP_VERSION  = '2.2.0';
 const TIMER_SECS   = 30;
 const MAX_LB_ROWS  = 1000;
 const MAX_USED_RATIO = 0.6;
@@ -3064,7 +3064,7 @@ function renderInventoryContent(playerName) {
 }
 
 function buildSpecialItemHtml(v, playerName) {
-    const emoji = v.emoji ? v.emoji + ' ' : '🎁 ';
+    const emoji = v.emoji ? esc(v.emoji) + ' ' : '🎁 ';
     return `<div style="background:rgba(255,255,255,0.08);border:1px solid var(--gold);border-radius:12px;padding:12px;text-align:left;display:flex;flex-direction:column;justify-content:center;cursor:pointer"
         data-special-player="${esc(playerName)}" data-special-id="${esc(v.id)}" data-special-item="${esc(v.itemName)}" data-special-tier="${esc(v.tier)}">
         <div style="font-weight:800;color:#fff;margin-bottom:5px;">${emoji}${esc(v.itemName)}</div>
@@ -3075,7 +3075,7 @@ function buildSpecialItemHtml(v, playerName) {
 
 function buildCheckboxHtml(v, checkboxClass, group) {
     const pt5Tag = v.tier === 'PT5' ? `<span style="background:var(--gold);color:#000;font-size:0.6rem;padding:2px 4px;border-radius:4px;font-weight:bold;margin-left:5px;">PT5</span>` : '';
-    const emoji  = v.emoji ? v.emoji + ' ' : '';
+    const emoji  = v.emoji ? esc(v.emoji) + ' ' : '';
     return `<label style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;transition:0.2s;">
         <input type="checkbox" class="${checkboxClass}" value="${esc(v.id)}" data-name="${esc(v.itemName)}" data-type="${esc(v.type||'special')}" style="width:20px;height:20px;flex-shrink:0;">
         <span style="font-weight:800;font-size:1rem;color:#fff;line-height:1.3;">${emoji}${esc(v.itemName)} ${pt5Tag}</span>
@@ -3808,23 +3808,6 @@ const SUMO_UPDATE = (() => {
         return { dataUpdated: anyUpdated, versionBannerShown };
     }
 
-    async function checkViaContentLength() {
-        const oldHash = JSON.parse(localStorage.getItem(LS_HASH) || '{}');
-        let anyUpdated = false;
-        for (const [name] of Object.entries(FILES)) {
-            try {
-                const head = await fetch(BASE_URL + name + '.json' + bust(), { method:'HEAD', cache:'no-store' });
-                if (!head.ok) continue;
-                const len = head.headers.get('Content-Length') || head.headers.get('Last-Modified') || '';
-                if (len && len === oldHash[name]) continue;
-                const raw = await safeFetch(BASE_URL + name + '.json' + bust());
-                if (raw && saveFile(name, raw)) { oldHash[name] = len; anyUpdated = true; }
-            } catch {}
-        }
-        if (anyUpdated) localStorage.setItem(LS_HASH, JSON.stringify(oldHash));
-        return anyUpdated;
-    }
-
     function showUpdateToast() {
         const t = document.createElement('div');
         t.textContent = '🔄 Đang cập nhật dữ liệu mới nhất...';
@@ -3923,10 +3906,18 @@ const SUMO_UPDATE = (() => {
         const isFirst = !localStorage.getItem(LS_LOADED);
         if (isFirst) {
             let anyLoaded = false;
+            // Lấy meta.json trước để ghi luôn hash - tránh lần mở sau tưởng data mới rồi toast + reload lại
+            const meta = await safeFetch(BASE_URL + META_FILE + bust());
+            const hashToSave = {};
             for (const [name] of Object.entries(FILES)) {
                 const raw = await safeFetch(BASE_URL + name + '.json' + bust());
-                if (raw && saveFile(name, raw)) anyLoaded = true;
+                if (raw && saveFile(name, raw)) {
+                    anyLoaded = true;
+                    if (meta && meta[name]) hashToSave[name] = meta[name];
+                }
             }
+            // Ghi hash ngay ở first-load để checkViaManifest lần sau so sánh khớp, không lặp
+            if (Object.keys(hashToSave).length) localStorage.setItem(LS_HASH, JSON.stringify(hashToSave));
             localStorage.setItem(LS_LOADED, '1');
             if (anyLoaded) { window.location.reload(); }
             return;
@@ -3938,8 +3929,9 @@ const SUMO_UPDATE = (() => {
             dataUpdated       = result.dataUpdated;
             versionBannerShown = result.versionBannerShown;
         } catch {
-            // fallback: checkViaContentLength không biết về version banner
-            try { dataUpdated = await checkViaContentLength(); } catch {}
+            // meta.json là nguồn tin cậy duy nhất. Không fallback sang Content-Length
+            // vì header này không ổn định trên CDN (Vercel/Cloudflare) - dễ gây toast lặp mỗi lần mở app.
+            dataUpdated = false;
         }
         // Chỉ hiện toast data + auto-reload khi KHÔNG có banner version
         // Nếu có banner version: người dùng tự reload sau khi backup
